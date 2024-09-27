@@ -53,5 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         パスワード: <input type="password" name="password" required><br><br>
         <input type="submit" value="登録">
     </form>
+    <br>
+    <p>既にアカウントをお持ちの場合は、<a href="login.php">ログインページ</a>へ。</p>
 </body>
 </html>
