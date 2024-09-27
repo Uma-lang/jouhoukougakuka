@@ -1,1 +1,170 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+</style>
+</head>
+<body>
 
+<h2><height=19 width=18 alt=""> PHP 入門</h2>
+
+<p>
+PHP は、オープンソースの汎用スクリプト言語（正式名称 PHP:Hypertext Preprocessor）です。特に、サーバサイドで動作する Web アプリケーションの開発に適しています。言語構造は、簡単で理解しやすく、<em>Ｃ言語の基本構文に基づいて</em>ます。 手続き型のプログラミングに加え、<em>オブジェクト指向</em>のプログラミングもできます。Linux や FreeBSD 等の多くの Unix系システム、Microsoft Windows、Mac OS X など、主要な OS で動作します。 また、Apache や Microsoft IIS をはじめとした多くのウェブサーバをサポートしています。オープンソースなライセンスでリリースされているため、<em>商用・個人用途を問わず自由に使用</em>することができます。各種ライブラリも充実しており、さまざまなWeb サイト、WebアプリケーションがPHPを使って開発されています。（<a href="http://www.php.gr.jp/">日本PHPユーザ会のホームページ</a>「PHP とは」より引用）
+</p>
+<p>
+サーバサイドで処理するタイプのスクリプト言語（PHP）で運用されるシステムは、クライアント側に<em>負荷をかけることがなく</em>、その処理内容を<em>非公開</em>にできる、という特長があります。その反面、クライアントからの処理要求が過密になると、サーバシステムが抱える負担も過大になるので、応答時間が長く（反応が遅く）なります。
+</p>
+<p>
+防衛大学校校内の個人用ホームページを管理しているウェブサーバ（home.nda.ac.jp）は、PHP 言語によるサーバサイド処理に対応しています。そのため、個人用ホームページ領域（</em>ホームディレクトリ/public_html/ 以下</em>）に <em>PHP で記述されたファイル（拡張子「.php」）</em>を配置するだけで、PHP によるサーバサイド処理型 Web アプリケーションを公開できます。
+</p>
+<p>
+本講義では、以下に示す簡単なサンプルプログラムを実際に入力（ファイルを作成してホームページ領域で公開）し、PHP のプログラミングスタイル（アルゴリズムなどの複雑なプログラミング教育は実施しない）を学びます。
+</p>
+<p>
+以下、出力データ（表示内容のソース）は講義資料のページ上に示さないので、<em>各プログラムコードをよく読み</em>、出力データがどのようになるか<em>イメージできた段階</em>で処理（サーバサイド）を実行し、ウェブページの<em>ソースを確認</em>（ブラウザ表示上で右クリック「ページのソースを表示」など）するよう心がけましょう。<br>
+</p>
+
+<br>
+<div align="center">
+<img src="./PageSrc.png">
+<br>
+<br>
+<b>
+ページソース確認法（ブラウザ表示上で右クリック）
+</b>
+</div>
+<br>
+<br>
+
+<h4><a name="01">とにかく使ってみよう！</a></h4>
+<p><a href="./PHP/sample_info.php">sample_info.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+  phpinfo();
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre><p>
+※phpinfo()は、PHPの設定情報を出力する関数の記述例（引数なしの場合、INFO_ALL）
+</p>
+
+
+<h4><a name="02">文字を表示してみる（echo）</a></h4>
+<p><a href="./PHP/sample_echo.php">sample_echo.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+echo &quot;&lt;h1&gt;\n&quot;;
+echo &quot;ABC&lt;br&gt;\n&quot;,&quot;DEF&lt;br&gt;\n&quot;;
+echo &quot;&lt;/h1&gt;\n&quot;;
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<div align="center">
+<h5>
+参考：エスケープシーケンス（制御コード、特殊文字）の記述例
+</h5>
+<img src="./EscSeq.png">
+</div>
+
+
+<h4><a name="03">文字列の連結（演算）</a></h4>
+<p><a href="./PHP/sample_concat.php">sample_concat.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a = &quot;ABC&quot;;
+$b = &quot;DEF&quot;;
+$c = $a.$b;
+echo $a,&quot;&lt;br&gt;\n&quot;;
+echo $b,&quot;&lt;br&gt;\n&quot;;
+echo $c,&quot;&lt;br&gt;\n&quot;;
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="04">変数を用いた演算</a></h4>
+<p><a href="./PHP/sample_plus.php">sample_plus.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a = 3;
+$b = 7;
+echo $a+$b,&quot;&lt;br&gt;\n&quot;;
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<h4><a name="05">条件分岐（if文）</a></h4>
+<p><a href="./PHP/sample_if.php">sample_if.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$select = &quot;B&quot;;
+if($select == &quot;A&quot;){
+  echo &quot;-- A --\n&quot;;
+}else if($select == &quot;B&quot;){
+  echo &quot;-- B --\n&quot;;
+}else if($select == &quot;C&quot;){
+  echo &quot;-- C --\n&quot;;
+}else{
+  echo &quot;-- ? --\n&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<h4><a name="06">反復処理（while文）</a></h4>
+<p><a href="./PHP/sample_while.php">sample_while.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$i = 0;
+while($i &lt; 10){
+  $i++;
+  echo &quot;i=&quot;.$i.&quot;&lt;br&gt;\n&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<h4><a name="07">配列変数の利用（array, foreach）</a></h4>
+<p><a href="./PHP/sample_foreach.php">sample_foreach.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a = array(1,3,5,2,4,6,999);
+foreach($a as $i){
+  echo &quot;i=&quot;.$i.&quot;&lt;br&gt;\n&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<h4>課題３：PHPプログラムの動作確認 </h4>
+<p>
+<b>
+今回（PHP入門）の各例題プログラムを各私有パソコンで動作しているウェブサーバを用いて公開し、<em>各実行結果のスクリーンショット（PNG形式）</em>と<em>プログラム一式（ZIP形式）</em>をTeamsの課題に対する回答として提出せよ。
+</b>
+</p>
+<ul>
+<li>とにかく使ってみよう！（phpinfo）</li>
+<li>文字を表示してみる（echo）</li>
+<li>文字列の連結（演算）</li>
+<li>変数を用いた演算</li>
+<li>条件分岐（if文）</li>
+<li>反復処理（while文）</li>
+<li>配列変数の利用（array, foreach）</li>
+</ul>
+</body>
+</html>
