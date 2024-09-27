@@ -1,0 +1,133 @@
+/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    margin: 20px;
+    background-color: #f7f7f7;
+    color: #333;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+/* 見出し */
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h1 {
+    font-size: 2em;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.6em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #2980b9;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+/* パラグラフ */
+p {
+    margin: 15px 0;
+    text-align: justify;
+}
+
+/* コードブロックと数式 */
+code, pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    color: #e74c3c;
+    display: block;
+    white-space: pre-wrap;
+    margin: 20px 0;
+}
+
+/* 箇条書きリスト */
+ol, ul {
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* 公式や重要な部分の強調ボックス */
+div {
+    background-color: #fff8e1;
+    border: 1px solid #f39c12;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 画像のスタイル */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+/* リンクのスタイル */
+a {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px solid #3498db;
+}
+
+a:hover {
+    color: #2c3e50;
+    border-bottom: 1px solid #2c3e50;
+}
+
+/* コードブロックの背景を黒色、文字色を白色に設定 */
+pre code {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    white-space: pre-wrap; /* 長い行を折り返す */
+    word-wrap: break-word;
+}
+
+/* メディアクエリでモバイル対応 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    code, pre {
+        font-size: 0.9em;
+    }
+}
