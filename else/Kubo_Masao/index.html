@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>久保　正男</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .answer-container {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+        }
+
+        .chart-item {
+            text-align: center;
+            width: 45%;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+
+        .list-container {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>久保　正男</h1>
+    <h3><a href="./else/CNW.pdf">コンピュータネットワークの答え</a></h3>
+    <h3><a href="./else/networkspecialist.pdf">ネットワークスペシャリスト</a></h3>
+    <h3><a href="./else/bio_info.html">生命と情報の答え</a></h3>
+    <label for="category-select">コンピュータネットワークor生命と情報:</label>
+
+    <select id="category-select" onchange="selectCategory()">
+        <option value="">科目を選択</option>
+        <option value="networking">コンピューターネットワーク</option>
+        <option value="seimeitojouhou">生命と情報</option>
+    </select>
+
+    <div id="question-container" class="question"></div>
+
+    <textarea id="user-answer" placeholder="ここに回答を入力してください"></textarea>
+    <br>
+    <button onclick="checkAnswer()">模範解答</button>
+
+    <div id="comparison-container" class="answer-container"></div>
+
+    <div class="controls">
+        <button onclick="markAnswer(true)">正解</button>
+        <button onclick="markAnswer(false)">不正解</button>
+    </div>
+
+    <button onclick="nextQuestion()">次の問題へ</button>
+
+    <div class="chart-container">
+        <div class="chart-item">
+            <canvas id="remainingChart"></canvas>
+            <p>残りの質問数: <span id="remainingText">0</span></p>
+        </div>
+        <div class="chart-item">
+            <canvas id="accuracyChart"></canvas>
+            <p>正答率: <span id="accuracyText">0</span>%</p>
+        </div>
+    </div>
+
+    <div class="list-container">
+        <h2>正解した問題</h2>
+        <ul id="correct-questions"></ul>
+
+        <h2>不正解の問題</h2>
+        <ul id="incorrect-questions"></ul>
+    </div>
+
+    <script src="./else/chart.js"></script>
+    <script src="./else/question.js"></script>
+    <footer>
+        <p>Copyright &copy 2024 Uma. All right reserved.</p>
+    </footer>
+</body>
+
+</html>
