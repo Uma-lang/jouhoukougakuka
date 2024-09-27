@@ -1,5 +1,10 @@
 <?php
+// logout.php
+
 session_start();
-session_destroy();  // セッションを破棄
-header('Location: login.php');  // ログインページにリダイレクト
+session_unset();
+session_destroy();
+
+header("Location: login.php");
 exit();
+?>
