@@ -45,21 +45,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ログイン</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h2>ログインフォーム</h2>
-    <form action="login.php" method="post">
-        ユーザー名: <input type="text" name="username" required><br><br>
-        パスワード: <input type="password" name="password" required><br><br>
-        <input type="submit" value="ログイン">
-    </form>
-    <br>
-    <p>アカウントをお持ちでない場合は、<a href="register.php">ユーザー登録</a>へ。</p>
-</body>
-</html>
