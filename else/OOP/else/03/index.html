@@ -1,1 +1,244 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+</style>
+</head>
+<body>
 
+
+<h2><height=19 width=18 alt="">ホームページを作ってみよう！ </h2>
+<h4>装飾なしのページ記述例</h4>
+<p>myhp.txt</p><pre class=c>
+冬休みの想い出
+スキーに行きました！
+
+今年の冬は、家族で小原台スキー場に行ってきました。（続き・・・）
+
+小原台スキー場の紹介
+
+小原台スキー場は、100万年に一度の大雪で現れ・・・。
+
+時間：〇〇～〇〇
+料金：〇〇円
+
+小原台スキー場
+http://www.google.co.jp/search?q=スキー場
+
+校友会ぼったくりトラベル
+http://www.google.co.jp/search?q=トラベル
+
+思い出の一コマ
+この写真は、ドローンを使って東京湾上空から・・・。
+</pre><p><img src="./plain_sample/image.jpg"></p>
+
+<h4>HTML（Hyper Text Markup Language）によるページ記述例</h4>
+<p>
+<h5>
+<a href="http://www.google.co.jp/search?q=HTML&ie=utf-8&oe=utf-8&hl=ja">HTML入門</a>&nbsp;&nbsp;<a href="../www/www.htm">※</a><br>
+</h5>
+</p>
+<div align="center">
+<a href="./hp_sample/">
+<img src="./01.png">
+</a>
+<br><br>
+<br><br>
+<img src="./02.png">
+</div>
+<br><br>
+
+<h4>スタイルシートとCSS（Cascading Style Sheets）</h4>
+<p>
+スタイルシートは、文書のレイアウトやデザインなどの仕上がり状態を制御する定義ファイルやデータ、パラメータのことです。CSSは、HTML形式文書（構造化文書）のデザインを記述するための言語（スタイル定義手段）の一つです。CSSは、文書構造とデザインに関する定義を分離して記述するために開発されました。
+</p>
+<div align="center">
+<img src="./03.png">
+</div>
+<p><a href="./hp/style.html">style.html</a></p><pre class=c>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;冬休みの想い出&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1 style=&quot;text-shadow: 3px 3px 2px red;font-size: 18pt;&quot;&gt;スキーに行きました！&lt;/h1&gt;
+今年の冬は、家族で小原台スキー場に行ってきました。（続き・・・）
+
+&lt;h3 style=&quot;color:green; font-size: 16pt;&quot;&gt;小原台スキー場の紹介&lt;/h3&gt;
+小原台スキー場は、100万年に一度の大雪で現れ・・・。&lt;br&gt;（←ここで改行）続き・・・。
+&lt;table style=&quot;border: 1px solid gray;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;background-color: beige;&quot;&gt;時間：&lt;/td&gt;&lt;td&gt;〇〇～〇〇&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background-color: beige;&quot;&gt;料金：&lt;/td&gt;&lt;td&gt;〇〇円&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=スキー場&quot;&gt;小原台スキー場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=トラベル&quot;&gt;校友会ぼったくりトラベル&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 style=&quot;color:green; font-size: 16pt;&quot;&gt;思い出の一コマ&lt;/h3&gt;
+この写真は、ドローンを使って東京湾上空から・・・。
+&lt;br&gt;
+&lt;img src=&quot;image.jpg&quot;&gt;
+&lt;br&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt; 
+</pre><div align="center">
+＜HTMLタグ：個別指定＞
+</div>
+<br><br>
+
+<h4>CSSの記述例（ヘッダ領域）</h4>
+<p><a href="./hp/page_style1.html">page_style1.html</a></p><pre class=c>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;冬休みの想い出&lt;/title&gt;
+&lt;style&gt;
+h1 { text-shadow: 3px 3px 2px red;font-size: 18pt; }
+h3 { color:green; font-size: 16pt; }
+table {border: 1px solid gray;}
+td {background-color: beige;}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;スキーに行きました！&lt;/h1&gt;
+今年の冬は、家族で小原台スキー場に行ってきました。（続き・・・）
+
+&lt;h3&gt;小原台スキー場の紹介&lt;/h3&gt;
+小原台スキー場は、100万年に一度の大雪で現れ・・・。&lt;br&gt;（←ここで改行）続き・・・。
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;時間：&lt;/td&gt;&lt;td&gt;〇〇～〇〇&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;料金：&lt;/td&gt;&lt;td&gt;〇〇円&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=スキー場&quot;&gt;小原台スキー場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=トラベル&quot;&gt;校友会ぼったくりトラベル&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;思い出の一コマ&lt;/h3&gt;
+この写真は、ドローンを使って東京湾上空から・・・。
+&lt;br&gt;
+&lt;img src=&quot;image.jpg&quot;&gt;
+&lt;br&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt; 
+</pre>
+<h4>CSSの記述例（ヘッダ領域※クラス指定有り）</h4>
+<p><a href="./hp/page_style2.html">page_style2.html</a></p><pre class=c>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;冬休みの想い出&lt;/title&gt;
+&lt;style&gt;
+h1 { text-shadow: 3px 3px 2px red;font-size: 18pt; }
+h3 { color:green; font-size: 16pt; }
+table {border: 1px solid gray;}
+td {background-color: beige;}
+.p {background-color: transparent;}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;スキーに行きました！&lt;/h1&gt;
+今年の冬は、家族で小原台スキー場に行ってきました。（続き・・・）
+
+&lt;h3&gt;小原台スキー場の紹介&lt;/h3&gt;
+小原台スキー場は、100万年に一度の大雪で現れ・・・。&lt;br&gt;（←ここで改行）続き・・・。
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;時間：&lt;/td&gt;&lt;td class=&quot;p&quot;&gt;〇〇～〇〇&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;料金：&lt;/td&gt;&lt;td class=&quot;p&quot;&gt;〇〇円&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=スキー場&quot;&gt;小原台スキー場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=トラベル&quot;&gt;校友会ぼったくりトラベル&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;思い出の一コマ&lt;/h3&gt;
+この写真は、ドローンを使って東京湾上空から・・・。
+&lt;br&gt;
+&lt;img src=&quot;image.jpg&quot;&gt;
+&lt;br&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt; 
+</pre>
+<h4>CSSの記述例（ファイル分割、構造化）</h4>
+<p>style.css</p><pre class=c>
+h1 { text-shadow: 3px 3px 2px red;font-size: 18pt; }
+h3 { color:green; font-size: 16pt; }
+table {border: 1px solid gray;}
+td {background-color: beige;}
+.p {background-color: transparent;}
+</pre><p><a href="./hp/page.html">page.html</a></p><pre class=c>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;冬休みの想い出&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;スキーに行きました！&lt;/h1&gt;
+今年の冬は、家族で小原台スキー場に行ってきました。（続き・・・）
+
+&lt;h3&gt;小原台スキー場の紹介&lt;/h3&gt;
+小原台スキー場は、100万年に一度の大雪で現れ・・・。&lt;br&gt;（←ここで改行）続き・・・。
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;時間：&lt;/td&gt;&lt;td class=&quot;p&quot;&gt;〇〇～〇〇&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;料金：&lt;/td&gt;&lt;td class=&quot;p&quot;&gt;〇〇円&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=スキー場&quot;&gt;小原台スキー場&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.google.co.jp/search?q=トラベル&quot;&gt;校友会ぼったくりトラベル&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;思い出の一コマ&lt;/h3&gt;
+この写真は、ドローンを使って東京湾上空から・・・。
+&lt;br&gt;
+&lt;img src=&quot;image.jpg&quot;&gt;
+&lt;br&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt; 
+</pre>
+<h4>課題２：お気に入りスポット紹介ページ作成</h4>
+<p>
+<b>
+次の要素を含む校内のお気に入りスポット紹介ページ（HTML＋CSS）を作成し、その表示画面のスクリーンショット（PNG形式）およびページデータ一式（ZIP形式）をTeamsの課題に対する回答として提出せよ。
+</b>
+</p>
+<ul>
+<li>タイトル（ページ名称、title）</li>
+<li>名称（見出し、h等）</li>
+<li>説明文</li>
+<li>外部リンク（a href）</li>
+<li>おすすめポイント（箇条書き、ul）</li>
+<li>画像（幅640ピクセル以下、img）</li>
+<li>撮影日と時刻（表、table等）</li>
+</ul>
+<p>
+※各項目（タグ要素）の有無とコード記述、数量で採点します。講義で紹介していないタグなどを調べて使用してみましょう（加点要素）。
+</p>
+
+
+</body>
+</html>
