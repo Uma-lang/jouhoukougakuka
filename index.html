@@ -1,9 +1,19 @@
 <?php
+// home.php
+
 session_start();
 
-// ログイン状態を確認
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
+// セッションの確認
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// セッションハイジャック対策
+if ($_SESSION['user_agent'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['user_ip'] != $_SERVER['REMOTE_ADDR']) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
     exit();
 }
 ?>
