@@ -1,0 +1,372 @@
+﻿<html>
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <title>オブジェクト指向プログラミング（岩切准教授）</title>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+
+  <h2>
+    <height=19 width=18 alt="">オブジェクト指向プログラミング入門
+  </h2>
+  <h4><a href="object.html">オブジェクト指向とは</a></h4>
+  <p>
+  </p>
+  <div align="center">
+    <h5>
+      手続き型とオブジェクト指向型の違い
+    </h5>
+    <img src="./001.png">
+  </div>
+  <br>
+  <p>
+    ※<a href="https://www.php.net/manual/ja/language.oop5.php">クラスとオブジェクト</a>
+  </p>
+  <h4><a href="class_object.html">クラスの定義とオブジェクト生成</a></h4>
+  <p>
+  </p>
+  <div align="center">
+    <h5>
+      抽象化（クラス定義）と実体化（オブジェクト生成）
+    </h5>
+    <img src="./002.png">
+  </div>
+  <br><br>
+  <p><a href="./PHP/sample_function_DumpArray.php">sample_function_DumpArray.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+function DumpArray($data) // DumpArray関数の定義
+{
+  for($i=0; $i&lt;count($data); $i++){
+    print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a= array('a1','b2','a3','b4','a5');
+DumpArray($a);
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <h5>
+    手続き型の関数をオブジェクト指向型で書いた場合
+  </h5>
+  <p><a href="./PHP/sample_class_DumpArray.php">sample_class_DumpArray.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+class DumpArray {               // クラスの定義
+  function __construct($data)     // オブジェクト生成時に実行（特別な関数）
+  {
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');
+$obj = new DumpArray($a);       // クラスの定義からオブジェクトを生成
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <h4><a name="02">メンバ関数（メソッド）の活用</a></h4>
+  <p><a href="./PHP/sample_class_Method.php">sample_class_Method.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+class MyArray {
+  function MyArray()
+  {
+    // オブジェクト生成時に実行（処理なし）
+  }
+  function DumpArray($data)    // メソッド
+  {
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');
+$obj = new MyArray;
+$obj-&gt;DumpArray($a);           // オブジェクト内のメソッド実行                
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <h4><a name="03">メンバ変数とコンストラクタの活用</a></h4>
+  <p>
+  </p>
+  <div align="center">
+    <h5>
+      コンストラクタの役割
+    </h5>
+    <img src="./003.png">
+  </div>
+  <br><br>
+  <p><a href="./PHP/sample_class_Constructor.php">sample_class_Constructor.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+class MyArray {
+  public $data = array();      // メンバ変数  ※クラススコープ
+  function MyArray($new_data)  // コンストラクタで処理する値の受け取り
+  {
+    $this-&gt;data = $new_data;   // 初期設定  ※this：現オブジェクト
+  }
+  function DumpArray()         // メソッド（引数不要）
+  {
+    $data = $this-&gt;data;       // メンバ変数をローカル変数に代入して処理
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');
+$obj = new MyArray($a);        // オブジェクト生成と同時に初期（値）設定
+$obj-&gt;DumpArray();             // メソッド実行（引数無し、メンバ変数利用）
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <h4><a name="04">メンバ変数の隠蔽（カプセル化）</a></h4>
+  <p>
+  </p>
+  <!--
+<div align="center">
+<h5>
+図の標題
+</h5>
+<img src="./画像ファイル名.png">
+</div>
+<br><br>
+-->
+  <p><a href="./PHP/sample_class_Encapsulation.php">sample_class_Encapsulation.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+class MyArray {
+  public  $data1 = array();    // オブジェクト外から参照可
+  private $data2 = array();    // オブジェクト内のみ参照可
+  function MyArray($new_data)
+  {
+    $this-&gt;data1 = $new_data;
+    $this-&gt;data2 = $new_data;
+  }
+  function DumpArray()
+  {
+    $data = $this-&gt;data2;      // private変数の値を代入
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');
+$obj = new MyArray($a);
+$obj-&gt;DumpArray();             // private変数の内容を表示
+
+var_dump($obj-&gt;data1);         // public 変数参照（成功）
+var_dump($obj-&gt;data2);         // private変数参照（失敗）
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <h4><a name="05">スーパークラスの定義継承</a></h4>
+  <p>
+  </p>
+  <div align="center">
+    <h5>
+      継承
+    </h5>
+    <img src="./004.png">
+  </div>
+  <br><br>
+  <p><a href="./PHP/sample_class_Extends.php">sample_class_Extends.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+class MyArray {
+  public $data = array();          // スーパークラス（親クラス）
+  function MyArray($new_data)
+  {
+    $this-&gt;data = $new_data;
+  }
+  function DumpArray()
+  {
+    $data = $this-&gt;data;
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+}
+class ExArray extends MyArray {    // サブクラス（子クラス）
+  function ExArray($new_data)
+  {
+    parent::MyArray($new_data);    // スーパークラスのコンストラクタ利用
+  }                                // ※ &quot;::&quot;はネームスペース指定の記述
+  function SortArray()             // サブクラスでメソッド（機能）を追加
+  {
+    sort($this-&gt;data);             // 配列の並べ替え
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');       // サブクラスを用いてオブジェクト生成
+$obj = new ExArray();
+$obj-&gt;DumpArray();                 // スーパークラスのメソッド実行
+$obj-&gt;SortArray();                 // サブクラスで追加したメソッド実行
+$obj-&gt;DumpArray();                 // スーパークラスのメソッド実行
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+  <h4><a href="polymorphism.html">処理の多様化（抽象メソッド）</a></h4>
+  <p>
+  </p>
+  <div align="center">
+    <h5>
+      抽象メソッドの処理内容を定義 ※拡張クラスでの記述を強制（必須）
+    </h5>
+    <img src="./005.png">
+  </div>
+  <br><br>
+  <p><a href="./PHP/sample_class_Polymorphism.php">sample_class_Polymorphism.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+<a href="abstract.html">abstract</a> class MyArray              // スーパークラス（親クラス）
+{
+  public $data = array();
+  function MyArray($new_data)
+  {
+    $this-&gt;data = $new_data;
+  }
+  function DumpArray()
+  {
+    $data = $this-&gt;data;
+    for($i=0; $i&lt;count($data); $i++){
+      print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+    }
+  }
+  // 抽象メソッド（拡張クラスでの定義を強制 ※空の状態）
+  <a href=abstract.html>abstract</a> function SortArray();
+}
+class ExArrayA extends MyArray      // サブクラス（子クラス）
+{
+  function ExArrayA($new_data)
+  {
+    parent::MyArray($new_data);
+  }
+  function SortArray()              // 抽象メソッド定義（必須）
+  {
+    sort($this-&gt;data);              // データ並べ替え（昇順）
+  }
+}
+class ExArrayR extends MyArray      // サブクラス（子クラス）
+{
+  function ExArrayR($new_data)
+  {
+    parent::MyArray($new_data);
+  }
+  function SortArray()              // 抽象メソッド定義（必須）
+  {
+    Shuffle($this-&gt;data);           // データ並べ替え（ランダム）
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a = array('a1','b2','a3','b4','a5');
+
+$objA = new ExArrayA($a);
+$objA-&gt;DumpArray();
+$objA-&gt;SortArray();                 // 拡張定義した抽象メソッド実行
+$objA-&gt;DumpArray();
+
+$objR = new ExArrayR($a);
+$objR-&gt;DumpArray();
+$objR-&gt;SortArray();                 // 拡張定義した抽象メソッド実行
+$objR-&gt;DumpArray();
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <!--
+<h4><a name="07">ライブラリの活用（DateTimeクラス）</a></h4>
+<p><a href="./PHP/sample_class_DateTime.php">sample_class_DateTime.php</a></p><pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+date_default_timezone_set(&#039;Asia/Tokyo&#039;);  // タイムゾーン設定
+$now = new DateTime();                    // オブジェクト生成
+print $now-&gt;format(&#039;Y-m-d H:i:s&#039;);        // 書式(年-月-日 時:分:秒)指定出力
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><p><a href="./PHP/sample_class_DateTime_diff.php">sample_class_DateTime_diff.php</a></p><pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+date_default_timezone_set(&#039;Asia/Tokyo&#039;);
+$now = new DateTime();
+
+$pst = new DateTime(&#039;2015/1/1 01:30:00&#039;); // オブジェクト生成（時刻指定）
+$spn = $now-&gt;diff($pst, TRUE);            // 時間差取得（絶対値：TRUE）
+                                          // ※結果：DateIntervalオブジェクト
+
+print $now-&gt;format(&#039;Y-m-d H:i:s&#039;);
+print &quot;&lt;br&gt;&quot;;
+print $pst-&gt;format(&#039;Y-m-d H:i:s&#039;);
+print &quot;&lt;br&gt;&quot;;
+print $spn-&gt;format(&#039;%Y-%m-%d %H:%i:%s&#039;);  // 書式指定出力 ※記述子に注意
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><p>
+※<a href="https://www.php.net/manual/ja/class.datetime.php">DateTimeクラス</a>
+</p>
+-->
+
+
+</body>
+
+</html>

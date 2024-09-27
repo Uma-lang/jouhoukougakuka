@@ -1,0 +1,105 @@
+<html>
+
+</html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <title>オブジェクト指向プログラミング（岩切准教授）</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #4CAF50;
+        }
+
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        ul,
+        ol {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4>var_dump()</h4>
+        <p>var_dump()
+            は、PHPで使われるデバッグ用の関数で、変数に関する詳細な情報を表示するためのものです。この関数は、変数の型や値を出力し、特に複雑なデータ構造（配列やオブジェクトなど）の中身を確認する際に非常に有用です。
+        </p>
+
+        <h4>var_dump() の基本的な使い方</h4>
+        <pre>
+&lt;?php
+$number = 10;
+$string = "Hello, world!";
+$array = array(1, 2, 3, "test");
+
+var_dump($number);
+var_dump($string);
+var_dump($array);
+?&gt;
+        </pre>
+        <h4>出力結果</h4>
+        <pre>
+int(10)
+string(13) "Hello, world!"
+array(4) {
+    [0]=> int(1)
+    [1]=> int(2)
+    [2]=> int(3)
+    [3]=> string(4) "test"
+}
+        </pre>
+
+        <h4>出力の説明</h4>
+        <ol>
+            <li><strong>int(10)</strong>: 変数 <code>$number</code> は整数型（integer）で、値は 10 です。</li>
+            <li><strong>string(13) "Hello, world!"</strong>: 変数 <code>$string</code> は文字列型（string）で、13文字の "Hello,
+                world!"
+                が入っています。</li>
+            <li><strong>array(4)</strong>: 変数 <code>$array</code> は要素数が4の配列で、各要素の型と値がそれぞれ表示されています。</li>
+        </ol>
+
+        <h4>特徴</h4>
+        <ul>
+            <li>型の表示: var_dump() は変数の型（int, string, array など）を表示します。</li>
+            <li>長さの表示: 文字列や配列の長さも表示されます。例えば、string(13) は文字列が13文字であることを示しています。</li>
+            <li>詳細表示: 配列やオブジェクトの内部構造もすべて表示され、各要素やプロパティの型と値を確認できます。</li>
+        </ul>
+
+        <h4>var_dump() が使われる場面</h4>
+        <ul>
+            <li>デバッグ: コードの実行結果を確認しながら、変数の内容が期待通りかどうかを確認するために使われます。</li>
+            <li>複雑なデータ構造の確認: 配列やオブジェクトの中身を確認する際に便利です。</li>
+        </ul>
+
+        <h4>まとめ</h4>
+        <p>var_dump() は、PHPで変数の詳細情報を出力するための強力なツールです。特にデバッグやデータの構造を調べる際に便利です。変数の型、長さ、値などを一目で確認できるため、変数の状態を正確に把握することができます。
+        </p>
+    </div>
+</body>

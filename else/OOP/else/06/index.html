@@ -1,0 +1,383 @@
+﻿<html>
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <title>オブジェクト指向プログラミング（岩切准教授）</title>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+
+  <h2>
+    <height=19 width=18 alt="">配列処理と関数型プログラミング
+  </h2>
+  <p></p>
+
+
+  <h4><a name="01">数値インデックス配列</a></h4>
+  <p><a href="./PHP/sample_array_num1.php">sample_array_num1.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+// 配列への値代入（インデックス無指定）
+$a[] = 'a1';
+$a[] = 'a2';
+$a[] = 'a3';
+$a[] = 'a4';
+$a[] = 'a5';
+
+// 配列の内容を全て出力（var_dump関数）
+<a href="var_dump.html">var_dump</a>($a);
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+   <p><a href="./PHP/sample_array_num2.php">sample_array_num2.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a[] = a1;
+$a[] = a2;
+$a[] = a3;
+$a[] = a4;
+$a[] = a5;
+
+// 配列の内容を全て出力（forループ）
+for($i=0; $i&lt;5; $i++){
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href="./PHP/sample_array_num3.php">sample_array_num3.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a[] = a1;
+$a[] = a2;
+$a[] = a3;
+$a[] = a4;
+$a[] = a5;
+// 配列への値代入（インデックス指定）
+$a[1] = b2;
+$a[3] = b4;
+
+for($i=0; $i&lt;5; $i++){
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href="./PHP/sample_array_num4.php">sample_array_num4.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+// 配列への値代入（array関数）
+$a= array(a1,b2,a3,b4,a5);
+
+for($i=0; $i&lt;5; $i++){
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>
+    ※<a href="https://www.php.net/manual/ja/language.types.array.php">配列</a>：連想配列（key指定）、多次元配列（入れ子構造）も使用可能
+  </p>
+
+  <h4><a name="02">関数処理とその意義</a></h4>
+  <p><a href="./PHP/sample_array_func3a.php">sample_array_func3a.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$a= array(a1,b2,a3,b4,a5);
+
+// 配列の内容表示（同一処理）→ 関数化しよう！
+for($i=0; $i&lt;count($a); $i++){  // 配列数確認： count関数
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+
+// sort関数による配列の整列
+sort($a);
+
+// 配列の内容表示（同一処理）→ 関数化しよう！
+for($i=0; $i&lt;count($a); $i++){
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+
+// Shuffle関数による配列順のランダム化
+Shuffle($a);
+
+// 配列の内容表示（同一処理）→ 関数化しよう！
+for($i=0; $i&lt;count($a); $i++){
+  print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>
+    ※<a href="https://www.php.net/manual/ja/ref.array.php">配列関数</a>：count関数、sort関数、Shuffle関数など配列データを処理する関数
+  </p>
+
+  <h4><a name="03">独自関数の定義と活用（関数呼出、サブルーチン処理）</a></h4>
+  <p><a href="./PHP/sample_function_dumparray.php">sample_function_dumparray.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+// DumpArray関数を定義
+function DumpArray($a)
+{
+  // 配列の内容表示
+  for($i=0; $i&lt;count($a); $i++){
+    print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+  }
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a= array(a1,b2,a3,b4,a5);
+DumpArray($a); // 元のデータ列を表示
+
+sort($a);
+DumpArray($a); // 昇順に並べ換えたデータ列を表示
+
+Shuffle($a);
+DumpArray($a); // ランダムに並べ換えたデータ列を表示
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>
+    ※<a href="https://www.php.net/manual/ja/functions.user-defined.php">ユーザー定義関数</a>
+  </p>
+
+  <h4><a name="04">変数のスコープ（グローバル／ローカル／参照渡し）</a></h4>
+  <p><a href="./PHP/sample_function_scope_global.php">sample_function_scope_global.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+function DumpArray()          // 引数無し
+{
+  global $a;                  // 値（グローバル変数、関数外で定義）の指定
+  for($i=0; $i&lt;count($a); $i++){
+    print &quot;$i: $a[$i]&lt;br&gt;&quot;;
+  }
+  $a = array(x1,y2,x3,y4,x5); // 値（グローバル変数）の書き換え
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a= array(a1,b2,a3,b4,a5);
+DumpArray(); // 元のデータ列を表示（引数不要）
+
+sort($a);
+DumpArray(); // 昇順に並べ換えたデータ列を表示（引数不要）
+
+Shuffle($a);
+DumpArray(); // ランダムに並べ換えたデータ列を表示（引数不要）
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href="./PHP/sample_function_scope_local.php">sample_function_scope_local.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+function DumpArray($data)        // ローカル変数（関数内のみ有効）として値を取得
+{
+  for($i=0; $i&lt;count($data); $i++){
+    print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+  }
+  $data = array(x1,y2,x3,y4,x5); // 値（ローカル変数）の書き換え
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a= array(a1,b2,a3,b4,a5);
+DumpArray($a); // 元のデータ列を表示
+
+sort($a);
+DumpArray($a); // 昇順に並べ換えたデータ列を表示
+
+Shuffle($a);
+DumpArray($a); // ランダムに並べ換えたデータ列を表示
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href="./PHP/sample_function_scope_pointer.php">sample_function_scope_pointer.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;head&gt;
+&lt;?php
+function DumpArray(&amp;$data)        // 値（参照パラメータ、同一実体を指す）の受け取り※&quot;&amp;&quot;指定
+{
+  for($i=0; $i&lt;count($data); $i++){
+    print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+  }
+  $data = array(x1,y2,x3,y4,x5);  // 値（参照パラメータ）の書き換え
+}
+?&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+$a= array(a1,b2,a3,b4,a5);
+DumpArray($a); // 元のデータ列を表示（関数側参照渡し）※&quot;&amp;&quot;不要
+
+sort($a);
+DumpArray($a); // 昇順に並べ換えたデータ列を表示（関数側参照渡し）※&quot;&amp;&quot;不要
+
+Shuffle($a);
+DumpArray($a); // ランダムに並べ換えたデータ列を表示（関数側参照渡し）※&quot;&amp;&quot;不要
+
+// ※参照渡し： 値の置き場（記憶場所、Ｃ言語ではポインタ）を渡す、という考え方
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>
+    ※<a　href="https://www.php.net/manual/ja/language.references.pass.php">参照（リファレンス）渡し
+      </a>：関数コールの際、リファレンス記号"&"を記載しないことに要注意（関数定義にのみリファレンス記号を付けること）。以前は、双方にリファレンス記号"&"を記載してもよかったので、インタプリタ（翻訳機能）の仕様が変更（厳密？）になったようです。
+      </p> <p>
+      ※<a　href="referrences.html">参照（リファレンス）渡し</a>
+  </p>
+
+  <h4><a name="05">プログラムの分割（ライブラリ作成）</a></h4>
+  <p><a href="./PHP/sample_function_main.php">sample_function_main.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+include(&quot;./sample_function_mylib.php&quot;);  // 外部ファイル（ライブラリ）の取り込み
+
+$a= array(a1,b2,a3,b4,a5);
+DumpArray($a);
+
+sort($a);
+DumpArray($a);
+
+Shuffle($a);
+DumpArray($a);
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>sample_function_mylib.php</p>
+  <pre class=c>
+﻿&lt;?php
+function DumpArray($data)
+{
+  for($i=0; $i&lt;count($data); $i++){
+    print &quot;$i: $data[$i]&lt;br&gt;&quot;;
+  }
+}
+?&gt;</pre>
+  <p>
+    ※<a href="https://www.php.net/manual/ja/language.control-structures.php">制御構造</a>：処理の流れや構造を制御する記述
+  </p>
+
+  <h4><a name="06">ライブラリの活用（glob関数、file_get_contents関数、str_replace関数）</a></h4>
+
+  <p>
+    ＜<a href="./dataset.zip">動作確認用データセット</a>＞※<a
+      href="https://www.mod.go.jp/nda/about/campus.html">キャンパス案内</a>（防衛大学校ＨＰ参照）より抜粋
+  </p>
+
+  <h5>
+    データファイル一覧取得（配列化）
+  </h5>
+  <p><a href="./PHP/sample_function_filelist.php">sample_function_filelist.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+include(&quot;./sample_function_mylib.php&quot;);       // ライブラリファイルを再利用
+
+$txtlist = glob(&#039;{./*.txt}&#039;,GLOB_BRACE);      // カレントディレクトリ(./)内の全txtファイル一覧取得（grob関数）
+DumpArray($txtlist);
+
+  // glob関数 GLOB_BRACEオプション： 複数パターンとのマッチング可能（今回は未活用）
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href="glob.html">glob関数とは？？</a></p>
+  <h5>
+    自動生成配列を用いたページ記述例
+  </h5>
+  <p><a href="./PHP/sample_function_imagelist.php">sample_function_imagelist.php</a></p>
+  <pre class=c>
+﻿&lt;html&gt;
+
+&lt;!-- 本文の文字コードを&quot;UTF-8&quot;（Unicode Transformation Format、世界共通文字符号形式、8ビット版）に指定 --&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;?php
+include(&quot;./sample_function_mylib2.php&quot;);
+
+$txtlist = glob(&#039;{./*.txt}&#039;,GLOB_BRACE);
+foreach($txtlist as $file){
+  print &quot;&lt;p&gt;&quot;;                                // &lt;p&gt;：段落（Paragraph）
+  PutTextJpg($file);                          // 各ファイルの内容と画像を表示
+  print &quot;&lt;/p&gt;&quot;;
+}
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p><a href=./PHP/sample_function_mylib2.php>sample_function_mylib2.php</a></p>
+  <pre class=c>
+﻿&lt;?php
+function PutTextJpg($file){
+  print file_get_contents($file);             // 説明文（.txtファイル）表示（file_get_contents関数）
+  print &quot;&lt;br&gt;&quot;;                               // &lt;br&gt;：改行（Break）
+  $jpeg = str_replace(&#039;.txt&#039;,&#039;.jpg&#039;,$file);   // 拡張子「.txt」を「.jpg」に変更（str_replace関数）
+  print &quot;&lt;img src=&#039;$jpeg&#039;&gt;&quot;;                  // JPEG画像（ファイル）表示
+}
+?&gt;</pre>
+  <p>
+    <p>
+      ※<a
+        href="https://www.php.net/manual/ja/ref.filesystem.php">ファイルシステム関数</a>：glob関数、file_get_contents関数などファイル操作などを行う関数
+    </p>
+    <p>
+      ※<a href="https://www.php.net/manual/ja/book.strings.php">文字列処理関数</a>：str_replace関数など文字列を処理する関数
+    </p>
+
+
+    <h4>課題４：ファイルシステム関数を用いた校友会紹介ページ作成</h4>
+    <p>
+      <b>
+        「ライブラリの活用」に示した例題プログラムを参考に、コンテンツの追加削除が容易な各所属校友会活動の紹介ページを作成してウェブサーバ上で公開し、その実行結果のスクリーンショット（PNG形式）、PHPプログラムとデータセット（ZIP形式でパッケージ化）をTeamsの課題に対する回答として提出せよ。
+      </b>
+      <p>
+        サンプルプログラムで用いたデータセットを置き換えること（３点以上含む）ができれば合格基準を満たしたものとする。その他、HTMLの記述追加やスタイルシートの活用などは、加点要素として評価する。
+      </p>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+/* 全体の基本スタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* 見出し（h2, h4）のスタイル */
+h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 20px;
+    color: #555;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* 段落のスタイル */
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* リンクのスタイル */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* canvas 要素のスタイル */
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #333;
+}
+
+/* 課題説明のスタイル */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* コード部分のスタイル */
+pre.c {
+    background-color: #e8e8e8;
+    padding: 10px;
+    border-left: 5px solid #0066cc;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    color: #333;
+    overflow: auto;
+}
+
+/* 強調テキストのスタイル */
+b {
+    font-weight: bold;
+    color: #333;
+}
+
+/* 課題タイトルのスタイル */
+h4 + p b {
+    display: block;
+    background-color: #fffae5;
+    border-left: 5px solid #ffcc00;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* ブロック全体を見やすくするための余白 */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

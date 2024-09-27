@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>処理の多様化（抽象メソッド）</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>処理の多様化（抽象メソッド）とは</h1>
+    <p><strong>処理の多様化</strong>（ポリモーフィズム）とは、オブジェクト指向プログラミングにおいて、クラス階層の中でさまざまな処理を多様な形で実装できる概念です。<strong>抽象メソッド</strong>を使うことで、親クラスが共通のインターフェースを提供し、具体的な処理は子クラスで定義できます。これにより、コードの柔軟性が向上します。</p>
+
+    <h2>抽象メソッドとは？</h2>
+    <p><strong>抽象メソッド</strong>は、具体的な処理を持たないメソッドで、親クラスでその名前や引数のみが定義され、子クラスでその処理内容を実装します。抽象メソッドを持つクラスは<strong>抽象クラス</strong>となり、そのクラス自体からはインスタンスを生成できません。子クラスが抽象メソッドを実装することで処理の多様化が実現されます。</p>
+
+    <h3>抽象クラスと抽象メソッドの定義例</h3>
+
+    <pre><code>
+abstract class Animal {
+    // 抽象メソッド: 具体的な処理は子クラスで実装
+    abstract public function makeSound();
+}
+    </code></pre>
+
+    <p>この例では、<code>Animal</code> クラスが抽象クラスであり、<code>makeSound()</code> メソッドは抽象メソッドです。親クラスではメソッドの詳細は定義されず、子クラスがこのメソッドを実装することが期待されています。</p>
+
+    <h3>子クラスでの具体的な実装例</h3>
+
+    <pre><code>
+class Dog extends Animal {
+    public function makeSound() {
+        echo "ワンワン！&lt;br&gt;";
+    }
+}
+
+class Cat extends Animal {
+    public function makeSound() {
+        echo "ニャー！&lt;br&gt;";
+    }
+}
+    </code></pre>
+
+    <p>この例では、<code>Dog</code> クラスと <code>Cat</code> クラスが <code>Animal</code> を継承しています。それぞれのクラスが <code>makeSound()</code> メソッドを実装し、異なる動作を行います。</p>
+
+    <h3>実行例</h3>
+
+    <pre><code>
+$dog = new Dog();
+$cat = new Cat();
+
+$dog->makeSound();  // "ワンワン！"
+$cat->makeSound();  // "ニャー！"
+    </code></pre>
+
+    <p>このコードでは、同じ<code>makeSound()</code> メソッドを呼び出していますが、オブジェクトの型に応じて異なる動作をします。これが<strong>処理の多様化</strong>（ポリモーフィズム）です。</p>
+
+    <h2>抽象メソッドを使った処理の多様化の利点</h2>
+    <ul>
+        <li><strong>共通のインターフェースを提供</strong>: 親クラスで共通のメソッド名を定義しておけば、呼び出し側のコードはクラスの型に依存せずにそのメソッドを呼び出せます。</li>
+        <li><strong>コードの柔軟性</strong>: 新しいクラスを追加しても、親クラスを継承し、抽象メソッドを実装するだけで、同じインターフェースを使った処理が可能です。</li>
+        <li><strong>保守性の向上</strong>: 親クラスで共通のインターフェースを定義することで、子クラスごとに異なる処理を実装しつつ、統一されたコード管理ができます。</li>
+    </ul>
+
+    <h2>抽象メソッドを使った例：図形クラス</h2>
+    <p>次に、図形クラスの例を使って、抽象メソッドを活用する方法を説明します。</p>
+
+    <h3>抽象クラスでの定義</h3>
+
+    <pre><code>
+abstract class Shape {
+    // 抽象メソッド: 面積を計算する
+    abstract public function calculateArea();
+}
+    </code></pre>
+
+    <h3>子クラスでの実装例</h3>
+
+    <pre><code>
+// 四角形のクラス
+class Rectangle extends Shape {
+    private $width;
+    private $height;
+
+    public function __construct($width, $height) {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function calculateArea() {
+        return $this->width * $this->height;
+    }
+}
+
+// 円のクラス
+class Circle extends Shape {
+    private $radius;
+
+    public function __construct($radius) {
+        $this->radius = $radius;
+    }
+
+    public function calculateArea() {
+        return pi() * pow($this->radius, 2);
+    }
+}
+    </code></pre>
+
+    <h3>実行例</h3>
+
+    <pre><code>
+$rectangle = new Rectangle(10, 5);
+$circle = new Circle(3);
+
+echo "四角形の面積: " . $rectangle->calculateArea() . "&lt;br&gt;";  // 50
+echo "円の面積: " . $circle->calculateArea() . "&lt;br&gt;";  // 約28.27
+    </code></pre>
+
+    <p>この例では、<code>Shape</code> 抽象クラスに共通のメソッド <code>calculateArea()</code> を定義し、子クラスでそれぞれ異なる面積の計算方法を実装しています。</p>
+
+    <h2>まとめ</h2>
+    <ul>
+        <li>抽象メソッドを使うことで、親クラスで共通のインターフェースを定義し、子クラスでその処理を具体的に実装できます。</li>
+        <li>処理の多様化（ポリモーフィズム）は、オブジェクト指向プログラミングにおける柔軟で拡張可能な設計を実現します。</li>
+        <li>抽象クラスや抽象メソッドを使うことで、コードの再利用性や保守性が向上します。</li>
+    </ul>
+
+</body>
+</html>

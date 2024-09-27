@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クラスの定義とオブジェクト生成</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>クラスの定義とオブジェクト生成</h1>
+
+    <p>クラスとは、オブジェクト指向プログラミングにおける<strong>設計図</strong>のようなもので、データ（<em>プロパティ</em>や<em>メンバ変数</em>）や、データに対して行う操作（<em>メソッド</em>）をまとめたものです。</p>
+
+    <h2>1. クラスの定義</h2>
+
+    <p>クラスは以下のように定義します：</p>
+
+    <pre><code>
+class クラス名 {
+    public $変数名;  // メンバ変数
+
+    public function __construct($引数) {  // コンストラクタ
+        $this->変数名 = $引数;
+    }
+
+    public function メソッド名() {  // メソッド
+        // 処理
+    }
+}
+    </code></pre>
+
+    <ul>
+        <li><strong><code>class</code></strong>: クラスを定義するキーワード。</li>
+        <li><strong><code>$this</code></strong>: クラス内で、現在のオブジェクトを指します。</li>
+        <li><strong>メンバ変数（プロパティ）</strong>: クラス内のデータ。</li>
+        <li><strong>メソッド</strong>: クラス内で定義された関数。オブジェクトの操作に使われます。</li>
+        <li><strong>コンストラクタ</strong>: オブジェクト生成時に呼ばれる特別なメソッド。初期化に使われます。</li>
+    </ul>
+
+    <h2>2. オブジェクトの生成</h2>
+
+    <p>クラスを定義した後、そのクラスに基づいて<strong>オブジェクトを生成</strong>できます：</p>
+
+    <pre><code>
+$オブジェクト名 = new クラス名(引数);
+    </code></pre>
+
+    <p><strong>new</strong> キーワードを使ってクラスのインスタンス（オブジェクト）を生成します。コンストラクタが呼ばれ、引数が渡されてプロパティが初期化されます。</p>
+
+    <h2>3. 例: クラスの定義とオブジェクトの生成</h2>
+
+    <pre><code>
+&lt;?php
+class Car {
+    public $color;
+    public $model;
+
+    // コンストラクタでプロパティを初期化
+    public function __construct($color, $model) {
+        $this->color = $color;
+        $this->model = $model;
+    }
+
+    // 車の情報を表示するメソッド
+    public function displayInfo() {
+        echo "This car is a " . $this->color . " " . $this->model . "&lt;br&gt;";
+    }
+}
+
+// オブジェクトを生成して初期化
+$myCar = new Car("red", "Toyota");
+$myCar->displayInfo();  // メソッドの呼び出し
+?&gt;
+    </code></pre>
+
+    <h3>説明</h3>
+    <ul>
+        <li><strong>クラス定義</strong>: <code>Car</code> クラスが定義され、色とモデルのプロパティを持ちます。</li>
+        <li><strong>コンストラクタ</strong>: クラスが初期化される際、渡された引数でプロパティが設定されます。</li>
+        <li><strong>メソッド呼び出し</strong>: オブジェクト生成後、<code>displayInfo()</code> メソッドを使って車の情報が表示されます。</li>
+    </ul>
+
+    <h2>4. 実行結果</h2>
+    <p>このコードを実行すると、以下の結果が表示されます：</p>
+
+    <pre><code>
+This car is a red Toyota.
+    </code></pre>
+
+    <h2>オブジェクト指向プログラミングの利点</h2>
+    <ul>
+        <li><strong>カプセル化</strong>: データとそのデータを操作する機能を1つにまとめます。</li>
+        <li><strong>再利用性</strong>: 一度定義したクラスから、複数のオブジェクトを生成できます。</li>
+        <li><strong>メンテナンス性</strong>: クラスごとに役割を分けることで、コードの保守が容易になります。</li>
+    </ul>
+
+    <h2>まとめ</h2>
+    <ul>
+        <li>クラスはデータとその操作をまとめた設計図です。</li>
+        <li>オブジェクトはクラスから生成され、そのプロパティやメソッドを使用します。</li>
+        <li>クラスのコンストラクタでオブジェクトの初期化を行い、メソッドでその動作を実行します。</li>
+    </ul>
+
+</body>
+</html>

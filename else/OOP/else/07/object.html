@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オブジェクト指向とは</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>オブジェクト指向とは</h1>
+
+    <p><strong>オブジェクト指向</strong>（Object-Oriented Programming, OOP）とは、プログラムをデータとそれに関連する操作（機能や処理）を一つにまとめた「<em>オブジェクト</em>」を中心に設計・構築するプログラミングの考え方です。OOPはソフトウェア開発においてコードの再利用性や拡張性、保守性を向上させるために用いられます。</p>
+
+    <h2>オブジェクト指向の4つの主要な概念</h2>
+
+    <h3>1. クラス（Class）</h3>
+    <p><strong>クラス</strong>は、オブジェクトの設計図やテンプレートです。クラスには、オブジェクトが持つ<em>プロパティ（属性）</em>や<em>メソッド（動作）</em>が定義されています。クラス自体は具体的なものではなく、あくまで構造を定義するだけです。</p>
+    
+    <p>例：<code>Car</code> というクラスには、色やモデル（プロパティ）や動作（例えば走る機能）を定義します。</p>
+
+    <h3>2. オブジェクト（Object）</h3>
+    <p>クラスから作られた実体が<strong>オブジェクト</strong>です。オブジェクトはクラスに定義されたプロパティ（データ）を持ち、メソッド（機能）を実行できます。1つのクラスから複数のオブジェクトを作成することが可能です。</p>
+    
+    <p>例：<code>Car</code> クラスから、<code>myCar</code> という具体的なオブジェクトを作成し、「赤色のトヨタ車」などの具体的なデータを持たせます。</p>
+
+    <h3>3. 継承（Inheritance）</h3>
+    <p><strong>継承</strong>は、既存のクラスを基にして新しいクラスを作成できる仕組みです。新しいクラスは元のクラス（親クラス）のプロパティやメソッドを引き継ぎつつ、独自の機能を追加したり、既存の機能を拡張することができます。</p>
+    
+    <p>例：<code>Car</code> クラスを基にして、特定の車種を表す <code>SportsCar</code> クラスを作成し、スピード機能を追加できます。</p>
+
+    <h3>4. カプセル化（Encapsulation）</h3>
+    <p><strong>カプセル化</strong>は、データやメソッドをオブジェクトの内部に隠す仕組みです。外部から直接データにアクセスできないようにし、データはメソッドを介してのみ操作できるようにします。これにより、オブジェクトの内部状態が不正に変更されることを防ぎます。</p>
+    
+    <p>例：車の速度や燃料の状態を外部から直接変更させないようにし、特定のメソッドを通じてのみ変更・参照できるようにします。</p>
+
+    <h3>5. ポリモーフィズム（Polymorphism）</h3>
+    <p><strong>ポリモーフィズム</strong>は、同じメソッド名で異なる動作を行うことを指します。異なるクラスで同じメソッド名が定義されていても、そのクラスの種類に応じて異なる動作を行うことが可能です。これにより、コードの柔軟性が向上します。</p>
+    
+    <p>例：<code>Car</code> クラスには <code>start()</code> メソッドがあり、<code>ElectricCar</code> と <code>GasolineCar</code> ではそれぞれ別の方法でエンジンを始動するが、外部からは同じ <code>start()</code> メソッドで呼び出すことができる。</p>
+
+    <h2>オブジェクト指向プログラミングの利点</h2>
+    <ul>
+        <li><strong>再利用性</strong>: クラスを一度定義すれば、同じ設計を何度でも再利用して新しいオブジェクトを作成できます。また、クラスを継承して新たなクラスを作ることで、既存の機能を再利用しつつ拡張できます。</li>
+        <li><strong>保守性</strong>: オブジェクトごとにデータと動作を管理するため、プログラムの変更や修正が容易です。クラスごとに機能がカプセル化されているので、他のクラスやコードに影響を与えずに変更ができます。</li>
+        <li><strong>拡張性</strong>: 新しい機能を追加する際にも、継承を利用することで既存のコードを変更せずに新しい機能を追加できます。</li>
+        <li><strong>柔軟性と直感性</strong>: 現実世界の物体や概念をモデル化しやすく、クラスやオブジェクトを使って問題を自然に解決できるため、コードの設計が直感的で理解しやすくなります。</li>
+    </ul>
+
+    <h2>オブジェクト指向プログラミングの例</h2>
+
+    <pre><code>
+&lt;?php
+// Car クラスの定義
+class Car {
+    // プロパティ（変数）
+    public $color;
+    public $model;
+
+    // コンストラクタ（オブジェクト生成時に呼ばれる）
+    public function __construct($color, $model) {
+        $this->color = $color;
+        $this->model = $model;
+    }
+
+    // メソッド（動作）
+    public function displayInfo() {
+        echo "This car is a " . $this->color . " " . $this->model . "&lt;br&gt;";
+    }
+}
+
+// Car クラスからオブジェクト生成
+$myCar = new Car("red", "Toyota");
+$myCar->displayInfo();  // 出力: This car is a red Toyota.
+?&gt;
+    </code></pre>
+
+    <h3>説明</h3>
+    <ul>
+        <li><strong>class</strong>: <code>Car</code> クラスを定義し、色とモデルという2つのプロパティを持っています。</li>
+        <li><strong>コンストラクタ</strong>: クラスからオブジェクトが生成されたときに呼ばれる特別なメソッドで、オブジェクトのプロパティを初期化します。</li>
+        <li><strong>メソッド</strong>: <code>displayInfo()</code> メソッドはオブジェクトの情報を出力します。</li>
+        <li><strong>オブジェクトの生成</strong>: <code>new Car("red", "Toyota")</code> により、<code>Car</code> クラスから新しいオブジェクトが生成され、<code>myCar</code> という名前で保存されます。</li>
+    </ul>
+
+    <h2>まとめ</h2>
+    <ul>
+        <li><strong>オブジェクト指向プログラミング</strong>は、データとその操作をオブジェクトという単位にまとめて設計する方法で、現実世界の概念を自然にプログラムに反映できます。</li>
+        <li><strong>クラス</strong>はオブジェクトの設計図、<strong>オブジェクト</strong>はそのクラスを元に作られた実体です。</li>
+        <li><strong>継承</strong>、<strong>カプセル化</strong>、<strong>ポリモーフィズム</strong>といった特徴を使うことで、柔軟で保守性の高いソフトウェアを構築できます。</li>
+    </ul>
+
+</body>
+</html>
