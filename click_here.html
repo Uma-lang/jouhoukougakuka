@@ -1,0 +1,107 @@
+<?php
+session_start();
+
+// ログイン状態を確認
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>令和６年度情報工学科前期試験対策</title>
+    <style>
+        /* ベーススタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4a90e2;
+    font-size: 2.5em;
+    margin-top: 50px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4a90e2;
+    background-color: #fff;
+    padding: 15px 20px;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: #4a90e2;
+    color: #fff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+
+color: #333;
+padding: 20px;
+position: relative;
+bottom: 0;
+left: 0;
+width: 100%;
+font-size: 14px;
+text-align: left;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    a {
+        padding: 10px 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>令和６年度情報工学科前期試験対策</h1>
+    <ul>
+        <li><h2><a href="./else/Kubo_masao/index.html">久保　正男(9/27(Fri))(10/3(Thur))</a></h2></li>
+        <li><h2><a href="./else/R6_3F_zenki_training/index.html">航空訓練(9/27(Fri))</a></h2></li>
+        <li><h2><a href="./else/Matsubara/suuchikeisan.html">数値計算(9/30(Mon))</a></h2></li>
+        <li><h2><a href="./else/Matsubara/ensyu2.html">情報工学演習Ⅱ(9/30(Mon))</a></h2></li>
+        <li><h2><a href="./else/ai/index.html">人工知能Ⅰ(10/1(Mon))</a></h2></li>
+        <li><h2><a href="./else/kokusaiho/index.html">国際法(10/2(Wed))</a></h2></li>
+        <li><h2><a href="./else/OOP/index.html">オブジェクト指向プログラミング(10/2(Wed))</a></h2></li>
+        <li><h2><a href="./else/compiler/index.html">コンパイラ(10/3(Thur))</a></h2></li>
+    </ul>
+    <a href="logout.php">ログアウト</a>
+    <footer class="footer">
+        <p>Copyright &copy 2024 Uma. All rights reserved.</p>
+    </footer>
+</body>
