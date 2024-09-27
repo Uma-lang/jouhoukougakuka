@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptの innerText</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScriptの <code>innerText</code> プロパティ</h1>
+    <p><code>innerText</code> プロパティは、HTML 要素内の表示されているテキストを取得したり、変更したりするために使用されます。このプロパティを使うと、タグの中身のテキストを簡単に操作できます。</p>
+
+    <h2>例 1: テキストを取得する</h2>
+    <p>以下の例では、ボタンをクリックすると、<code>id="example"</code> を持つ要素のテキストを取得して表示します。</p>
+
+    <pre><code>&lt;h1 id="example"&gt;このテキストを取得します&lt;/h1&gt;
+&lt;button onclick="showText()"&gt;テキストを取得する&lt;/button&gt;
+
+&lt;script&gt;
+function showText() {
+    var element = document.getElementById("example");
+    alert(element.innerText);  // 要素のテキストをアラートで表示
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>実際に試してみましょう:</h3>
+    <h1 id="example">このテキストを取得します</h1>
+    <button onclick="showText()">テキストを取得する</button>
+
+    <h2>例 2: テキストを変更する</h2>
+    <p>次に、<code>innerText</code> を使って要素内のテキストを変更する例です。</p>
+
+    <pre><code>&lt;h1 id="example2"&gt;このテキストを変更します&lt;/h1&gt;
+&lt;button onclick="changeText()"&gt;テキストを変更する&lt;/button&gt;
+
+&lt;script&gt;
+function changeText() {
+    var element = document.getElementById("example2");
+    element.innerText = "テキストが変更されました！";  // テキストを変更
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>実際に試してみましょう:</h3>
+    <h1 id="example2">このテキストを変更します</h1>
+    <button onclick="changeText()">テキストを変更する</button>
+
+    <h2>innerText と textContent の違い</h2>
+    <p><code>innerText</code> と <code>textContent</code> は似ていますが、いくつかの違いがあります。<code>innerText</code> は表示されているテキストのみを取得・設定し、スタイルに依存します。一方、<code>textContent</code> はスタイルに関係なく、要素内の全てのテキストを取得します。</p>
+
+    <h3>textContent の例:</h3>
+    <pre><code>&lt;div id="hidden" style="display:none;"&gt;このテキストは非表示です。&lt;/div&gt;
+&lt;button onclick="showContent()"&gt;textContent を取得する&lt;/button&gt;
+
+&lt;script&gt;
+function showContent() {
+    var element = document.getElementById("hidden");
+    alert(element.textContent);  // 要素の全テキストを表示（非表示部分も含む）
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>実際に試してみましょう:</h3>
+    <div id="hidden" style="display:none;">このテキストは非表示です。</div>
+    <button onclick="showContent()">textContent を取得する</button>
+
+</body>
+</html>

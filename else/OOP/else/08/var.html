@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptのvarについて</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScriptの <code>var</code> とは</h1>
+    <p><code>var</code> は、JavaScript で変数を宣言するためのキーワードです。長い間使われてきましたが、現在では <code>let</code> や <code>const</code> が登場し、<code>var</code> の使用には注意が必要です。</p>
+
+    <h2><code>var</code> の基本的な使い方</h2>
+    <pre><code>var x = 10;
+console.log(x); // 10</code></pre>
+
+    <p><code>var</code> を使って変数 <code>x</code> を宣言し、値を代入しています。<code>x</code> の値は後から変更することができます。</p>
+
+    <pre><code>var x = 10;
+x = 20;
+console.log(x); // 20</code></pre>
+
+    <h2><code>var</code> の特徴</h2>
+
+    <h3>1. 関数スコープ (Function Scope)</h3>
+    <p><code>var</code> で宣言された変数は、関数内で宣言されるとその関数全体で有効になります。</p>
+    <pre><code>function myFunction() {
+    var x = 10;
+    console.log(x); // 10
+}
+myFunction();
+console.log(x); // エラー：xは関数外では定義されていません</code></pre>
+
+    <h3>2. グローバルスコープ (Global Scope)</h3>
+    <p>関数外で宣言された <code>var</code> 変数は、プログラム全体でアクセスできるグローバルスコープを持ちます。</p>
+    <pre><code>var y = 100;
+console.log(y); // 100
+
+function display() {
+    console.log(y); // 100
+}
+display();</code></pre>
+
+    <h3>3. 変数の再宣言が可能</h3>
+    <p><code>var</code> では、同じ変数名で再宣言が可能です。</p>
+    <pre><code>var z = 5;
+var z = 10; // 同じ変数名で再宣言
+console.log(z); // 10</code></pre>
+
+    <h3>4. 変数の巻き上げ (Hoisting)</h3>
+    <p>JavaScript では、<code>var</code> 宣言がコードの実行前に「巻き上げられる」ため、宣言が後でも使用可能です。ただし、初期化はされていません。</p>
+    <pre><code>console.log(a); // undefined
+var a = 10;
+console.log(a); // 10</code></pre>
+
+    <h2><code>let</code> や <code>const</code> との違い</h2>
+    <p><code>let</code> や <code>const</code> は、より安全で予測可能な変数宣言を提供します。以下の違いがあります。</p>
+    <ul>
+        <li><strong>ブロックスコープ</strong>: <code>let</code> や <code>const</code> はブロック内（<code>{}</code>）でのみ有効。</li>
+        <li><strong>再宣言不可</strong>: <code>let</code> や <code>const</code> では再宣言できない。</li>
+        <li><strong>巻き上げの違い</strong>: <code>var</code> は巻き上げされるが、<code>let</code> や <code>const</code> は巻き上げされない。</li>
+    </ul>
+
+    <h2>使用例</h2>
+
+    <h3>関数スコープの例</h3>
+    <pre><code>function testVar() {
+    var a = 1;
+    if (true) {
+        var a = 2;
+        console.log(a); // 2
+    }
+    console.log(a); // 2
+}
+testVar();</code></pre>
+
+    <h3>グローバルスコープの例</h3>
+    <pre><code>var globalVar = "Hello";
+
+function displayGlobalVar() {
+    console.log(globalVar); // Hello
+}
+displayGlobalVar();</code></pre>
+
+    <h3>巻き上げの例</h3>
+    <pre><code>function hoistingExample() {
+    console.log(b); // undefined
+    var b = 10;
+    console.log(b); // 10
+}
+hoistingExample();</code></pre>
+
+    <h2>まとめ</h2>
+    <ul>
+        <li><code>var</code> は JavaScript の基本的な変数宣言方法ですが、スコープや再宣言などに注意が必要です。</li>
+        <li>現在は、より安全な <code>let</code> や <code>const</code> が推奨されることが多いです。</li>
+    </ul>
+
+</body>
+</html>

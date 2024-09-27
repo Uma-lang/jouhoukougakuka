@@ -1,0 +1,33 @@
+<html>
+<head>
+<script>
+class MyArray {                             // スーパークラス（親クラス）
+  constructor(new_data) {
+    this.data = new_data;
+  }
+  DumpArray() {
+    for(var i=0;i<this.data.length;i++){
+      document.write(this.data[i]+"<br>");
+    }
+  }
+}
+class ExArray extends MyArray {             // サブクラス（子クラス）
+  CalSum() {                                // 総和を計算するメソッドを追加
+    var sum = 0;
+    for(var i=0;i<this.data.length;i++){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+}
+</script>
+</head>
+<body>
+<script>
+var a=[1,3,5,7,9,99];
+obj = new ExArray(a);                       // オブジェクト生成
+obj.DumpArray();                            // スーパークラスのメソッド実行
+document.write(obj.CalSum()+"<br>");        // サブクラスで追加したメソッド実行
+</script>
+</body>
+</html>

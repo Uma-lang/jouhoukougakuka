@@ -1,0 +1,31 @@
+<html></html>
+ 
+<head>
+<meta charset="UTF-8">
+</head>
+ 
+<body>
+<h2>ピクトグラムの名称</h2>
+<p>
+
+ ここに説明文を書く。
+</p>
+<canvas id="mycanvas" width="640" height="640"></canvas>
+<script>
+
+ var cvs = document.getElementById("mycanvas");
+
+ var ctx = cvs.getContext("2d");
+
+ ctx.fillStyle = "rgb(0, 0, 0)";
+
+ ctx.fillRect(10, 10, 50, 50);
+
+ ctx.fillRect(70, 10, 50, 50);
+
+ ctx.fillRect(130, 10, 50, 50);
+
+ ctx.fillRect(190, 10, 50, 50);
+</script>
+</body>
+</html>

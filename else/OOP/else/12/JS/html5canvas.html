@@ -1,0 +1,95 @@
+<html></html>
+ 
+<head>
+<meta charset="UTF-8">
+</head>
+ 
+<body>
+ 
+<h2>HTML5 - canvas</h2>
+ 
+<!-- 縦横300x300のcanvas型オブジェクト「mycanvas」作成 -->
+<canvas id="mycanvas" width="300" height="300"></canvas>
+ 
+<script>
+
+ // オブジェクト cvs に mycanvas を割り当てる
+
+ var cvs = document.getElementById("mycanvas");
+ 
+// canvasがサポートされているかチェック
+
+ if(cvs.getContext) {  //canvas対応ブラウザの場合
+ 
+  // 2D機能をオブジェクト ctx に取り込む
+
+   var ctx = cvs.getContext("2d");
+ 
+  // 塗りつぶし色を黒に指定
+
+   ctx.fillStyle = "rgb(0, 0, 0)";
+ 
+  // 座標(10,10)を起点に横50x縦100の四角形を描画
+
+   ctx.fillRect(10, 10, 50, 100);
+ 
+  // 座標(60,110)を起点に横20x縦30の四角形を破線描画
+
+   ctx.setLineDash([3, 1]);
+
+   ctx.strokeRect(60, 110, 20, 30);
+ 
+  // 連続線
+
+   ctx.beginPath();
+
+     ctx.strokeStyle="rgb(255, 0, 0)";
+
+     ctx.moveTo(0, 0);
+
+     ctx.lineTo(150, 150);
+
+     ctx.lineTo(0, 150);
+
+     ctx.lineTo(0, 0);
+
+   ctx.closePath();
+
+   ctx.setLineDash([1,0]);
+
+   ctx.stroke();
+ 
+  // 楕円
+
+   ctx.lineWidth = 3;
+
+   ctx.beginPath();
+
+     ctx.strokeStyle="rgb(0, 255, 0)";
+
+     ctx.ellipse(75, 75, 25, 75, Math.PI/3, 0, Math.PI);
+
+   ctx.closePath();
+
+   ctx.stroke();
+ 
+  // 文字
+
+   ctx.lineWidth = 1;
+
+   ctx.font = "20pt Times";
+
+   ctx.strokeStyle="rgb(0, 0, 255)";
+
+   ctx.strokeText("HTML5", 10, 180);
+ 
+  ctx.font = "28pt Times";
+
+   ctx.fillStyle="rgb(255, 0, 255)";
+
+   ctx.fillText("canvas", 40, 210);
+
+ }
+</script>
+</body>
+</html>

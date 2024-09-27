@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+class MyArray {              // クラスの定義
+  constructor(new_data) {    // コンストラクタ
+    this.data = new_data;    // ※this：現オブジェクト
+  }
+  DumpArray() {              // メソッド
+    for(var i=0;i<this.data.length;i++){
+      document.write(this.data[i]+"<br>");
+    }
+  }
+}
+</script>
+</head>
+<body>
+<script>
+var a=[1,3,5,7,9,99];
+obj = new MyArray(a);        // オブジェクト生成と初期設定
+obj.DumpArray();             // メソッド実行
+</script>
+</body>
+</html>

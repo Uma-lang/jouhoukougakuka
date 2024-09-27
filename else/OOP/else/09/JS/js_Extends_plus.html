@@ -1,0 +1,46 @@
+<html>
+<head>
+<script>
+class MyArray {
+  constructor(new_data) {
+    this.data = new_data;
+  }
+  DumpArray() {
+    for(var i=0;i<this.data.length;i++){
+      document.write(this.data[i]+"<br>");
+    }
+  }
+}
+class ExArray extends MyArray {
+  CalSum() {
+    var sum = 0;
+    for(var i=0;i<this.data.length;i++){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+}
+</script>
+</head>
+<body>
+<script>
+var a=[1,3,5,7,9,99];
+obj = new ExArray(a);                       // クラスを用いてオブジェクトを生成
+
+// クラスを用いて作成したオブジェクトにメンバ要素を追加
+
+obj.CalAve = function (){                   // メンバ関数追加
+    return this.CalSum()/this.data.length;
+};
+
+obj.newdata = obj.data.concat();            // メンバ変数追加
+obj.newdata.reverse();                      // 追加配列を逆順に並べ替え
+
+document.write(obj.data+"<br>");
+obj.DumpArray();
+document.write(obj.CalSum()+"<br>");        // 合計値
+document.write(obj.CalAve()+"<br>");        // 平均値（追加したメンバ関数）
+document.write(obj.newdata +"<br>");        // 逆配列（追加したメンバ変数）
+</script>
+</body>
+</html>

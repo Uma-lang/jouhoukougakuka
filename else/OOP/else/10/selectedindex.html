@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>selectedIndex の説明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        button, select {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>selectedIndex の説明</h1>
+    <p><code>selectedIndex</code> は、HTML の <code>&lt;select&gt;</code> 要素に関連する JavaScript のプロパティです。ユーザーが選択したオプションのインデックス（番号）を取得したり、指定することができます。このプロパティは、選択されたオプションの <strong>インデックス番号</strong>を操作するために使います。</p>
+
+    <h2>selectedIndex プロパティの用途</h2>
+    <p><code>selectedIndex</code> を使用することで、以下のような操作が可能です:</p>
+    <ul>
+        <li>選択されているオプションのインデックス番号を取得</li>
+        <li>特定のオプションをプログラム的に選択</li>
+    </ul>
+
+    <h2>使用例</h2>
+
+    <h3>1. 選択されたオプションのインデックスを取得する例</h3>
+    <p>次の例では、ユーザーが選択したオプションのインデックス番号を取得し、アラートで表示します。</p>
+
+    <pre><code>&lt;select id="mySelect" onchange="showSelectedIndex()"&gt;
+    &lt;option value="1"&gt;オプション 1&lt;/option&gt;
+    &lt;option value="2"&gt;オプション 2&lt;/option&gt;
+    &lt;option value="3"&gt;オプション 3&lt;/option&gt;
+    &lt;/select&gt;
+
+&lt;script&gt;
+function showSelectedIndex() {
+    var selectElement = document.getElementById("mySelect");
+    var index = selectElement.selectedIndex;  // 選択されたオプションのインデックスを取得
+    alert("選択されたオプションのインデックス: " + index);
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>2. 特定のオプションを選択する例</h3>
+    <p>次の例では、ボタンをクリックすることで、プログラムから 3 番目のオプションを自動的に選択することができます。</p>
+
+    <pre><code>&lt;select id="mySelect"&gt;
+    &lt;option value="1"&gt;オプション 1&lt;/option&gt;
+    &lt;option value="2"&gt;オプション 2&lt;/option&gt;
+    &lt;option value="3"&gt;オプション 3&lt;/option&gt;
+    &lt;/select&gt;
+
+&lt;button onclick="selectOption()"&gt;3番目のオプションを選択&lt;/button&gt;
+
+&lt;script&gt;
+function selectOption() {
+    var selectElement = document.getElementById("mySelect");
+    selectElement.selectedIndex = 2;  // 3 番目のオプションを選択
+}
+&lt;/script&gt;</code></pre>
+
+    <h2>selectedIndex プロパティの動作</h2>
+    <p><code>selectedIndex</code> は、インデックス番号を返すプロパティです。最初のオプションのインデックスは <code>0</code> で始まり、次のようにカウントされます:</p>
+    <ul>
+        <li>1番目のオプション → インデックス 0</li>
+        <li>2番目のオプション → インデックス 1</li>
+        <li>3番目のオプション → インデックス 2</li>
+        <!-- Add more options if needed -->
+    </ul>
+    <p>特定のインデックス番号を指定することで、プログラムから自動的にオプションを選択状態にできます。また、選択がない場合、<code>selectedIndex</code> の値は <code>-1</code> となります。</p>
+
+</body>
+</html>

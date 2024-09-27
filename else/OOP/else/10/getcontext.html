@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getContext('2d') の使い方説明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Canvas の getContext('2d') の使い方</h1>
+
+    <p><code>getContext('2d')</code> は、HTML5 の <code>&lt;canvas&gt;</code> 要素を使用して 2D 描画を行うためのメソッドです。2D コンテキストを取得することで、図形やテキストをキャンバスに描くことができるようになります。</p>
+
+    <h2>基本的な使い方</h2>
+
+    <p>以下の手順で、キャンバスに描画するためのコンテキストを取得し、図形やテキストを描画できます。</p>
+
+    <ol>
+        <li>まず、HTML 内に <code>&lt;canvas&gt;</code> 要素を作成します。</li>
+        <li>JavaScript で、<code>getContext('2d')</code> メソッドを使用して 2D 描画コンテキストを取得します。</li>
+        <li>取得したコンテキストを使って、図形やテキストを描画します。</li>
+    </ol>
+
+    <h3>コード例</h3>
+    <pre><code>&lt;canvas id="myCanvas" width="300" height="150"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext('2d');
+
+    // 四角形を描画
+    ctx.fillStyle = "lightblue";
+    ctx.fillRect(10, 10, 150, 100);
+
+    // 四角形の枠線を描画
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 5;
+    ctx.strokeRect(10, 10, 150, 100);
+
+    // テキストを描画
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText("Hello Canvas", 20, 60);
+&lt;/script&gt;
+</code></pre>
+
+    <h2>実際の結果</h2>
+    <p>以下に示すのは、上記のコードを実行した結果です。四角形とテキストがキャンバス内に描かれます。</p>
+
+    <canvas id="myCanvas" width="300" height="150"></canvas>
+
+    <script>
+        // <canvas> 要素を取得
+        var canvas = document.getElementById("myCanvas");
+        
+        // 2D 描画コンテキストを取得
+        var ctx = canvas.getContext("2d");
+
+        // 塗りつぶしの四角形を描画
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(10, 10, 150, 100);
+
+        // 四角形の枠線を描画
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 5;
+        ctx.strokeRect(10, 10, 150, 100);
+
+        // テキストを描画
+        ctx.fillStyle = "black";
+        ctx.font = "20px Arial";
+        ctx.fillText("Hello Canvas", 20, 60);
+    </script>
+
+    <h2>まとめ</h2>
+    <p>このように、<code>getContext('2d')</code> メソッドを使うことで、HTML の <code>&lt;canvas&gt;</code> 要素上にさまざまな図形やテキストを描画できます。2D コンテキストを操作することで、アニメーションやインタラクティブなグラフィックスも実現可能です。</p>
+
+</body>
+</html>

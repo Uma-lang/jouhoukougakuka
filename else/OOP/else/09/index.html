@@ -1,0 +1,293 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+</style>
+</head>
+<body>
+
+<h2><height=19 width=18 alt=""> JavaScript オブジェクト指向入門</h2>
+<p>
+JavaScriptでは、文字列や配列などの JavaScriptのコア機能から、JavaScriptの最上部に構築されたブラウザーAPIまで、ほとんどのものがオブジェクトです。関連する関数や変数を効率的なパッケージにカプセル化して、便利なデータコンテナーとして動作する独自のオブジェクトを作成することもできます。（引用：「<a href="https://developer.mozilla.org/ja/docs/Learn/JavaScript/Objects">JavaScript オブジェクト入門</a>」）
+</p>
+<p>
+※JavaScriptでは、抽象（Abstract）メソッドなど、いくつか未実装の宣言法もあるようです。
+</p>
+
+<h4><a name="01">クラスの定義とオブジェクト生成</a></h4>
+<h5>
+関数記述（例）
+</h5>
+<p><a href="./JS/js_function.html">js_function.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+function DumpArray(data){
+  for(var i=0;i&lt;data.length;i++){
+    document.write(data[i]+&quot;&lt;br&gt;&quot;);
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+var a=[1,3,5,7,9,99];
+DumpArray(a);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><h5>
+クラス定義を用いたオブジェクト作成（例）
+</h5>
+<p><a href="./JS/js_class.html">js_class.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+class MyArray {              // クラスの定義
+  constructor(new_data) {    // コンストラクタ
+    this.data = new_data;    // ※this：現オブジェクト
+  }
+  DumpArray() {              // メソッド
+    for(var i=0;i&lt;this.data.length;i++){
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+var a=[1,3,5,7,9,99];
+obj = new MyArray(a);        // オブジェクト生成と初期設定
+obj.DumpArray();             // メソッド実行
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="02">メンバ変数の隠蔽（カプセル化）</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_Encapsulation.html">js_Encapsulation.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+class MyArray {
+  <a href="sharp.html"><a href="sharp.html">#</a></a>data2;    // <a href="sharo.html">private変数</a>に指定（以下、記号<a href="sharp.html">#</a>を付記）
+  constructor(new_data) {
+    this.data1 = new_data;
+    this.<a href="sharp.html">#</a>data2 = new_data;
+  }
+  DumpArray() { 
+    for(var i=0;i&lt;this.<a href="sharp.html">#</a>data2.length;i++){
+      document.write(this.<a href="sharp.html">#</a>data2[i]+&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+var a=[1,3,5,7,9,99];
+obj = new MyArray(a);
+obj.DumpArray();
+document.write(obj.data1+&quot;&lt;br&gt;&quot;);
+//document.write(obj.<a href="sharp.html">#</a>data2+&quot;&lt;br&gt;&quot;); // private変数参照（失敗）
+document.write(obj.data2+&quot;&lt;br&gt;&quot;);  // private変数参照（失敗）
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="03">スーパークラスの定義継承</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_Extends.html">js_Extends.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+class MyArray {                             // スーパークラス（親クラス）
+  constructor(new_data) {
+    this.data = new_data;
+  }
+  DumpArray() {
+    for(var i=0;i&lt;this.data.length;i++){
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+class ExArray extends MyArray {             // サブクラス（子クラス）
+  CalSum() {                                // 総和を計算するメソッドを追加
+    var sum = 0;
+    for(var i=0;i&lt;this.data.length;i++){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+var a=[1,3,5,7,9,99];
+obj = new ExArray(a);                       // オブジェクト生成
+obj.DumpArray();                            // スーパークラスのメソッド実行
+document.write(obj.CalSum()+&quot;&lt;br&gt;&quot;);        // サブクラスで追加したメソッド実行
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="04">オブジェクト生成（クラス定義なし）</h4>
+<h5><a href="obj.html">var obj={}の使い方</a></h5>
+<p>
+</p>
+<p><a href="./JS/js_object.html">js_object.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+var obj ={                                  // クラスを使わずにオブジェクト作成
+                                            //  {要素1, 要素2, ... , 要素N};
+  data: [1,3,5,7,9,99],                     // メンバ変数
+  DumpArray: function (){                   // メンバ関数(1)
+    for(i in this.data){                    // 配列番号を順に取り出す記述法
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  },
+  CalSum:   function (){                    // メンバ関数(2)
+    var sum = 0;
+    for(i in this.data){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+};                                          // 行末（区切符号）
+
+document.write(obj.data+&quot;&lt;br&gt;&quot;);
+obj.DumpArray();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="05">オブジェクトの拡張（直接的記述法）</h4>
+<p>
+</p>
+<p><a href="./JS/js_object_plusNG.html">js_object_plusNG.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+var obj ={
+  data: [1,3,5,7,9,99],
+  DumpArray: function (){
+    for(i in this.data){
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  },
+  CalSum:   function (){
+    var sum = 0;
+    for(i in this.data){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+};
+
+obj.CalAve = function (){                   // メンバ関数追加
+    return this.CalSum()/this.data.length;
+};
+
+obj.newdata = obj.data;                     <a href="fail.html">// 複製失敗例（元の配列を参照）</a>
+obj.newdata.reverse();                      // 追加配列を逆順に並べ替え
+
+document.write(obj.data+&quot;&lt;br&gt;&quot;);            // obj.data： 配列順に注意！
+obj.DumpArray();
+document.write(obj.CalSum()+&quot;&lt;br&gt;&quot;);        // 合計値
+document.write(obj.CalAve()+&quot;&lt;br&gt;&quot;);        // 平均値（追加したメンバ関数）
+document.write(obj.newdata +&quot;&lt;br&gt;&quot;);        // 逆配列（追加したメンバ変数）
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><a href="./JS/js_object_plus.html">js_object_plus.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+var obj ={
+  data: [1,3,5,7,9,99],
+  DumpArray: function (){
+    for(i in this.data){
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  },
+  CalSum:   function (){
+    var sum = 0;
+    for(i in this.data){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+};
+
+obj.CalAve = function (){                   // メンバ関数追加
+    return this.CalSum()/this.data.length;
+};
+
+//obj.newdata = obj.data;                     // 複製失敗例（元の配列を参照）
+obj.newdata = obj.data.<a href="concat.html">concat()</a>;            // メンバ変数追加（連結メソッド利用）
+obj.newdata.reverse();                      // 追加配列を逆順に並べ替え
+
+document.write(obj.data+&quot;&lt;br&gt;&quot;);
+obj.DumpArray();
+document.write(obj.CalSum()+&quot;&lt;br&gt;&quot;);        // 合計値
+document.write(obj.CalAve()+&quot;&lt;br&gt;&quot;);        // 平均値（追加したメンバ関数）
+document.write(obj.newdata +&quot;&lt;br&gt;&quot;);        // 逆配列（追加したメンバ変数）
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><a href="./JS/js_Extends_plus.html">js_Extends_plus.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+class MyArray {
+  constructor(new_data) {
+    this.data = new_data;
+  }
+  DumpArray() {
+    for(var i=0;i&lt;this.data.length;i++){
+      document.write(this.data[i]+&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+class ExArray extends MyArray {
+  CalSum() {
+    var sum = 0;
+    for(var i=0;i&lt;this.data.length;i++){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+var a=[1,3,5,7,9,99];
+obj = new ExArray(a);                       // クラスを用いてオブジェクトを生成
+
+// クラスを用いて作成したオブジェクトにメンバ要素を追加
+
+obj.CalAve = function (){                   // メンバ関数追加
+    return this.CalSum()/this.data.length;
+};
+
+obj.newdata = obj.data.concat();            // メンバ変数追加
+obj.newdata.reverse();                      // 追加配列を逆順に並べ替え
+
+document.write(obj.data+&quot;&lt;br&gt;&quot;);
+obj.DumpArray();
+document.write(obj.CalSum()+&quot;&lt;br&gt;&quot;);        // 合計値
+document.write(obj.CalAve()+&quot;&lt;br&gt;&quot;);        // 平均値（追加したメンバ関数）
+document.write(obj.newdata +&quot;&lt;br&gt;&quot;);        // 逆配列（追加したメンバ変数）
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></body>
+</html>

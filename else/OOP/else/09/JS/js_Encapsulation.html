@@ -1,0 +1,28 @@
+<html>
+<head>
+<script>
+class MyArray {
+  #data2;    // private変数に指定（以下、記号#を付記）
+  constructor(new_data) {
+    this.data1 = new_data;
+    this.#data2 = new_data;
+  }
+  DumpArray() { 
+    for(var i=0;i<this.#data2.length;i++){
+      document.write(this.#data2[i]+"<br>");
+    }
+  }
+}
+</script>
+</head>
+<body>
+<script>
+var a=[1,3,5,7,9,99];
+obj = new MyArray(a);
+obj.DumpArray();
+document.write(obj.data1+"<br>");
+//document.write(obj.#data2+"<br>"); // private変数参照（失敗）
+document.write(obj.data2+"<br>");  // private変数参照（失敗）
+</script>
+</body>
+</html>

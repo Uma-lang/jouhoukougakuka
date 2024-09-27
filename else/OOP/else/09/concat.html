@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript concat() メソッドについて</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScriptの <code>concat()</code> メソッド</h1>
+    <p><code>concat()</code> メソッドは、JavaScriptで <strong>配列</strong> や <strong>文字列</strong> を結合するために使用される便利なメソッドです。このメソッドは、元の配列や文字列を変更せずに、新しい配列や文字列を作成します。</p>
+
+    <h2>配列での <code>concat()</code></h2>
+    <p>複数の配列を結合し、新しい配列を作成します。元の配列は変更されません。</p>
+
+    <h3>配列の <code>concat()</code> の基本的な構文</h3>
+    <pre><code>array1.concat(array2, array3, ...);</code></pre>
+
+    <h3>例:</h3>
+    <pre><code>var array1 = [1, 2, 3];
+var array2 = [4, 5, 6];
+var newArray = array1.concat(array2);
+
+console.log(newArray);  // [1, 2, 3, 4, 5, 6]
+console.log(array1);    // [1, 2, 3]（元の配列は変更されない）</code></pre>
+
+    <p>元の配列 <code>array1</code> と <code>array2</code> はそのままで、結合された結果の <code>newArray</code> が新しく作成されます。</p>
+
+    <h2>文字列での <code>concat()</code></h2>
+    <p>文字列でも、複数の文字列を結合して新しい文字列を作成することができます。</p>
+
+    <h3>文字列の <code>concat()</code> の基本的な構文</h3>
+    <pre><code>string1.concat(string2, string3, ...);</code></pre>
+
+    <h3>例:</h3>
+    <pre><code>var string1 = "Hello, ";
+var string2 = "World!";
+var newString = string1.concat(string2);
+
+console.log(newString);  // "Hello, World!"
+console.log(string1);    // "Hello, "（元の文字列は変更されない）</code></pre>
+
+    <p>文字列も同様に、元の <code>string1</code> や <code>string2</code> は変更されず、新しい文字列 <code>newString</code> が作成されます。</p>
+
+    <h2>複数の配列や文字列の結合</h2>
+    <p><code>concat()</code> を使って、複数の配列や文字列を一度に結合することも可能です。</p>
+
+    <h3>例: 複数の配列の結合</h3>
+    <pre><code>var array1 = [1, 2];
+var array2 = [3, 4];
+var array3 = [5, 6];
+var combinedArray = array1.concat(array2, array3);
+
+console.log(combinedArray);  // [1, 2, 3, 4, 5, 6]</code></pre>
+
+    <h3>例: 複数の文字列の結合</h3>
+    <pre><code>var str1 = "JavaScript ";
+var str2 = "is ";
+var str3 = "fun!";
+var combinedStr = str1.concat(str2, str3);
+
+console.log(combinedStr);  // "JavaScript is fun!"</code></pre>
+
+    <h2>利点</h2>
+    <ul>
+        <li>元の配列や文字列を変更せずに新しい配列や文字列を作成できるため、安全にデータを操作できます。</li>
+        <li>複数の配列や文字列を効率よく結合できます。</li>
+    </ul>
+
+</body>
+</html>

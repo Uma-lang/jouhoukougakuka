@@ -1,0 +1,35 @@
+<html>
+<body>
+<script>
+var obj ={
+  data: [1,3,5,7,9,99],
+  DumpArray: function (){
+    for(i in this.data){
+      document.write(this.data[i]+"<br>");
+    }
+  },
+  CalSum:   function (){
+    var sum = 0;
+    for(i in this.data){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+};
+
+obj.CalAve = function (){                   // メンバ関数追加
+    return this.CalSum()/this.data.length;
+};
+
+//obj.newdata = obj.data;                     // 複製失敗例（元の配列を参照）
+obj.newdata = obj.data.concat();            // メンバ変数追加（連結メソッド利用）
+obj.newdata.reverse();                      // 追加配列を逆順に並べ替え
+
+document.write(obj.data+"<br>");
+obj.DumpArray();
+document.write(obj.CalSum()+"<br>");        // 合計値
+document.write(obj.CalAve()+"<br>");        // 平均値（追加したメンバ関数）
+document.write(obj.newdata +"<br>");        // 逆配列（追加したメンバ変数）
+</script>
+</body>
+</html>

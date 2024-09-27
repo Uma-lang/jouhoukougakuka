@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列の複製失敗と成功の例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>配列の複製失敗と正しい複製方法の例</h1>
+    <p>JavaScript で配列を複製するとき、参照をコピーしてしまうと、元の配列にも影響を与えてしまいます。正しい方法で複製するには、配列の内容をコピーする必要があります。</p>
+
+    <h2>複製失敗の例</h2>
+    <p>次のコードでは、<code>obj.newdata</code> は <code>obj.data</code> の参照をコピーしているため、配列 <code>newdata</code> に変更を加えると、<code>data</code> も変更されてしまいます。</p>
+
+    <pre><code>var obj = {
+    data: [1, 2, 3, 4, 5]
+};
+
+// newdataはdataを参照しているだけ
+obj.newdata = obj.data;
+
+obj.newdata.reverse();  // 配列を反転
+
+console.log(obj.newdata);  // [5, 4, 3, 2, 1]
+console.log(obj.data);     // [5, 4, 3, 2, 1]（元の配列も変更されている）
+</code></pre>
+
+    <h2>正しい複製方法</h2>
+    <p>配列の内容そのものを複製するには、<code>slice()</code> メソッドやスプレッド構文を使って、新しい配列を作成します。これにより、元の配列には影響を与えません。</p>
+
+    <h3>slice() メソッドを使った複製の例</h3>
+    <pre><code>var obj = {
+    data: [1, 2, 3, 4, 5]
+};
+
+// 正しい複製方法: slice()を使用
+obj.newdata = obj.data.slice();
+
+obj.newdata.reverse();  // newdataを反転
+
+console.log(obj.newdata);  // [5, 4, 3, 2, 1]
+console.log(obj.data);     // [1, 2, 3, 4, 5]（元の配列は変更されていない）
+</code></pre>
+
+    <h3>スプレッド構文を使った複製の例</h3>
+    <pre><code>var obj = {
+    data: [1, 2, 3, 4, 5]
+};
+
+// スプレッド構文を使った複製
+obj.newdata = [...obj.data];
+
+obj.newdata.reverse();  // newdataを反転
+
+console.log(obj.newdata);  // [5, 4, 3, 2, 1]
+console.log(obj.data);     // [1, 2, 3, 4, 5]（元の配列は変更されていない）
+</code></pre>
+
+    <h2>出力結果</h2>
+    <p>上記のコードを実行すると、正しく複製された配列は、元の配列に影響を与えずに操作できます。</p>
+
+</body>
+</html>

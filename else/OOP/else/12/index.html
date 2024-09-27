@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<h2>グラフィックス描画に挑戦！</h2>
+ 
+<h4><a name="01">HTML5 - canvasの概要</a></h4>
+<p>
+
+ HTML5以降に導入されたcanvas要素（canvas element）は、動的な2次元ビットマップ画像の描画のためのHTML要素である。 canvas要素には、widthとheightという属性があり、HTML内での描画可能な領域となる。JavaScriptのコードにより、その領域内に他の一般的な2次元APIと似たAPIを通じて描画ができる。これにより、動的にグラフィックスを生成できる。期待されている利用法としては、ゲーム、アニメーション、グラフ作成、画像構築などがある。（引用：「Wikipedia：<a href="https://ja.wikipedia.org/wiki/Canvas要素">canvas要素</a>」）
+</p>
+ 
+<h4><a name="02">基本図形描画</a></h4>
+<p><a href="./JS/html5canvas.html">html5canvas.html</a></p>
+<pre class=c>
+&lt;html&gt;
+ 
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;/head&gt;
+ 
+&lt;body&gt;
+ 
+&lt;h2&gt;HTML5 - canvas&lt;/h2&gt;
+ 
+&lt;!-- 縦横300x300のcanvas型オブジェクト「mycanvas」作成 --&gt;
+&lt;canvas id="mycanvas" width="300" height="300"&gt;&lt;/canvas&gt;
+ 
+&lt;script&gt;
+
+ // オブジェクト cvs に mycanvas を割り当てる
+
+ var cvs = document.getElementById("mycanvas");
+ 
+// canvasがサポートされているかチェック
+
+ if(cvs.getContext) {  //canvas対応ブラウザの場合
+ 
+  // 2D機能をオブジェクト ctx に取り込む
+
+   var ctx = cvs.getContext("2d");
+ 
+  // 塗りつぶし色を黒に指定
+
+   ctx.fillStyle = "rgb(0, 0, 0)";
+ 
+  // 座標(10,10)を起点に横50x縦100の四角形を描画
+
+   ctx.fillRect(10, 10, 50, 100);
+ 
+  // 座標(60,110)を起点に横20x縦30の四角形を破線描画
+
+   ctx.setLineDash([3, 1]);
+
+   ctx.strokeRect(60, 110, 20, 30);
+ 
+  // 連続線
+
+   ctx.beginPath();
+
+     ctx.strokeStyle="rgb(255, 0, 0)";
+
+     ctx.moveTo(0, 0);
+
+     ctx.lineTo(150, 150);
+
+     ctx.lineTo(0, 150);
+
+     ctx.lineTo(0, 0);
+
+   ctx.closePath();
+
+   ctx.setLineDash([1,0]);
+
+   ctx.stroke();
+ 
+  // 楕円
+
+   ctx.lineWidth = 3;
+
+   ctx.beginPath();
+
+     ctx.strokeStyle="rgb(0, 255, 0)";
+
+     ctx.ellipse(75, 75, 25, 75, Math.PI/3, 0, Math.PI);
+
+   ctx.closePath();
+
+   ctx.stroke();
+ 
+  // 文字
+
+   ctx.lineWidth = 1;
+
+   ctx.font = "20pt Times";
+
+   ctx.strokeStyle="rgb(0, 0, 255)";
+
+   ctx.strokeText("HTML5", 10, 180);
+ 
+  ctx.font = "28pt Times";
+
+   ctx.fillStyle="rgb(255, 0, 255)";
+
+   ctx.fillText("canvas", 40, 210);
+
+ }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><a href="./JS/mypictogram.html">mypictogram.html</a></p>
+<pre class=c>
+&lt;html&gt;
+ 
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;/head&gt;
+ 
+&lt;body&gt;
+&lt;h2&gt;ピクトグラムの名称&lt;/h2&gt;
+&lt;p&gt;
+
+ ここに説明文を書く。
+&lt;/p&gt;
+&lt;canvas id="mycanvas" width="640" height="640"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+
+ var cvs = document.getElementById("mycanvas");
+
+ var ctx = cvs.getContext("2d");
+
+ ctx.fillStyle = "rgb(0, 0, 0)";
+
+ ctx.fillRect(10, 10, 50, 50);
+
+ ctx.fillRect(70, 10, 50, 50);
+
+ ctx.fillRect(130, 10, 50, 50);
+
+ ctx.fillRect(190, 10, 50, 50);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+</body>
+</html>

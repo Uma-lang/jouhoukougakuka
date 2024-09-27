@@ -1,0 +1,24 @@
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>
+// オブジェクト target の内部テキストを再定義する関数
+function m0(){
+  document.getElementById("target").innerText="■■■■"; // DOM指定
+}
+function m1(){
+  document.getElementById("target").innerText="★お宝★"; // DOM指定
+}
+</script>
+</head>
+
+<body>
+<!--
+divタグで囲まれた範囲： オブジェクト名 target
+→　マウスカーソルの状態で処理関数を選択
+-->
+<div id="target" onmouseout="m0();" onmouseover="m1();">
+■■■■
+</div>
+</body>
+</html>

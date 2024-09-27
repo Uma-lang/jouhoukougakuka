@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptの getElementById メソッド</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScriptの <code>getElementById</code> メソッド</h1>
+    <p><code>getElementById</code> は、JavaScript で HTML 要素にアクセスするためのメソッドです。このメソッドを使って、特定の <code>id</code> 属性を持つ要素を取得し、操作することができます。以下に基本的な使い方と例を示します。</p>
+
+    <h2>基本的な構文</h2>
+    <pre><code>document.getElementById("id名")</code></pre>
+
+    <p>この構文を使うことで、HTML ドキュメント内の指定された <code>id</code> を持つ要素にアクセスし、その要素を操作することができます。</p>
+
+    <h2>例 1: テキストを変更する</h2>
+    <p>以下の例では、ボタンをクリックすると <code>id="example"</code> を持つ要素のテキストが変更されます。</p>
+
+    <pre><code>&lt;h1 id="example"&gt;このテキストを変更します&lt;/h1&gt;
+&lt;button onclick="changeText()"&gt;テキストを変更する&lt;/button&gt;
+
+&lt;script&gt;
+function changeText() {
+    var element = document.getElementById("example");
+    element.innerText = "テキストが変更されました！";
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>実際に試してみましょう:</h3>
+    <h1 id="example">このテキストを変更します</h1>
+    <button onclick="changeText()">テキストを変更する</button>
+
+    <h2>例 2: 要素のスタイルを変更する</h2>
+    <p>次に、<code>getElementById</code> を使って要素のスタイルを変更する例です。以下のコードでは、ボタンをクリックすると、<code>id="example2"</code> を持つ要素の色が赤に変わります。</p>
+
+    <pre><code>&lt;h1 id="example2"&gt;このテキストの色を変えます&lt;/h1&gt;
+&lt;button onclick="changeColor()"&gt;色を赤に変更する&lt;/button&gt;
+
+&lt;script&gt;
+function changeColor() {
+    var element = document.getElementById("example2");
+    element.style.color = "red";
+}
+&lt;/script&gt;</code></pre>
+
+    <h3>実際に試してみましょう:</h3>
+    <h1 id="example2">このテキストの色を変えます</h1>
+    <button onclick="changeColor()">色を赤に変更する</button>
+
+    <h2>その他の操作例</h2>
+    <ul>
+        <li><strong>要素を非表示にする:</strong> <code>document.getElementById("myElement").style.display = "none";</code></li>
+        <li><strong>画像を変更する:</strong> <code>document.getElementById("myImage").src = "new_image.jpg";</code></li>
+        <li><strong>フォームの入力値を取得する:</strong> <code>var value = document.getElementById("inputField").value;</code></li>
+    </ul>
+
+    <h2>注意点</h2>
+    <p><code>id</code> 属性は HTML ドキュメント内で一意である必要があります。つまり、同じ <code>id</code> を複数の要素に使わないようにしてください。</p>
+
+</body>
+</html>

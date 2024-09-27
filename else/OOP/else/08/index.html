@@ -1,0 +1,182 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+</style>
+</head>
+<body>
+
+<h2><height=19 width=18 alt=""> JavaScript 入門</h2>
+<p>
+<a href="https://ja.wikipedia.org/wiki/JavaScript">JavaScript</a>は、WebブラウザNetscape Navigator（ネットスケープコミュニケーションズ社製のブラウザ）に起源を持ち、現在では様々なクライアントサイド処理に利用されているオブジェクト指向型のプログラミング言語の一つです。JavaScriptは、HyperText Markup Language（HTML、主に文書構造を記述）やCascading Style Sheets（CSS、文書レイアウトやデザインを記述）と並ぶ、World Wide Web（WWW）の中核技術の一つです。 JavaScriptの規格には、Ecma Internationalにより標準化された<a href="https://ja.wikipedia.org/wiki/ECMAScript">ECMAScript（エクマスクリプト）</a>があります。
+<br>
+（参考：「Wikipedia」）
+</p>
+<br><br>
+<div align="center">
+<h5>
+動的ページ（ユーザの操作や要求に応じて変化）
+</h5>
+<img src="./002.png">
+</div>
+<br><br>
+<br><br>
+<div align="center">
+<h5>
+クライアントサイド処理プログラム（JavaScript）のソースコード
+</h5>
+<br><br>
+<img src="./js_src.png">
+</div>
+<br><br>
+
+
+<h4><a name="01">文字列表示（documentオブジェクト）</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_write.html">js_write.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+// HTML全体：documentオブジェクト（ブラウザオブジェクトの一つ）
+<a href="document.html">document</a>.write(&quot;Hello World!&quot;); // writeメソッドを実行
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><a href="./JS/js_title.html">js_title.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+<a href="document.html">document</a>.title = &quot;test&quot;;
+// HTML全体：documentオブジェクト
+<a href="document.html">document</a>.write(&quot;Hello World!&quot;); // writeメソッドを実行
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><a href="./JS/js_url.html">js_url.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+// HTML全体：documentオブジェクト
+<a href="document.html">document</a>.write(&quot;Hello World!&quot;); // writeメソッドを実行
+<a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);         // 改行タグ
+<a href="document.html">document</a>.title = &quot;test&quot;;        // ページタイトル設定
+<a href="document.html">document</a>.write(<a href="document.html">document</a>.URL);   // ページのURL表示
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="02">反復処理と配列</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_while.html">js_while.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+<a href="var.html">var</a> i=0;
+while(i&lt;10){
+  i=i+1;
+  <a href="document.html">document</a>.write(i);
+  <a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);
+}
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><a href="./JS/js_for.html">js_for.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+<a href="var.html">var</a> a=[1,3,5,7,9,99];
+for(<a href="var.html">var</a> i=0;i&lt;a.length;i++){
+  <a href="document.html">document</a>.write(a[i]);
+  <a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);
+}
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="03">条件分岐（フィルタ処理）</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_forif.html">js_forif.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+<a href="var.html">var</a> a=[1,3,5,7,9,99];
+for(<a href="var.html">var</a> i=0;i&lt;a.length;i++){
+  if((a[i]%3)==0){
+    <a href="document.html">document</a>.write(a[i]);
+    <a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);
+  }
+}
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="04">関数の定義と活用</h4>
+<p>
+</p>
+<p><a href="./JS/js_function.html">js_function.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;<a href="script.html">script</a>&gt;
+function DumpArray(data){
+  for(<a href="var.html">var</a> i=0;i&lt;data.length;i++){
+    if((data[i]%3)==0){
+      <a href="document.html">document</a>.write(data[i]);
+      <a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a>&gt;
+<a href="var.html">var</a> a=[1,3,5,7,9,99];
+DumpArray(a);
+&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h4><a name="05">プログラムの分割</a></h4>
+<p>
+</p>
+<p><a href="./JS/js_page.html">js_page.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;<a href="script.html">script</a> src=&quot;./js_lib.js&quot;&gt;&lt;/<a href="script.html">script</a>&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;<a href="script.html">script</a> src=&quot;./js_main.js&quot;&gt;&lt;/<a href="script.html">script</a>&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>js_lib.js</p><pre class=c>
+function DumpArray(data){
+  for(<a href="var.html">var</a> i=0;i&lt;data.length;i++){
+    if((data[i]%3)==0){
+      <a href="document.html">document</a>.write(data[i]);
+      <a href="document.html">document</a>.write(&quot;&lt;br&gt;&quot;);
+    }
+  }
+}
+</pre><p>js_main.js</p><pre class=c>
+<a href="var.html">var</a> a=[1,3,5,7,9,99];
+DumpArray(a);
+</pre>
+</body>
+</html>

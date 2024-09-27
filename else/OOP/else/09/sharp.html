@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptのプライベートフィールドについて</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScriptのプライベートフィールド（変数）</h1>
+    <p>JavaScript のクラス構文では、変数の前に <code>#</code> を付けることで、その変数を <strong>プライベートフィールド</strong>（プライベート変数）として定義できます。これにより、クラス外部から直接アクセスできなくなり、データの保護が可能になります。</p>
+
+    <h2>プライベートフィールドの定義例</h2>
+    <pre><code>class MyClass {
+  // プライベートフィールドの宣言
+  #data2;
+
+  // コンストラクタで初期化
+  constructor(value) {
+    this.#data2 = value;
+  }
+
+  // プライベートフィールドにアクセスするためのメソッド
+  getData() {
+    return this.#data2;
+  }
+
+  // プライベートフィールドを更新するメソッド
+  setData(value) {
+    this.#data2 = value;
+  }
+}
+
+// インスタンスの生成
+const myObject = new MyClass(10);
+
+console.log(myObject.getData()); // 10 を表示
+
+myObject.setData(100); // プライベートフィールドの値を更新
+
+console.log(myObject.getData()); // 100 を表示
+
+// クラスの外部から直接アクセスしようとするとエラー
+console.log(myObject.#data2); // SyntaxError: Private field '#data2' must be declared in an enclosing class
+</code></pre>
+
+    <h2>コードの説明</h2>
+    <ul>
+        <li><code>#data2</code> のように、変数に <code>#</code> を付けることでプライベートフィールドとして宣言します。</li>
+        <li>コンストラクタでプライベートフィールドに値を代入します。</li>
+        <li><code>getData()</code> というメソッドで、プライベートフィールドの値を外部から取得できます。</li>
+        <li><code>setData()</code> というメソッドで、プライベートフィールドの値を外部から変更できます。</li>
+        <li>クラス外部から直接プライベートフィールドにアクセスしようとすると、エラー（<code>SyntaxError</code>）が発生します。</li>
+    </ul>
+
+    <h2>プライベートフィールドの利点</h2>
+    <ul>
+        <li><strong>データの保護</strong>: クラス外から直接アクセスできないため、重要なデータを保護できます。</li>
+        <li><strong>カプセル化</strong>: クラス内部でデータを管理し、外部には操作用のメソッドを提供することで、データ管理が容易になります。</li>
+    </ul>
+
+    <h2>プライベートフィールドの注意点</h2>
+    <p>プライベートフィールドは、クラス内でしか使用できないため、クラス外からの直接操作が必要な場合には公開メソッドを用意する必要があります。</p>
+
+</body>
+</html>

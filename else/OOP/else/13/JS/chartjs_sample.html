@@ -1,0 +1,102 @@
+<html></html>
+<head>
+<meta charset="UTF-8">
+ 
+<!-- グラフ描画ライブラリ読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+ 
+<body>
+<!-- 描画領域 -->
+<div style="width:400px; text-align:center">
+<canvas id="mycanvas" width="400" height="300"></canvas>
+<h2>図：グラフ描画（例）</h2>
+</div>
+ 
+<script>
+
+ // グラフ描画スクリプト（chart.js利用）
+
+ var ctx = document.getElementById('mycanvas');
+ 
+var myChart = new Chart(ctx, {
+
+   type: 'line',   // 折れ線グラフ描画
+
+ //  type: 'radar',  // レーダーチャート描画
+
+   data: {         // データセット作成（グラフ種別依存）
+
+     labels: ['A', 'B', 'C', 'D'],
+
+     datasets: [
+
+     {
+
+       label: '赤',
+
+       data: [40, 30, 20, 45],
+
+       borderColor: 'red',
+
+     }, {
+
+       label: '緑',
+
+       data: [ 5, 25, 35, 15],
+
+       borderColor: 'green',
+
+     }, {
+
+       label: '青',
+
+       data: [45, 5, 40, 10],
+
+       borderColor: 'blue',
+
+     } ],
+
+   },
+
+   options: {      // 表示設定（グラフ種別依存）
+
+     scales: {
+
+       y: {
+
+         min: 0,
+
+         max: 50,
+
+         title: {
+
+           display: true,
+
+           text: 'Y-axis',
+
+         },
+
+       },
+
+       x: {
+
+         title: {
+
+           display: true,
+
+           text: 'X-axis',
+
+         },
+
+       },
+
+     },
+
+   },
+
+ });
+</script>
+ 
+</body>
+</html>

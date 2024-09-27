@@ -1,0 +1,63 @@
+<html></html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+ 
+<body>
+<div style="width:400px; text-align:center">
+<canvas id="mycanvas" width="400" height="300"></canvas>
+<h2>データ名称を書く</h2>
+</div>
+<p>
+
+ グラフ形式選定理由と考察を書く
+</p>
+ 
+<script>
+
+ var ctx = document.getElementById('mycanvas');
+ 
+var myChart = new Chart(ctx, {
+
+   type: 'radar',  // グラフ形式（適切な形式選定）
+
+   data: {         // データセット作成 ※グラフ種別依存
+
+     labels: ['A', 'B', 'C', 'D'],
+
+     datasets: [
+
+     {
+
+       label: 'データ名',
+
+       data: [15, 30, 20, 5],
+
+       borderColor: 'red',
+
+     }, ],
+
+   },
+
+   options: {
+
+     scales: {
+
+       r: {
+
+         min: 0,
+
+         max: 40,
+
+       },
+
+     },
+
+   },
+
+ });
+</script>
+ 
+</body>
+</html>

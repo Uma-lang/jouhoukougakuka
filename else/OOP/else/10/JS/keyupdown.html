@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<canvas id="mycanvas" width="640" height="640"></canvas>
+
+<script>
+var cvs = document.getElementById("mycanvas"); // DOM指定
+var ctx = cvs.getContext("2d");
+</script>
+
+<script>
+// イベントリスナにハンドラを登録（キー押下：KeyDn）
+document.addEventListener('keydown', KeyDn);
+
+function KeyDn(event){
+  ctx.clearRect(0, 0, 640, 640);  // 描画消去
+  switch (event.code) {
+    case "ArrowUp"   :  // ↑キー
+      ctx.fillRect(50,  0, 50, 50);
+      break;
+    case "ArrowDown" :  // ↓キー
+      ctx.fillRect(50,100, 50, 50);
+      break;
+    case "ArrowLeft" :  // ←キー
+      ctx.fillRect( 0, 50, 50, 50);
+      break;
+    case "ArrowRight":  // →キー
+      ctx.fillRect(100,50, 50, 50);
+      break;
+  }
+}
+</script>
+</body>
+</html>

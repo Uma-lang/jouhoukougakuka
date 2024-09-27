@@ -1,0 +1,206 @@
+<html>
+
+</html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>オブジェクト指向プログラミング（岩切准教授）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h2>数値データの可視化</h2>
+
+  <h4><a name="01">Chart.jsの概要</a></h4>
+  <p>
+    <a
+      href="https://www.chartjs.org/">Chart.js</a>は、データ可視化のためのフリーでオープンソースのJavaScriptライブラリです。複数タイプ（棒、折れ線、面積、円、バブル、レーダ、散布図など）のグラフ形式をサポートしています。これは、2013年に作成され、現在はコミュニティによってメンテナンスされています。Chart.jsは、HTML5
+    canvasでレンダリングできるデータ可視化ライブラリとして広く採用されています。（引用：「Wikipedia：<a
+      href="https://en.wikipedia.org/wiki/Chart.js">Chart.js</a>」）
+  </p>
+
+  <h4><a name="02">グラフ（折れ線、レーダ）描画例</a></h4>
+  <p>
+
+    ※<a href="https://www.chartjs.org/docs/latest/getting-started/installation.html">
+
+      Chart.js-Getting Started
+    </a>等からライブラリファイル（<a href="https://cdn.jsdelivr.net/npm/chart.js">chart.js</a>※直接リンク）取得
+  </p>
+  <p><a href="./JS/ChartJS_Sample.html">ChartJS_Sample.html</a></p>
+  <pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+ 
+&lt;!-- グラフ描画ライブラリ読み込み --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+ 
+&lt;body&gt;
+&lt;!-- 描画領域 --&gt;
+&lt;div style="width:400px; text-align:center"&gt;
+&lt;canvas id="mycanvas" width="400" height="300"&gt;&lt;/canvas&gt;
+&lt;h2&gt;図：グラフ描画（例）&lt;/h2&gt;
+&lt;/div&gt;
+ 
+&lt;script&gt;
+
+ // グラフ描画スクリプト（chart.js利用）
+
+ var ctx = document.getElementById('mycanvas');
+ 
+var myChart = new Chart(ctx, {
+
+   type: 'line',   // 折れ線グラフ描画
+
+ //  type: 'radar',  // レーダーチャート描画
+
+   data: {         // データセット作成（グラフ種別依存）
+
+     labels: ['A', 'B', 'C', 'D'],
+
+     datasets: [
+
+     {
+
+       label: '赤',
+
+       data: [40, 30, 20, 45],
+
+       borderColor: 'red',
+
+     }, {
+
+       label: '緑',
+
+       data: [ 5, 25, 35, 15],
+
+       borderColor: 'green',
+
+     }, {
+
+       label: '青',
+
+       data: [45, 5, 40, 10],
+
+       borderColor: 'blue',
+
+     } ],
+
+   },
+
+   options: {      // 表示設定（グラフ種別依存）
+
+     scales: {
+
+       y: {
+
+         min: 0,
+
+         max: 50,
+
+         title: {
+
+           display: true,
+
+           text: 'Y-axis',
+
+         },
+
+       },
+
+       x: {
+
+         title: {
+
+           display: true,
+
+           text: 'X-axis',
+
+         },
+
+       },
+
+     },
+
+   },
+
+ });
+&lt;/script&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+  <p><a href="./JS/mychart.html">mychart.html</a></p>
+  <pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+ 
+&lt;body&gt;
+&lt;div style="width:400px; text-align:center"&gt;
+&lt;canvas id="mycanvas" width="400" height="300"&gt;&lt;/canvas&gt;
+&lt;h2&gt;データ名称を書く&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;
+
+ グラフ形式選定理由と考察を書く
+&lt;/p&gt;
+ 
+&lt;script&gt;
+
+ var ctx = document.getElementById('mycanvas');
+ 
+var myChart = new Chart(ctx, {
+
+   type: 'radar',  // グラフ形式（適切な形式選定）
+
+   data: {         // データセット作成 ※グラフ種別依存
+
+     labels: ['A', 'B', 'C', 'D'],
+
+     datasets: [
+
+     {
+
+       label: 'データ名',
+
+       data: [15, 30, 20, 5],
+
+       borderColor: 'red',
+
+     }, ],
+
+   },
+
+   options: {
+
+     scales: {
+
+       r: {
+
+         min: 0,
+
+         max: 40,
+
+       },
+
+     },
+
+   },
+
+ });
+&lt;/script&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</body>
+
+</html>

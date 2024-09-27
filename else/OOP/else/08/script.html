@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript &lt;script&gt; タグの説明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>&lt;script&gt; タグとは</h1>
+    <p><strong>&lt;script&gt;</strong> タグは、HTML ドキュメント内で <strong>JavaScript</strong> を埋め込む、または外部の JavaScript ファイルを読み込むために使用されます。このタグは、Webページにインタラクティブな要素や動的な機能を追加するために不可欠です。</p>
+
+    <h2>&lt;script&gt; タグの基本構造</h2>
+
+    <h3>1. インラインで JavaScript を記述する場合</h3>
+    <pre><code>&lt;script&gt;
+  // JavaScriptのコード
+  console.log("Hello, World!");
+&lt;/script&gt;</code></pre>
+    <p>このように、<code>&lt;script&gt;</code> タグ内に直接 JavaScript を記述すると、ブラウザが HTML を解析する際にこのスクリプトが実行されます。</p>
+
+    <h3>2. 外部ファイルの JavaScript を読み込む場合</h3>
+    <pre><code>&lt;script src="myscript.js"&gt;&lt;/script&gt;</code></pre>
+    <p>外部 JavaScript ファイルを読み込む場合は、<code>src</code> 属性を使用してファイルのパスを指定します。これにより、複数のページで同じスクリプトを使いまわせるため、コードの管理が簡単になります。</p>
+
+    <h2>&lt;script&gt; タグの属性</h2>
+    <ul>
+        <li><strong>src</strong>: 外部 JavaScript ファイルを指定するための属性。</li>
+        <li><strong>async</strong>: スクリプトを非同期に読み込み、他の HTML の読み込みをブロックしないようにします。</li>
+        <li><strong>defer</strong>: スクリプトの実行を HTML 解析の完了後まで遅延させます。</li>
+    </ul>
+
+    <h3>例：外部ファイルのスクリプトを非同期に読み込む</h3>
+    <pre><code>&lt;script src="myscript.js" async&gt;&lt;/script&gt;</code></pre>
+
+    <h2>&lt;script&gt; タグの配置</h2>
+
+    <h3>1. &lt;head&gt; タグ内に配置</h3>
+    <p><code>&lt;head&gt;</code> タグ内にスクリプトを配置すると、ページのコンテンツが読み込まれる前に実行されます。ただし、DOM 操作は失敗することがあります。</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        console.log("ヘッド内のスクリプト");
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>2. &lt;body&gt; タグの最後に配置</h3>
+    <p><code>&lt;body&gt;</code> タグの最後に配置すると、HTML コンテンツの読み込みが完了してからスクリプトが実行されるため、DOM 操作が確実に行えます。</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Sample Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+
+    &lt;script&gt;
+        console.log("ボディ終了前のスクリプト");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>スクリプトの読み込みと実行順序</h2>
+    <ul>
+        <li><strong>同期的なスクリプトの読み込み</strong>: デフォルトでは、ブラウザは <code>&lt;script&gt;</code> タグに遭遇すると、その場でスクリプトを読み込んで実行し、HTML の解析を一時停止します。</li>
+        <li><strong>非同期読み込み（async）</strong>: <code>async</code> 属性を使うと、スクリプトが他のコンテンツの読み込みをブロックせず、非同期に読み込まれます。</li>
+        <li><strong>遅延読み込み（defer）</strong>: <code>defer</code> 属性を使うと、HTML の解析が完了した後にスクリプトが実行されます。複数のスクリプトがある場合、読み込み順に実行されます。</li>
+    </ul>
+
+    <h2>例: &lt;script&gt; タグの使用方法</h2>
+
+    <h3>1. インライン JavaScript の例</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;インラインJavaScriptの例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;インラインJavaScriptの実行&lt;/h1&gt;
+    &lt;script&gt;
+        document.write("このテキストはJavaScriptによって挿入されました。");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>2. 外部ファイルの JavaScript の例</h3>
+
+    <p>外部ファイル「<code>script.js</code>」の内容:</p>
+    <pre><code>document.write("これは外部ファイルからのJavaScriptです。");</code></pre>
+
+    <p>HTMLファイル:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;外部JavaScriptの例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;外部JavaScriptの実行&lt;/h1&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>まとめ</h2>
+    <ul>
+        <li><code>&lt;script&gt;</code> タグは、JavaScript を HTML ページに埋め込むためのタグです。</li>
+        <li><code>src</code> 属性で外部 JavaScript ファイルを指定できます。</li>
+        <li><code>async</code> や <code>defer</code> 属性で、スクリプトの読み込みと実行のタイミングを制御できます。</li>
+        <li>スクリプトの配置によって、ページの読み込み速度や動作に影響を与えます。</li>
+    </ul>
+
+</body>
+</html>

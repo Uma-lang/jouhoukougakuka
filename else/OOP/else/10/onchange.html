@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onchange イベントの説明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        input, select {
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        // 関数: ドロップダウンメニューの選択を表示
+        function showSelectedValue() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedValue = selectElement.value;
+            alert("選択された値は: " + selectedValue);
+        }
+
+        // 関数: テキスト入力フィールドの値を表示
+        function showInputValue() {
+            var inputElement = document.getElementById("myInput");
+            alert("入力された値は: " + inputElement.value);
+        }
+
+        // 関数: チェックボックスの状態を表示
+        function showCheckboxStatus() {
+            var checkbox = document.getElementById("myCheckbox");
+            if (checkbox.checked) {
+                alert("チェックされました");
+            } else {
+                alert("チェックが外されました");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>onchange イベントの説明</h1>
+
+    <p><code>onchange</code> イベントは、フォーム要素（<code>&lt;input&gt;</code>、<code>&lt;select&gt;</code>、<code>&lt;textarea&gt;</code> など）の内容が変更されたときに発生するイベントです。このイベントは、選択や入力が完了した後に発生し、JavaScript 関数を呼び出して処理を行うことができます。</p>
+
+    <h2>使用例</h2>
+
+    <h3>1. ドロップダウンメニューの選択が変更されたとき</h3>
+    <p>ユーザーが選択した値をアラートで表示します。</p>
+
+    <select id="mySelect" onchange="showSelectedValue()">
+        <option value="1">オプション 1</option>
+        <option value="2">オプション 2</option>
+        <option value="3">オプション 3</option>
+    </select>
+
+    <pre><code>&lt;select id="mySelect" onchange="showSelectedValue()"&gt;
+    &lt;option value="1"&gt;オプション 1&lt;/option&gt;
+    &lt;option value="2"&gt;オプション 2&lt;/option&gt;
+    &lt;option value="3"&gt;オプション 3&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+function showSelectedValue() {
+    var selectElement = document.getElementById("mySelect");
+    var selectedValue = selectElement.value;
+    alert("選択された値は: " + selectedValue);
+}
+&lt;/script&gt;
+</code></pre>
+
+    <h3>2. テキスト入力が完了したとき</h3>
+    <p>ユーザーが入力したテキストをアラートで表示します。</p>
+
+    <input type="text" id="myInput" onchange="showInputValue()" placeholder="名前を入力してください">
+
+    <pre><code>&lt;input type="text" id="myInput" onchange="showInputValue()" placeholder="名前を入力してください"&gt;
+
+&lt;script&gt;
+function showInputValue() {
+    var inputElement = document.getElementById("myInput");
+    alert("入力された値は: " + inputElement.value);
+}
+&lt;/script&gt;
+</code></pre>
+
+    <h3>3. チェックボックスの状態が変更されたとき</h3>
+    <p>チェックボックスがチェックされたかどうかをアラートで表示します。</p>
+
+    <input type="checkbox" id="myCheckbox" onchange="showCheckboxStatus()"> チェックボックス
+
+    <pre><code>&lt;input type="checkbox" id="myCheckbox" onchange="showCheckboxStatus()"&gt; チェックボックス
+
+&lt;script&gt;
+function showCheckboxStatus() {
+    var checkbox = document.getElementById("myCheckbox");
+    if (checkbox.checked) {
+        alert("チェックされました");
+    } else {
+        alert("チェックが外されました");
+    }
+}
+&lt;/script&gt;
+</code></pre>
+
+    <h2>まとめ</h2>
+    <p><code>onchange</code> イベントは、フォーム要素の内容が変更されたときに発生し、その変更に基づいて処理を実行するために使用されます。ユーザーの操作に応じて適切な反応を示すインタラクティブなウェブページを作成する際に非常に役立ちます。</p>
+
+</body>
+</html>

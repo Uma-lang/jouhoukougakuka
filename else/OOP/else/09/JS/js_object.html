@@ -1,0 +1,25 @@
+<html>
+<body>
+<script>
+var obj ={                                  // クラスを使わずにオブジェクト作成
+                                            //  {要素1, 要素2, ... , 要素N};
+  data: [1,3,5,7,9,99],                     // メンバ変数
+  DumpArray: function (){                   // メンバ関数(1)
+    for(i in this.data){                    // 配列番号を順に取り出す記述法
+      document.write(this.data[i]+"<br>");
+    }
+  },
+  CalSum:   function (){                    // メンバ関数(2)
+    var sum = 0;
+    for(i in this.data){
+      sum += this.data[i];
+    }
+    return sum;
+  }
+};                                          // 行末（区切符号）
+
+document.write(obj.data+"<br>");
+obj.DumpArray();
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page() 関数の説明</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        code {
+            padding: 2px 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #content {
+            font-size: 20px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script>
+        // page 関数の定義: ページ遷移の例
+        function page() {
+            location.href = "https://www.example.com";  // 指定されたURLにページを遷移
+        }
+
+        // pageContent 関数の定義: ページ内容の動的変更の例
+        function pageContent() {
+            document.getElementById("content").innerHTML = "ページの内容が変更されました！";
+        }
+    </script>
+</head>
+<body>
+
+    <h1>page() 関数の使い方</h1>
+
+    <p><code>page()</code> 関数は、JavaScript を使ってページを別の URL に遷移させるために使用されます。以下のボタンをクリックすると、<code>https://www.example.com</code> にリダイレクトされます。</p>
+
+    <button onclick="page()">ページを遷移</button>
+
+    <h2>pageContent() 関数でページ内容を動的に変更する例</h2>
+
+    <p>次に、<code>pageContent()</code> 関数を使用して、ページの一部の内容を動的に変更する例です。以下のボタンをクリックすると、テキストが動的に変更されます。</p>
+
+    <button onclick="pageContent()">ページ内容を変更</button>
+
+    <div id="content">ここに表示されているテキストは変更前の内容です。</div>
+
+    <h2>コード例</h2>
+    <h3>1. ページ遷移のための page() 関数</h3>
+    <pre><code>&lt;script&gt;
+function page() {
+    location.href = "https://www.example.com";  // 指定されたURLにページを遷移
+}
+&lt;/script&gt;
+
+&lt;button onclick="page()"&gt;ページを遷移&lt;/button&gt;
+</code></pre>
+
+    <h3>2. ページ内容を変更する pageContent() 関数</h3>
+    <pre><code>&lt;script&gt;
+function pageContent() {
+    document.getElementById("content").innerHTML = "ページの内容が変更されました！";
+}
+&lt;/script&gt;
+
+&lt;button onclick="pageContent()"&gt;ページ内容を変更&lt;/button&gt;
+
+&lt;div id="content"&gt;ここに表示されているテキストは変更前の内容です。&lt;/div&gt;
+</code></pre>
+
+    <h2>まとめ</h2>
+    <p>このように、<code>page()</code> や <code>pageContent()</code> 関数を使うことで、ページのリダイレクトや、ページ内容の動的な変更を実現できます。ユーザーの操作に基づいてこれらを実行できるため、インタラクティブなウェブサイトを構築する際に非常に便利です。</p>
+
+</body>
+</html>

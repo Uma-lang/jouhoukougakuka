@@ -1,0 +1,408 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>オブジェクト指向プログラミング（岩切准教授）</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+</style>
+</head>
+<body>
+ 
+<h2>サーバ／クライアント処理連携（フォーム活用）</h2>
+ 
+<h4><a name="01"> GETメソッドとPOSTメソッド</a></h4>
+<p>
+
+ フォームに入力された値をCGI(Common Gateway Interface)を通じてサーバに渡す仕組みに、<a href="http://www.google.co.jp/search?q=get+post+method">GETとPOSTの二つの方法</a>があります。それぞれ、GETメソッド、POSTメソッドと呼ばれています。GETメソッドでは、要求するページデータのURL部分に追記する形でサーバに値を渡します（URLの末尾に「?」、各変数値を「&」で区切りながら列挙）。
+</p>
+<p><a href="./PHPJS/sample_func_abs_get.php">sample_func_abs_get.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&quot;sample_func_abs_get.php&quot;&gt;
+ 
+A=
+&lt;input type=&quot;text&quot; name=&quot;r&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Query&quot;&gt;
+&lt;br&gt;
+&lt;?php
+
+   $r = isset($_GET['r']) ? $_GET['r'] : ''; // issetでエラーチェック
+
+   print &quot;A=&quot;.$r.&quot;,Abs(A)=&quot;.abs($r);
+
+ ?&gt;
+ 
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+</pre>
+<p>
+
+ 本講義では、データのやり取りをわかりやすくするために、GETメソッドのみを用いています。GETメソッドは、引数付きのURLを記述したい場合に便利ですが、当然、伝送する値が読める形でブラウザに表示されます。
+</p>
+<p>
+
+ 一方、POSTメソッドでは、符号化した値をURLに続いて送信される本文データとしてサーバに渡します。人目につきにくいですが、POSTメソッドを用いたとしても完全に安全ではないため、重要なデータには暗号化が必要です。
+</p>
+<p><a href="./PHPJS/sample_func_abs_post.php">sample_func_abs_post.php</a></p><pre class=c>
+&lt;html&gt;
+&lt;body&gt;
+&lt;form method=&quot;post&quot; action=&quot;sample_func_abs_post.php&quot;&gt;
+ 
+A=
+&lt;input type=&quot;text&quot; name=&quot;r&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Query&quot;&gt;
+&lt;br&gt;
+&lt;?php
+
+   $r = isset($_POST['r']) ? $_POST['r'] : ''; // issetでエラーチェック
+
+   print &quot;A=&quot;.$r.&quot;,Abs(A)=&quot;.abs($r);
+
+ ?&gt;
+ 
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+</pre>
+ 
+<h4><a name="15">フォームのコード記述例</a></h4>
+ 
+<p><a href="./PHPJS/htforms.html">htforms.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;./htforms_sub.php&quot;&gt;
+
+ 単一行テキスト &lt;input type=&quot;text&quot; name=&quot;key1&quot; size=&quot;20&quot; value=&quot;短い文字列&quot;&gt;
+&lt;br&gt;&lt;br&gt;
+
+ 非表示テキスト &lt;input type=&quot;password&quot; name=&quot;pass&quot; size=&quot;20&quot; value=&quot;非表示入力&quot;&gt;
+
+ （入力内容を隠す）
+&lt;br&gt;&lt;br&gt;
+
+ 複数行テキスト（自動改行なし）&lt;br&gt;
+&lt;textarea name=&quot;key2&quot; rows=&quot;3&quot; cols=&quot;40&quot;&gt;長い文字列&lt;/textarea&gt;
+&lt;br&gt;&lt;br&gt;
+
+ ラジオボタン
+&lt;input type=&quot;radio&quot; name=&quot;key3&quot; value=&quot;1&quot;&gt; 候補１
+&lt;input type=&quot;radio&quot; name=&quot;key3&quot; value=&quot;2&quot;&gt; 候補２
+&lt;input type=&quot;radio&quot; name=&quot;key3&quot; value=&quot;3&quot; checked&gt; 候補３
+&lt;input type=&quot;radio&quot; name=&quot;key3&quot; value=&quot;4&quot;&gt; 候補４
+&lt;br&gt;&lt;br&gt;
+
+ チェックボックス
+&lt;input type=&quot;checkbox&quot; name=&quot;key4[]&quot; value=&quot;1&quot; checked&gt; 候補１
+&lt;input type=&quot;checkbox&quot; name=&quot;key4[]&quot; value=&quot;2&quot;&gt; 候補２
+&lt;input type=&quot;checkbox&quot; name=&quot;key4[]&quot; value=&quot;3&quot;&gt; 候補３
+&lt;input type=&quot;checkbox&quot; name=&quot;key4[]&quot; value=&quot;4&quot; checked&gt; 候補４
+&lt;br&gt;&lt;br&gt;
+
+ プルダウンメニュー
+&lt;select name=&quot;key5&quot;&gt;
+&lt;option value=&quot;1&quot;&gt; 候補１
+&lt;option value=&quot;2&quot;&gt; 候補２
+&lt;option value=&quot;3&quot; selected&gt; 候補３
+&lt;option value=&quot;4&quot;&gt; 候補４
+&lt;option value=&quot;5&quot;&gt; 候補５
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+
+ リストボックス
+&lt;select name=&quot;key6&quot; size=&quot;3&quot;&gt;
+&lt;option value=&quot;1&quot;&gt; 候補１
+&lt;option value=&quot;2&quot;&gt; 候補２
+&lt;option value=&quot;3&quot; selected&gt; 候補３
+&lt;option value=&quot;4&quot;&gt; 候補４
+&lt;option value=&quot;5&quot;&gt; 候補５
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+
+ 隠れフィールド値
+&lt;input type=&quot;hidden&quot; name=&quot;key7&quot; value=&quot;非表示の値&quot;&gt;
+&lt;br&gt;&lt;br&gt;
+
+ リセットボタン
+&lt;input type=&quot;reset&quot; value=&quot;初期化&quot;&gt;
+&lt;br&gt;&lt;br&gt;
+
+ 送信ボタン
+&lt;input type=&quot;submit&quot; value=&quot;実行&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+<h4><a name="03">フォームの活用例（投票システム）</a></h4>
+<p><a href="./PHPJS/form.html">form.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;form action=&quot;fsub.php&quot;&gt;
+
+ 好きな色は？
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;1&quot;
+
+ style=&quot;color:white;background-color:red;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;2&quot;
+
+ style=&quot;color:white;background-color:blue;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;3&quot;
+
+ style=&quot;color:white;background-color:green;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;4&quot;
+
+ style=&quot;color:white;background-color:orange;&quot;
+&gt;
+ 
+&lt;/form&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+<p>fsub.php</p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;?php
+
+ $a = isset($_GET['a']) ? $_GET['a'] : ''; // issetでエラーチェック
+
+ echo $a.&quot;&lt;br&gt;&quot;;
+
+ file_put_contents(&quot;data&quot;, $a, FILE_APPEND | LOCK_EX);
+
+ $b = file_get_contents(&quot;data&quot;);
+
+ echo $b.&quot;&lt;br&gt;&quot;;
+
+ echo &quot;1:&quot;.substr_count($b, &quot;1&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;2:&quot;.substr_count($b, &quot;2&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;3:&quot;.substr_count($b, &quot;3&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;4:&quot;.substr_count($b, &quot;4&quot;).&quot;&lt;br&gt;&quot;;
+
+ ?&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+<h4><a name="02"> ステータスコード</h4>
+<p>
+<a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes">ステータスコード（RFC 9110 - HTTP Semantics）</a>は、閲覧用ソフトウェア（ブラウザ）に自動処理させるための３桁の符号です。例えば、閲覧ページを自動転送（HTTP リダイレクト）させたい場合は、次のようにステータスコード303（See Other）指定するだけで、ブラウザが自動的に表示ページを変更します。回答データ処理後、入力フォームなどのトップページに自動遷移させたい場合などに利用できます。
+</p>
+<p><a href="./PHPJS/seeother.php">seeother.php</a></p><pre class=c>
+&lt;?php
+
+ header(&#039;HTTP/1.1 303 See Other&#039;);
+
+ header(&#039;Location: ./form.html&#039;);
+
+ exit();
+
+ ?&gt;
+</pre>
+
+<p><a href="./PHPJS/hwform.html">hwform.html</a></p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;form action=&quot;hwfsub.php&quot;&gt;
+
+ 好きな色は？
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;1&quot;
+
+ style=&quot;color:white;background-color:red;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;2&quot;
+
+ style=&quot;color:white;background-color:blue;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;3&quot;
+
+ style=&quot;color:white;background-color:green;&quot;
+&gt;
+ 
+&lt;input
+
+ type=&quot;submit&quot;
+
+ name=&quot;a&quot;
+
+ value=&quot;4&quot;
+
+ style=&quot;color:white;background-color:orange;&quot;
+&gt;
+ 
+&lt;/form&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+<p>hwfsub.php</p><pre class=c>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;?php
+
+ $a = isset($_GET['a']) ? $_GET['a'] : '';
+
+ echo $a.&quot;&lt;br&gt;&quot;;
+
+ file_put_contents(&quot;data&quot;, $a, FILE_APPEND | LOCK_EX);
+
+ $b = file_get_contents(&quot;data&quot;);
+
+ echo $b.&quot;&lt;br&gt;&quot;;
+
+ echo &quot;1:&quot;.substr_count($b, &quot;1&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;2:&quot;.substr_count($b, &quot;2&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;3:&quot;.substr_count($b, &quot;3&quot;).&quot;&lt;br&gt;&quot;;
+
+ echo &quot;4:&quot;.substr_count($b, &quot;4&quot;).&quot;&lt;br&gt;&quot;;
+ 
+$red_count = substr_count($b, '1');
+
+ $blue_count = substr_count($b, '2');
+
+ $green_count = substr_count($b, '3');
+
+ $orange_count = substr_count($b, '4');
+
+ ?&gt;
+ 
+&lt;div style=&quot;width:400px; text-align:center&quot;&gt;
+&lt;canvas id=&quot;mycanvas&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;h2&gt;好きな色調査&lt;/h2&gt;
+&lt;/div&gt;
+ 
+&lt;script&gt;
+
+ var ctx = document.getElementById('mycanvas');
+
+ var myChart = new Chart(ctx, {
+
+   type: 'radar',
+
+   data: {
+
+     labels: ['赤', '青', '緑', '橙'],
+
+     datasets: [{
+
+       label: '好きな色',
+
+       data: [<?php echo "$red_count, $blue_count, $green_count, $orange_count"; ?>],
+
+       borderColor: 'black',
+
+       backgroundColor: 'rgba(255, 99, 132, 0.2)',
+
+     }],
+
+   },
+
+   options: {
+
+     scales: {
+
+       r: {
+
+         min: 0,
+
+         max: 10,
+
+       },
+
+     },
+
+   },
+
+ });
+&lt;/script&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+</body>
+</html>
