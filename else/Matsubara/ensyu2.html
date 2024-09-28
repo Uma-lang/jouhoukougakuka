@@ -17,7 +17,7 @@
         ニュートン法では \( f(x) \) は微分可能であると仮定する。
     </p>
 
-    <img src="else/6_2.jpg" alt="図6.2 ニュートン法の図">
+    <img src="../else/6_2.jpg" alt="図6.2 ニュートン法の図">
 
     <p>図6.2 ニュートン法</p>
 
@@ -44,52 +44,21 @@
         
         double df(double x){
             return 1.0 / cos(x) / cos(x) - 2.0;
-        }
+        } 
         
-        double bisection(int N, double eps, double delta){
-            int i = 0;
-            double a = M_PI / 4.0 * 1.1, b = M_PI / 2.0 * 0.9;
-            double c, c1, x;
-            c1 = a;
-            for(i = 0; i < N; i++){
-                c = (a + b) / 2.0;
-                if(f(c) == 0.0 || fabs(f(c)) < delta || fabs(c - c1) < eps){
-                    x = c;
-                    break;
-                }
-                else if(f(a) * f(c) < 0.0){
-                    b = c;
-                }
-                else if(f(a) * f(c) > 0.0){
-                    a = c;
-                }
-                c1 = c;
-            }
-            printf("---- bisection method ----\n");
-            printf("x = %.10e\nf(x) = %.10e\ninteration = %d\n", x, f(x), i);
-        }
-        
-        double newton(int N, double eps, double delta){
-            int i = 0;
-            double x0 = 1.0;
-            double x;
-            for(i = 0; i < N; i++){
+        int main(){
+            int N = 100, i = 0;
+            double x0 = 1.0, x;
+            double eps = 1e-9, delta = 1e-9;
+            for(i = 0; i &lt; N; i++){
                 double x1 = x0 - f(x0) / df(x0);
-                if(fabs(x1 - x0) < eps || fabs(f(x1)) < delta){
+                if(fabs(x1 - x0) &lt; eps || fabs(f(x1)) &lt; delta){
                     x = x1;
                     break;
                 }
                 x0 = x1;
             }
-            printf("---- Newton's method ----\n");
             printf("x = %.10e\nf(x) = %.10e\ninteration = %d\n", x, f(x), i);
-        }
-        
-        int main(){
-            int N = 100;
-            double eps = 1e-9, delta = 1e-9;
-            bisection(N, eps, delta);
-            newton(N, eps, delta);
             return 0;
         }
     </code></pre>
@@ -145,28 +114,19 @@
         #include &lt;math.h&gt;
         
         double f(double x){
-            double y;
-            y = 1.0 / (x * x + 1.0);
-            return y;
+            return 1.0 / (x * x + 1.0);
         }
-        
-        // 合成第1シンプソン公式
-        double first_Simpson(double a, double b, int n){
-            double hfs = (b - a) / 2.0 / n;
-            double sum_2i0 = 0, sum_2i1 = 0;
-            int i;
-            for(i = 1; i < n; i++) sum_2i0 += f(a + 2.0 * i * h);
-            for(i = 0; i < n; i++) sum_2i1 += f(a + (2.0 * i + 1.0) * h);
-            double fs = h / 3.0 * (f(a) + 2.0 * sum_2i0 + 4.0 * sum_2i1 + f(b));
-            return fs;
-        }
-        
+
         int main(){
             int i, n = 2000;
             double true_value = M_PI / 4.0;
             double a = 0.0, b = 1.0;
+            double h = (b - a) / 2.0 / n;
+            double sum_2i0 = 0.0, sum_2i1 = 0.0;
+            for(i = 1; i &lt; n; i++) sum_2i0 += f(a + 2.0 * i * h);
+            for(i = 0; i &lt; n; i++) sum_2i1 += f(a + (2.0 * i + 1.0) * h);
+            double fs = h / 3.0 * (f(a) + 2.0 * sum_2i0 + 4.0 * sum_2i1 + f(b));
             printf("n = %d\n", n);
-            double fs = first_Simpson(a, b, n);
             printf("first Simpson = %.10e\n", fs);
             printf("true value = %.10e\n", true_value);
             return 0;
