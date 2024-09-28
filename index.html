@@ -1,128 +1,195 @@
 <?php
-// home.php
-
 session_start();
 
-// セッションの確認
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// セッションハイジャック対策
-if ($_SESSION['user_agent'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['user_ip'] != $_SERVER['REMOTE_ADDR']) {
-    session_unset();
-    session_destroy();
-    header("Location: login.php");
+// ログイン状態を確認
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
     exit();
 }
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>令和６年度情報工学科前期試験対策</title>
     <style>
         /* ベーススタイル */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
 
-h1 {
-    text-align: center;
-    color: #4a90e2;
-    font-size: 2.5em;
-    margin-top: 50px;
-}
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+            font-size: 2.5em;
+            margin-top: 50px;
+        }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 50px auto;
-    max-width: 800px;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 50px auto;
+            max-width: 800px;
+        }
 
-li {
-    margin-bottom: 20px;
-}
+        li {
+            margin-bottom: 20px;
+        }
 
-h2 {
-    font-size: 1.5em;
-    margin: 0;
-}
+        h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
 
-a {
-    text-decoration: none;
-    color: #4a90e2;
-    background-color: #fff;
-    padding: 15px 20px;
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
+        a {
+            text-decoration: none;
+            color: #4a90e2;
+            background-color: #fff;
+            padding: 15px 20px;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-a:hover {
-    background-color: #4a90e2;
-    color: #fff;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
+        a:hover {
+            background-color: #4a90e2;
+            color: #fff;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
 
-.footer {
+        .footer {
 
-color: #333;
-padding: 20px;
-position: relative;
-bottom: 0;
-left: 0;
-width: 100%;
-font-size: 14px;
-text-align: left;
-}
+            color: #333;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            font-size: 14px;
+            text-align: left;
+        }
 
-/* スマートフォン対応 */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
-    
-    a {
-        padding: 10px 15px;
-    }
-}
+        .notice-board {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .notice-board h2 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .notice-list {
+            max-height: 200px; /* スクロール可能な高さ */
+            overflow-y: auto;  /* 縦方向のスクロールを許可 */
+            padding-right: 10px; /* スクロールバーの幅を考慮 */
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notice-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.9em;
+        }
+        /* スマートフォン対応 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            a {
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <h1>令和６年度情報工学科前期試験対策</h1>
     <ul>
-        <li><h2><a href="else/Kubo_Masao/index.html">久保　正男(9/27(Fri))(10/3(Thur))</a></h2></li>
-        <!--<li><h2><a href="else/R6_3F_zenki_training/index.html">航空訓練(9/27(Fri))</a></h2></li>-->
-        <li><h2><a href="else/Matsubara/suuchikeisan.html">数値計算(9/30(Mon))</a></h2></li>
-        <li><h2><a href="else/Matsubara/ensyu2.html">情報工学演習Ⅱ(9/30(Mon))</a></h2></li>
-        <li><h2><a href="else/ai/index.html">人工知能Ⅰ(10/1(Mon))</a></h2></li>
-        <li><h2><a href="else/kokusaiho/index.html">国際法(10/2(Wed))</a></h2></li>
-        <li><h2><a href="else/OOP/index.html">オブジェクト指向プログラミング(10/2(Wed))</a></h2></li>
-        <li><h2><a href="else/compiler/index.html">コンパイラ(10/3(Thur))</a></h2></li>
+        <li>
+            <h2><a href="else/Kubo_masao/index.html">久保　正男(9/27(Fri))(10/3(Thur))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/R6_3F_zenki_training/index.html">航空訓練(9/27(Fri))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/Matsubara/suuchikeisan.html">数値計算(9/30(Mon))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/Matsubara/ensyu2.html">情報工学演習Ⅱ(9/30(Mon))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/ai/index.html">人工知能Ⅰ(10/1(Mon))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/kokusaiho/index.html">国際法(10/2(Wed))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/OOP/index.html">オブジェクト指向プログラミング(10/2(Wed))</a></h2>
+        </li>
+        <li>
+            <h2><a href="else/compiler/index.html">コンパイラ(10/3(Thur))</a></h2>
+        </li>
     </ul>
-<!--<a href="logout.php">ログアウト</a>-->
+    <div class="notice-board">
+        <h2>ホームページ更新情報</h2>
+        <div class="notice-list">
+            <div class="notice-item">
+                <p class="date">2024年9月28日</p>
+                <p>新しいサービスページを追加しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年9月20日</p>
+                <p>FAQページの内容を更新しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年9月15日</p>
+                <p>トップページのデザインを一部変更しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年9月10日</p>
+                <p>ユーザーアカウント機能を改善しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年9月5日</p>
+                <p>お問い合わせフォームのバグを修正しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年8月30日</p>
+                <p>ブログの新しい記事を公開しました。</p>
+            </div>
+            <div class="notice-item">
+                <p class="date">2024年8月25日</p>
+                <p>会社概要ページを更新しました。</p>
+            </div>
+        </div>
+    </div>
+    <!--<a href="logout.php">ログアウト</a>-->
     <footer class="footer">
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
     </footer>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V9YGQ1CE3K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-V9YGQ1CE3K');
-</script>
 </body>
