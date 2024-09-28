@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数値計算</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* 見出しのスタイル */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #444;
+            margin: 10px 0;
+        }
+
+        /* 問題と解答を囲むボックスのスタイル */
+        .ques,
+        .ans {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 解答ボックスのスタイル */
+        .ans {
+            background-color: #e8f7e9;
+            border: 1px solid #c6e1c6;
+        }
+
+        /* リストのスタイル */
+        ol,
+        ul {
+            padding-left: 20px;
+        }
+
+        ol li,
+        ul li {
+            margin: 10px 0;
+        }
+
+        /* 数式部分を強調するスタイル */
+        code {
+            background-color: #eef;
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* 各問題の背景色とボーダースタイル */
+        .ques {
+            border-left: 5px solid #66b3ff;
+        }
+
+        .ans {
+            border-left: 5px solid #82c182;
+        }
+
+        /* 箇条書きのスタイル */
+        ul {
+            list-style-type: disc;
+        }
+
+        ol li::marker {
+            font-weight: bold;
+            color: #66b3ff;
+        }
+
+        /* 画像のスタイル */
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* テーブルのスタイル（もし使用される場合） */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #66b3ff;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>数値計算</h1>
+    <ol>
+        <li class="ques">計算の誤差</li>
+        <ol>
+            <li class="ques">
+                <h2>問題</h2>桁落ちについて簡単に説明せよ
+            </li>
+            <div class="ans">
+                <p>
+                    <h2>解答</h2>非常に近い数値の引き算を含む計算において、有効数字が大幅に減少してしまうこと。
+                </p>
+            </div>
+            <li class="ques">
+                <h2>問題</h2>
+                二次方程式2次方程式 \( ax^2 + bx + c = 0 \) の解の公式は、<br>
+                \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \) <br>
+                であるが、\( b > 0 \), \( b^2 \gg 4ac \) のときには \( -b + \sqrt{b^2 - 4ac} \) は近い値の引き算になる。（\( \gg \) は非常に大きいの意味）
+                また、\( b &lt; 0 \), \( b^2 \gg 4ac \) のときは、\( -b - \sqrt{b^2 - 4ac} \) は近い値の引き算になる。<br>
+                したがって \( b^2 \gg 4ac \)のときは、解のひとつで桁落ちが生じる可能性がある。 桁落ちを防止する計算式を求めよ(\( b> 0 \), \( b &lt; 0\)の場合に分けて示すこと)。
+            </li>
+            <div class="ans">
+                <p>
+                    <h2>解答</h2>
+                    \(x_1 =
+                    \begin{cases}
+                    \frac{-b - \sqrt{b^2 - 4ac}}{2a} & (b \geq 0) \\
+                    \frac{-b + \sqrt{b^2 - 4ac}}{2a} & (b &lt; 0) \end{cases} \) <br>
+                    \( x_2 = \frac{c}{a x_1} \) <br>
+                    上記のようにすれば、\( x_1 \) の分子は同符号の加算になるので桁落ちは生じない。
+                </p>
+            </div>
+        </ol>
+
+        <li class="ques">次の式に関して\(x\)がどのような値の時に桁落ちするか、また桁落ちを防止する計算式を求めよ。</li>
+        <ol>
+            <li class="ques">
+                <h2>問題</h2>\( \sqrt{1+x} - \sqrt{1-x} \quad (\text{ただし}, -1 &lt; x &lt; 1) \)
+            </li>
+            <div class="ans">
+                <h2>解答</h2>
+                この式において、\( x \) の値が 0 に非常に近い場合、平方根の項
+                \( \sqrt{1 + x} \) と \( \sqrt{1 - x} \)の差が小さくなることで桁落ちが発生する。<br>
+                桁落ちを防ぐための変形式:<br>
+                \( \sqrt{1 + x} - \sqrt{1 - x} = \frac{(\sqrt{1 + x} - \sqrt{1 - x})(\sqrt{1 + x} + \sqrt{1 -
+                x})}{\sqrt{1 + x} + \sqrt{1 - x}} = \frac{(1 + x) - (1 - x)}{\sqrt{1 + x} + \sqrt{1 - x}}
+                =\frac{2x}{\sqrt{1 + x} + \sqrt{1 - x}} \)
+            </div>
+            <li class="ques">
+                <h2>問題</h2>\( \sqrt{x+1} - \sqrt{x-1} \quad (\text{ただし}, x > 1) \)
+            </li>
+            <div class="ans">
+                <h2>解答</h2>
+                \( x が非常に大きくなる（無限大に近づく）とき、\sqrt{x + 1} と \sqrt{x - 1} の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。\)<br>
+                桁落ちを防ぐための変形式:<br>
+                \( \sqrt{x + 1} - \sqrt{x - 1} = \frac{(\sqrt{x + 1} - \sqrt{x - 1})(\sqrt{x + 1} + \sqrt{x -
+                1})}{\sqrt{x+ 1} + \sqrt{x - 1}}\)
+                \( =\frac{2}{\sqrt{x + 1} + \sqrt{x - 1}}\)
+            </div>
+        </ol>
+
+        <li class="ques">
+            <h2>問題</h2>
+            \( \sum_{n=1}^N\frac{1}{n^2} = \frac{\pi^2}{6} \)<br>
+            となる。この左辺を計算する。\( \sum_{n=1}^N\frac{1}{n^2} \)を数値計算で求めることはできないので、大きいN(N=100000など)に対して\(
+            \sum_{n=1}^N\frac{1}{n^2} \)を計算する。<br>
+            この和を計算するとき、<br>
+            \( 1 + \frac{1}{2^2} + \frac{1}{3^2} + ... + \frac{1}{n^2} \)<br>
+            を左から計算する場合と、<br>
+            \( \frac{1}{N^2} + \frac{1}{(N - 1)^2} + \frac{1}{(N - 2)^2} + ... + \frac{1}{2^2} + 1 \)<br>
+            を左から順番に計算すると、どちらが正しい値に近い値を求められるか。またその理由を述べよ。
+        </li>
+        <div class="ans">
+            <p>
+                <h2>解答</h2>
+                \( \frac{1}{N^2} + \frac{1}{(N-1)^2} + \dots + \frac{1}{2^2} + 1 \)を左から計算する方が正しい値に近い値を求めることができる。<br>
+                理由：
+                \( 1 + \frac{1}{2^2} + \frac{1}{3^2} + \dots \)<br>
+                というように計算すると、ある程度以上大きな \( N \) に対して \( \frac{1}{N^2} \) は非常に小さな値となり、
+                この項は無視されることになり、それ以上 \( N \) を大きくしても近似は良くならない。<br>
+                これを防ぐために、小さい項から足していくようにすれば積み残しは防げる。ゆえに、<br>
+                \( \frac{1}{N^2} + \frac{1}{(N-1)^2} + \dots + \frac{1}{2^2} + 1 \)を左から計算する方が正しい値に近い値を求めることができる。<br>
+            </p>
+        </div>
+
+        <li class="ques">
+            <h2>問題</h2>
+            非線形方程式\( f(x)=0 \)の解を求める2分法のアルゴリズムを書け。<br>
+            <img src="6_1.jpg" alt="二分法">
+        </li>
+        <div class="ans">
+            <p>
+                <h2>解答</h2>
+                <ol>
+                    <li> \( f(a) \) と \( f(b) \) の符号が反対になる \( a, b \) を見つける（ただし \( a &lt; b \)）。<br>
+                        すなわち「\( f(a) &lt; 0 \) かつ \( f(b)> 0 \)」または「\( f(a) > 0 \) かつ \( f(b) &lt; 0 \)」となることを確認する。\(
+                        f(a)
+                        f(b) &lt; 0 \) であることで確認できる。 </li>
+                    <li> \( c_1 = a \) とする（\( c_1 \) は1ステップ前の解の候補）。</li>
+                    <li> \( c = \frac{a + b}{2} \) とする（\( c \) は \( a \) と \( b \) の中点、解の候補）。</li>
+                    <li> \( f(c) = 0 \) であれば、解 \( x = c \) として終了。</li>
+                    <li> \( f(c) \) と \( f(a) \) の符号が同じであれば \( a = c \) と置く。\( b \) はそのまま。</li>
+                    <li> \( f(c) \) と \( f(a) \) の符号が異なれば \( b = c \) と置く。\( a \) はそのまま。</li>
+                    <li> 終了条件を調べ、満足されていれば解 \( x = c \) として終了。満足されていなければ、\( c_1 \) を \( c \) として3に戻る。</li>
+                </ol>
+                終了条件には以下のものを用いる。
+                <ul>
+                    <li> あらかじめ設定した繰り返し回数の上限を超えたら終了する。</li>
+                    <li> 十分小さい正の数 \( \epsilon \) に対して \( |c - c_1| &lt; \epsilon \) となったら終了する。</li>
+                    <li> 十分小さい正の数 \( \epsilon
+                        \) に対して \( |f(c)| &lt; \epsilon \) となったら終了する。</li>
+                </ul>
+            </p>
+        </div>
+
+        <li class="ques">
+            <h2>問題</h2>
+            非線形方程式\( f(x)=0 \)の解を求めるニュートン法のアルゴリズムを書け。<br>
+            図2のx1は\( x1 = x0 - \frac{f(x0)}{f'(x0)} \)として求めることができる。<br>
+            <img src="6_2.jpg" alt="ニュートン法">
+        </li>
+        <div class="ans">
+            <p>
+                <h2>解答</h2>
+                <ol>
+                    <li>解の候補の初期値を \( x_0 \) とする。</li>
+                    <li>\( x_0 \) から \( f(x_0) \), \( f'(x_0) \) を求め、\( x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} \) とする。
+                        \( f'(x) \) は \( \frac{df(x)}{dx} \) のことである。</li>
+                    <li>\( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）、または \( |f(x_1)| &lt; \delta \)
+                        であれば終了（\(
+                        f(x_1)=0 \) とみなして終了）、 また、繰り返し回数が設定した上限を超えたら終了。そうでなければ \( x_0=x_1 \) として2に戻る。</li>
+                </ol>
+            </p>
+        </div>
+        <li class="ques">
+            合成台形公式により\( \int_a^b f(x) dx \)を計算することを考える。<br>
+            区間 \( [a, b] \) を\(n\)個に分割し、\( h = \frac{b - a}{n} \)とし、\( x_{i} = a + ih(i=0,1,...,n)とする。x_{0} = a,
+            x_{n} = b\)である。<br>
+            <img src="6_3.png" alt="合成台形公式">
+        </li>
+        </div>
+        <ol>
+            <li class="ques">
+                <h2>問題</h2>
+                図3の灰色部分①の面積は、台形の面積の公式より\( \frac{h}{2}(f(x_{0}) + f(x_{1})) \)となる。<br>
+                灰色の部分②の面積、灰色部分③の面積がどうなるかを考え、それから\( \int_a^b f(x) dx \)の近似値を求める合成台形公式を求めよ。
+            </li>
+            <div class="ans">
+                <p>
+                    <h2>解答</h2>
+                    ①の面積は\( \frac{h}{2}(f(x_{0}) + f(x_{1})) \)<br>
+                    ②の面積は\( \frac{h}{2}(f(x_{i}) + f(x_{i+1})) \)<br>
+                    ③の面積は\( \frac{h}{2}(f(x_{n-1}) + f(x_{n})) \)<br>
+                    となる。<br>
+                    よって、\( \int_a^b f(x) dx \)を求めるには、\(hを限りなく小さくして②の面積のi=0からi=n-1\)までの和を求めれば良い。<br>
+                    \( \int_a^b f(x) dx \approx \sum_{i=0}^{n-1} \frac{h}{2} (f(x_i) + f(x_{i+1})) \)<br>
+                    \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=0}^{n-1} f(x_{i+1}) \right)
+                    \)<br>
+                    \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=1}^{n} f(x_i) \right) \)<br>
+                    \( = \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right) \)<br>
+                </p>
+            </div>
+            <li class="ques">
+                <h2>問題</h2>
+                問題6.1で求めた式を用いて合成台形公式により\( \int_a^b f(x) dx \)の近似値を求めるアルゴリズムを書け。
+            </li>
+            <div class="ans">
+                <p>
+                    <h2>解答</h2>
+                    <ol>
+                        <li>区間の分割:
+                            区間 \( [a, b] \) を \( n \) 個の等間隔の部分区間に分割する。<br>
+                            各区間の幅 \( h \) を次の式で計算する。\( h = \frac{b - a}{n} \) <br>
+                            分割点は次のように定義される。\( x_0 = a \), \( x_1 = a + h \), ..., \( x_n = b \)
+                        </li>
+                        <li>端点の値の計算:
+                            端点での関数値 \( f(x_0) \) と \( f(x_n) \) を計算する。\( f(x_0) = f(a) \), \( f(x_n) = f(b)
+                            \)
+                        </li>
+                        <li>中間点の値の計算:
+                            内部の分割点 \( x_1 \), \( x_2 \), ..., \( x_{n-1} \) での関数値を計算し、次のように合計する。\( 2
+                            \sum_{i=1}^{n-1} f(x_i) \)
+                        </li>
+                        <li>合成台形公式の適用:
+                            合成台形公式に基づいて積分値 \( I \) を計算する。\( I \approx \frac{h}{2} \left( f(a) + 2
+                            \sum_{i=1}^{n-1} f(x_i) + f(b) \right) \)
+                        </li>
+                    </ol>
+                </p>
+            </div>
+        </ol>
+        <li class="ques">
+            <h2>問題</h2>
+            次のような微分方程式を考える。<br>
+            \( \frac{dx(t)}{dt} = f(t, x(t)), x(t0) = x0 \) ... (1)<br>
+            式⑴の解x(t)が微分可能な関数である場合には、テーラー展開により次式が成り立つ。<br>
+            \( x(t + h) = x(t) + h\frac{dx(t)}{dt} + \frac{h^2}{2}\frac{d^2 x(t)}{d t^2} + ... \)<br>
+            hが小さいと仮定して、この式の右辺の第3項以下を無視すると、\( x(t + h) \approx x(t) + h\frac{dx(t)}{dt} \)となり、<br>
+            式⑴を代入すると、以下の近侍式が得られる。
+            \( x(t + h) \approx x(t) + hf(t, x(t)) \)<br>
+            この式を用いて、式⑴の近侍式を求めるオイラー法のアルゴリズムを書け。
+        </li>
+        <div class="ans">
+            <p>
+                <h2>解答</h2>
+                <ol>
+                    <li>
+
+                        時刻 \( t_{0} \)を設定する。<br>
+                        初期値 \( x(t_{0}) = x_{0} \)を設定する。<br>
+                        時間刻み幅\( h \)を設定する。<br>
+                        シミュレーションの終了時刻 \(t_{end}\) を設定する。<br>
+
+                    </li>
+                    <li>
+
+                        現在の時刻 \(t\) と状態 x を用いて、<br>次の時刻での状態を次式で求める：
+                        \( x_{n+1} = x_n + h f(t_n, x_n), \quad n = 0, 1, \dots, N \)<br>
+                        時刻を更新する：
+                        \(t_{n+1} = t_{n} + h\)<br>
+                        新しい \(x_{n+1} と t_{n+1}\) を次のステップの
+                        \(x_{n}\) および \(t_{n} \)として設定する。<br>
+
+                    </li>
+                    <li>終了条件には次のものを用いる。
+                        時刻 \(t\) が \(t_{end}\) に達するまでステップ2を繰り返す。</li>
+                    </li>
+                </ol>
+
+            </p>
+        </div>
+        <footer>
+            Copyright &copy 2024 Uma. All rights reserved.
+        </footer>
+
+
+    </ol>
+</body>
+
+</html>
