@@ -119,7 +119,6 @@
 
         int main(){
             int i, n = 2000;
-            double true_value = M_PI / 4.0;
             double a = 0.0, b = 1.0;
             double h = (b - a) / 2.0 / n;
             double sum_2i0 = 0.0, sum_2i1 = 0.0;
@@ -128,7 +127,6 @@
             double fs = h / 3.0 * (f(a) + 2.0 * sum_2i0 + 4.0 * sum_2i1 + f(b));
             printf("n = %d\n", n);
             printf("first Simpson = %.10e\n", fs);
-            printf("true value = %.10e\n", true_value);
             return 0;
         }
      </code></pre>
