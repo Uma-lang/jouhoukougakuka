@@ -121,6 +121,20 @@
         td {
             background-color: #f9f9f9;
         }
+
+        /* 折りたたみ時のスタイル */
+        .ans.collapsed {
+            display: none;
+        }
+
+        /* 折りたたみボタンのスタイル */
+        .toggle-button {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+            font-size: 30px;
+        }
+
     </style>
 </head>
 
@@ -132,7 +146,8 @@
             <li class="ques">
                 <h2>問題</h2>桁落ちについて簡単に説明せよ
             </li>
-            <div class="ans">
+            <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>非常に近い数値の引き算を含む計算において、有効数字が大幅に減少してしまうこと。
                 </p>
@@ -145,7 +160,8 @@
                 また、\( b &lt; 0 \), \( b^2 \gg 4ac \) のときは、\( -b - \sqrt{b^2 - 4ac} \) は近い値の引き算になる。<br>
                 したがって \( b^2 \gg 4ac \)のときは、解のひとつで桁落ちが生じる可能性がある。 桁落ちを防止する計算式を求めよ(\( b> 0 \), \( b &lt; 0\)の場合に分けて示すこと)。
             </li>
-            <div class="ans">
+            <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>
                     \(x_1 =
@@ -163,7 +179,8 @@
             <li class="ques">
                 <h2>問題</h2>\( \sqrt{1+x} - \sqrt{1-x} \quad (\text{ただし}, -1 &lt; x &lt; 1) \)
             </li>
-            <div class="ans">
+             <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <h2>解答</h2>
                 この式において、\( x \) の値が 0 に非常に近い場合、平方根の項
                 \( \sqrt{1 + x} \) と \( \sqrt{1 - x} \)の差が小さくなることで桁落ちが発生する。<br>
@@ -175,7 +192,8 @@
             <li class="ques">
                 <h2>問題</h2>\( \sqrt{x+1} - \sqrt{x-1} \quad (\text{ただし}, x > 1) \)
             </li>
-            <div class="ans">
+             <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <h2>解答</h2>
                 \( x が非常に大きくなる（無限大に近づく）とき、\sqrt{x + 1} と \sqrt{x - 1} の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。\)<br>
                 桁落ちを防ぐための変形式:<br>
@@ -196,7 +214,8 @@
             \( \frac{1}{N^2} + \frac{1}{(N - 1)^2} + \frac{1}{(N - 2)^2} + ... + \frac{1}{2^2} + 1 \)<br>
             を左から順番に計算すると、どちらが正しい値に近い値を求められるか。またその理由を述べよ。
         </li>
-        <div class="ans">
+         <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 \( \frac{1}{N^2} + \frac{1}{(N-1)^2} + \dots + \frac{1}{2^2} + 1 \)を左から計算する方が正しい値に近い値を求めることができる。<br>
@@ -214,7 +233,8 @@
             非線形方程式\( f(x)=0 \)の解を求める2分法のアルゴリズムを書け。<br>
             <img src="6_1.jpg" alt="二分法">
         </li>
-        <div class="ans">
+         <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
@@ -245,7 +265,8 @@
             図2のx1は\( x1 = x0 - \frac{f(x0)}{f'(x0)} \)として求めることができる。<br>
             <img src="6_2.jpg" alt="ニュートン法">
         </li>
-        <div class="ans">
+         <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
@@ -271,7 +292,8 @@
                 図3の灰色部分①の面積は、台形の面積の公式より\( \frac{h}{2}(f(x_{0}) + f(x_{1})) \)となる。<br>
                 灰色の部分②の面積、灰色部分③の面積がどうなるかを考え、それから\( \int_a^b f(x) dx \)の近似値を求める合成台形公式を求めよ。
             </li>
-            <div class="ans">
+             <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>
                     ①の面積は\( \frac{h}{2}(f(x_{0}) + f(x_{1})) \)<br>
@@ -290,7 +312,8 @@
                 <h2>問題</h2>
                 問題6.1で求めた式を用いて合成台形公式により\( \int_a^b f(x) dx \)の近似値を求めるアルゴリズムを書け。
             </li>
-            <div class="ans">
+             <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>
                     <ol>
@@ -326,7 +349,8 @@
             \( x(t + h) \approx x(t) + hf(t, x(t)) \)<br>
             この式を用いて、式⑴の近侍式を求めるオイラー法のアルゴリズムを書け。
         </li>
-        <div class="ans">
+         <div class="toggle-button">解答</div>
+            <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
@@ -358,9 +382,25 @@
         <footer>
             Copyright &copy 2024 Uma. All rights reserved.
         </footer>
-
-
     </ol>
+    <script>
+        // 全てのトグルボタンを取得
+        document.querySelectorAll('.toggle-button').forEach(button => {
+            // ボタンがクリックされた時の動作を設定
+            button.addEventListener('click', () => {
+                // ボタンの次の要素（解答ボックス）を取得
+                const answerBox = button.nextElementSibling;
+                // 解答ボックスを表示／非表示に切り替え
+                if (answerBox.classList.contains('collapsed')) {
+                    answerBox.classList.remove('collapsed');
+                    button.textContent = '閉じる';
+                } else {
+                    answerBox.classList.add('collapsed');
+                    button.textContent = '解答';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
