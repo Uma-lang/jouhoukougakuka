@@ -134,7 +134,6 @@
             text-decoration: underline;
             font-size: 30px;
         }
-
     </style>
 </head>
 
@@ -179,7 +178,7 @@
             <li class="ques">
                 <h2>問題</h2>\( \sqrt{1+x} - \sqrt{1-x} \quad (\text{ただし}, -1 &lt; x &lt; 1) \)
             </li>
-             <div class="toggle-button">解答</div>
+            <div class="toggle-button">解答</div>
             <div class="ans collapsed">
                 <h2>解答</h2>
                 この式において、\( x \) の値が 0 に非常に近い場合、平方根の項
@@ -192,7 +191,7 @@
             <li class="ques">
                 <h2>問題</h2>\( \sqrt{x+1} - \sqrt{x-1} \quad (\text{ただし}, x > 1) \)
             </li>
-             <div class="toggle-button">解答</div>
+            <div class="toggle-button">解答</div>
             <div class="ans collapsed">
                 <h2>解答</h2>
                 \( x が非常に大きくなる（無限大に近づく）とき、\sqrt{x + 1} と \sqrt{x - 1} の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。\)<br>
@@ -214,8 +213,8 @@
             \( \frac{1}{N^2} + \frac{1}{(N - 1)^2} + \frac{1}{(N - 2)^2} + ... + \frac{1}{2^2} + 1 \)<br>
             を左から順番に計算すると、どちらが正しい値に近い値を求められるか。またその理由を述べよ。
         </li>
-         <div class="toggle-button">解答</div>
-            <div class="ans collapsed">
+        <div class="toggle-button">解答</div>
+        <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 \( \frac{1}{N^2} + \frac{1}{(N-1)^2} + \dots + \frac{1}{2^2} + 1 \)を左から計算する方が正しい値に近い値を求めることができる。<br>
@@ -233,8 +232,8 @@
             非線形方程式\( f(x)=0 \)の解を求める2分法のアルゴリズムを書け。<br>
             <img src="6_1.jpg" alt="二分法">
         </li>
-         <div class="toggle-button">解答</div>
-            <div class="ans collapsed">
+        <div class="toggle-button">解答</div>
+        <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
@@ -265,17 +264,21 @@
             図2のx1は\( x1 = x0 - \frac{f(x0)}{f'(x0)} \)として求めることができる。<br>
             <img src="6_2.jpg" alt="ニュートン法">
         </li>
-         <div class="toggle-button">解答</div>
-            <div class="ans collapsed">
+        <div class="toggle-button">解答</div>
+        <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
                     <li>解の候補の初期値を \( x_0 \) とする。</li>
                     <li>\( x_0 \) から \( f(x_0) \), \( f'(x_0) \) を求め、\( x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} \) とする。
                         \( f'(x) \) は \( \frac{df(x)}{dx} \) のことである。</li>
-                    <li>\( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）、または \( |f(x_1)| &lt; \delta \)
-                        であれば終了（\(
-                        f(x_1)=0 \) とみなして終了）、 また、繰り返し回数が設定した上限を超えたら終了。そうでなければ \( x_0=x_1 \) として2に戻る。</li>
+                    <li>終了条件を調べ、満足されていれば解 \( x = c \) として終了。満足されていなければ、\( x_0=x_1 \) として2に戻る。</li>
+                    終了条件には以下のものを用いる。
+                    <ul>
+                        <li> あらかじめ設定した繰り返し回数の上限を超えたら終了する。</li>
+                        <li> \( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）</li>
+                        <li> または \( |f(x_1)| &lt; \delta \)であれば終了(\( f(x_1)=0 \) とみなして終了)</li>
+                    </ul>
                 </ol>
             </p>
         </div>
@@ -292,7 +295,7 @@
                 図3の灰色部分①の面積は、台形の面積の公式より\( \frac{h}{2}(f(x_{0}) + f(x_{1})) \)となる。<br>
                 灰色の部分②の面積、灰色部分③の面積がどうなるかを考え、それから\( \int_a^b f(x) dx \)の近似値を求める合成台形公式を求めよ。
             </li>
-             <div class="toggle-button">解答</div>
+            <div class="toggle-button">解答</div>
             <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>
@@ -312,7 +315,7 @@
                 <h2>問題</h2>
                 問題6.1で求めた式を用いて合成台形公式により\( \int_a^b f(x) dx \)の近似値を求めるアルゴリズムを書け。
             </li>
-             <div class="toggle-button">解答</div>
+            <div class="toggle-button">解答</div>
             <div class="ans collapsed">
                 <p>
                     <h2>解答</h2>
@@ -349,8 +352,8 @@
             \( x(t + h) \approx x(t) + hf(t, x(t)) \)<br>
             この式を用いて、式⑴の近侍式を求めるオイラー法のアルゴリズムを書け。
         </li>
-         <div class="toggle-button">解答</div>
-            <div class="ans collapsed">
+        <div class="toggle-button">解答</div>
+        <div class="ans collapsed">
             <p>
                 <h2>解答</h2>
                 <ol>
