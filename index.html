@@ -16,6 +16,9 @@ if (!isset($_SESSION['loggedin'])) {
 
     <meta charset="UTF-8">
     <title>令和６年度情報工学科前期試験対策</title>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"></script>
+   
     <style>
         /* ベーススタイル */
         body {
@@ -173,19 +176,37 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
         </div>
     </div>
-    <p>このブラウザでのページ閲覧回数: <span id="count">0</span></p>
+    <div>現在の閲覧合計回数は：</div>
+    <div id="counter">0</div>
+
     <script>
-        // ローカルストレージに保存されたカウントを取得
-        let count = localStorage.getItem('page_view_count') || 0;
+        // Firebase の初期化設定
+        const firebaseConfig = {
+            apiKey: "あなたのAPIキーをここに",
+            authDomain: "あなたのプロジェクトID.firebaseapp.com",
+            databaseURL: "https://あなたのプロジェクトID.firebaseio.com",
+            projectId: "あなたのプロジェクトID",
+            storageBucket: "あなたのプロジェクトID.appspot.com",
+            messagingSenderId: "あなたのメッセージングID",
+            appId: "あなたのアプリID"
+        };
 
-        // カウントをインクリメント
-        count++;
+        // Firebase の初期化
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
 
-        // ローカルストレージにカウントを保存
-        localStorage.setItem('page_view_count', count);
+        // 閲覧カウンタのリファレンスを取得
+        const counterRef = database.ref('page_views');
 
-        // ページ上に表示
-        document.getElementById('count').textContent = count;
+        // 閲覧回数を1増やす
+        counterRef.transaction(function(currentValue) {
+            return (currentValue || 0) + 1;
+        });
+
+        // 閲覧回数をリアルタイムで取得して表示
+        counterRef.on('value', (snapshot) => {
+            document.getElementById('counter').textContent = snapshot.val();
+        });
     </script>
     <!--<a href="logout.php">ログアウト</a>-->
     <footer class="footer">
