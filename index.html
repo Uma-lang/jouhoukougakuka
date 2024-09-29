@@ -34,6 +34,7 @@ if (!isset($_SESSION['loggedin'])) {
             color: #4a90e2;
             font-size: 2.5em;
             margin-top: 50px;
+            text-align: center;
         }
 
         ul {
@@ -120,7 +121,8 @@ if (!isset($_SESSION['loggedin'])) {
         }
         /* 右上の枠囲み文字 */
         .top-right-text {
-            position: fixed;      /* 画面右上に固定 */
+            /*position: fixed;*/      /* 画面右上に固定 */
+            float: right;
             top: 20px;             /* 上からの位置 */
             right: 20px;           /* 右からの位置 */
             padding: 10px 20px;    /* 内側の余白を指定 */
