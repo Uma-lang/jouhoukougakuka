@@ -49,15 +49,14 @@
         
         int main(){
             int N = 100, i;
-            double x0 = 1.0, x1,  x;
+            double x0 = 1.0, x_n,  x_np1;
             double eps = 1e-9, delta = 1e-9;
             for(i = 0; i &lt; N; i++){
-                x1 = x0 - f(x0) / df(x0);
-                if(i = N - 1 || fabs(x1 - x0) &lt; eps || fabs(f(x1)) &lt; delta){
-                    x = x1;
+                x_np1 = x_n - f(x_n) / df(x_n);
+                if(fabs(x_np1 - x_n) &lt; eps || fabs(f(x_np1)) &lt; delta){
                     break;
                 }
-                x0 = x1;
+                x_n = x_np1;
             }
             printf("x = %.10e\nf(x) = %.10e\ninteration = %d\n", x, f(x), i);
             return 0;
@@ -395,16 +394,22 @@
                     sum_x += fabs(X1[i] - X[i]); 
                 } 
                 
+                if(sum_x < eps){ 
+                    for(i = 0; i < N; i++){ 
+                        X[i] = X1[i]; 
+                    } 
+                    break; 
+                } 
                 for(i = 0; i < N; i++){ 
                     X[i] = X1[i]; 
                 } 
-                if(sum_x < eps)　break;
             } 
             
             printf("Jacobi's method\n"); 
             for(i = 0; i < N; i++){ 
                 printf("X[%d] = %.10e\n", i, X[i]); 
             } 
+            printf("iteration = %d\n", k); 
             
             return 0; 
         }
