@@ -301,10 +301,11 @@
                     ③の面積は\( \frac{h}{2}(f(x_{n-1}) + f(x_{n})) \)<br>
                     となる。<br>
                     よって、\( \int_a^b f(x) dx \)を求めるには、\(hを限りなく小さくして②の面積のi=0からi=n-1\)までの和を求めれば良い。<br>
-                    \( \int_a^b f(x) dx \approx \sum_{i=0}^{n-1} \frac{h}{2} (f(x_i) + f(x_{i+1})) \)<br>
-                    \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=0}^{n-1} f(x_{i+1}) \right)
-                    \)<br>
+                    \( \int_a^b f(x) dx \)<br>
+                    \( \approx \sum_{i=0}^{n-1} \frac{h}{2} (f(x_i) + f(x_{i+1})) \)<br>
+                    \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=0}^{n-1} f(x_{i+1}) \right)\)<br>
                     \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=1}^{n} f(x_i) \right) \)<br>
+                    \( = \frac{h}{2} \left( f(x_0) + \sum_{i=1}{n-1} + \sum_{i=1}{n-1} + f(x_n) \right \)<br>
                     \( = \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right) \)<br>
                 </p>
             </div>
