@@ -379,7 +379,7 @@
                 {-3.0, 2.0, -4.0, 5.0} 
             }; 
             double B[N] = {20.0, -5.0, 13.0, 9.0}; 
-            
+            sum_x = 0.0; 
             for(k = 0; k < max; k++){ 
                 for(i = 0; i < N; i++){ 
                     sum_i = 0.0; 
@@ -391,7 +391,6 @@
                         sum_n += A[i][j] * X[j]; 
                     } 
                     X1[i] = (B[i] - sum_i - sum_n) / A[i][i]; 
-                    sum_x = 0.0; 
                     sum_x += fabs(X1[i] - X[i]); 
                 } 
                 
