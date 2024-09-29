@@ -267,7 +267,8 @@
                 \( x \)が非常に大きくなる（無限大に近づく）とき、\( \sqrt{x + 1} \) と \( \sqrt{x - 1} \)の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。<br>
                 桁落ちを防ぐための変形式:<br>
                 \( \sqrt{x + 1} - \sqrt{x - 1} \)<br>
-                \( = \frac{(\sqrt{x + 1} - \sqrt{x - 1})(\sqrt{x + 1} + \sqrt{x - 1})}{\sqrt{x+ 1} + \sqrt{x - 1}} \)<br>
+                \( = \frac{(\sqrt{x + 1} - \sqrt{x - 1})(\sqrt{x + 1} + \sqrt{x - 1})}{\sqrt{x+ 1} + \sqrt{x - 1}}
+                \)<br>
                 \( =\frac{2}{\sqrt{x + 1} + \sqrt{x - 1}}\)
             </div>
         </ol>
@@ -336,17 +337,17 @@
                 <h2>解答</h2>
                 <ol>
                     <li>解の候補の初期値を \( x_0 \) とする。</li>
-                    <li>\( x = x_0 \) における接戦と \( x \)軸の交点 \( x_1, 0) \) を求めるので、<br>
-                        \( x_0 \) から \( f(x_0) \), \( f'(x_0) \) を求め、接戦の公式より、\( 0 - f(x_0) = f'(x_0)(x_1 - x_0) \)<br>
-                        より、\( x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} \) とする。\( f'(x) \) は \( \frac{df(x)}{dx} \)
+                    <li>\( x = x_n \) における接戦と \( x \)軸の交点 \( x_{n+1}, 0) \) を求めるので、<br>
+                        \( x_n \) から \( f(x_n) \), \( f'(x_n) \) を求め、接戦の公式より、\( 0 - f(x_n) = f'(x_n)(x_{n+1} - x_n) \)<br>
+                        より、\( x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \) とする。\( f'(x) \) は \( \frac{df(x)}{dx} \)
                         のことである。ただし、\( f'(x) \neq 0　\)と仮定する。</li>
-                    <li>終了条件を、満足されていれば解 \( x = x_1 \) として終了。満足されていなければ、\( x_0=x_1 \) として2に戻る。</li>
+                    <li>終了条件を、満足されていれば解 \( x = x_n+1 \) として終了。満足されていなければ、\( x_n = x_{n+1} \) として2に戻る。</li>
                     終了条件には以下のものを用いる。
                     <ul>
                         <li> あらかじめ設定した繰り返し回数の上限を超えたら終了する。</li>
-                        <li> 十分小さい正の数 \( \epsilon \) に対して\( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）
+                        <li> 十分小さい正の数 \( \epsilon \) に対して\( |x_{n+1} - x_n &lt; \epsilon \) であれば終了（\( x_{n+1} \) は収束したので終了）
                         </li>
-                        <li> 十分小さい正の数 \( \delta \) に対して\( |f(x_1)| &lt; \delta \)であれば終了(\( f(x_1)=0 \) とみなして終了)</li>
+                        <li> 十分小さい正の数 \( \delta \) に対して\( |f(x_{n+1})| &lt; \delta \)であれば終了(\( f(x_{n+1})=0 \) とみなして終了)</li>
                     </ul>
                 </ol>
             </p>
@@ -442,18 +443,16 @@
                     現在の時刻 \(t = t_{n}\) とすると、\( t_{n} + h = t_{n + 1} \)なので、\(x(t_{n + 1}) \approx x( t_{n} ) + h
                     f(t_{n}, x(t_{n})) \)<br>
                     これより、\( x( t_{n}) \)の近似値 \( x_{n} \)を以下ように求めることができる。<br>
-                    
-                    \( x_{n+1} = x_n + h f(t_n, x_n), \quad n = 0, 1, \dots, N \)<br>
-                    時刻を更新する：
-                    \(t_{n+1} = t_{n} + h\)<br>
-                    新しい \(x_{n+1} と t_{n+1}\) を次のステップの
-                    \(x_{n}\) および \(t_{n} \)として設定する。<br>
-
+                    \( x_{n+1} = x_n + h f(t_n, x_n), \quad n = 0, 1, \dots, N \)
                 </li>
-                <li> 時刻\( t \)が\( t_{end} \) に達するまでステップ2を繰り返す。</li>
+                <li>時刻を更新する：<br>
+                    \(t_{n+1} = t_{n} + h\)<br>
+                    新しい \(x_{n+1} と t_{n+1}\) を次のステップの\(x_{n}\) および \(t_{n} \)として設定する。
+                </li>
+                <li> 時刻\( t \)が\( t_{end} \) に達するまでステップ2、3を繰り返し、
+                    \( t_end \)に達したら、解 \( x = x_{n + 1}\)として終了する。
                 </li>
             </ol>
-
         </div>
     </ol>
     <footer>
@@ -474,14 +473,17 @@
         });
     </script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XGX1XW7V31"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGX1XW7V31"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-XGX1XW7V31');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XGX1XW7V31');
+    </script>
 </body>
 
 </html>
