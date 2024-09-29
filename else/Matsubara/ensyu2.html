@@ -13,10 +13,6 @@
 </head>
 
 <body>
-    <h1><a href="else/text.pdf">テキスト</a></h1>
-
-    
-        
     <h1>6.2 ニュートン法のプログラムを書け</h1>
     <p>
         ニュートン法では \( f(x) \) は微分可能であると仮定する。
@@ -365,55 +361,58 @@
     <p>このアルゴリズムが収束するためには、条件が必要であるが、詳細は省略する。</p>
     <h1>答え</h1>
     <pre><code>
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#define N 4
-int main(){
-	int i, j, k;
-	double sum_i, sum_n, sum_x;
-	double eps = 1e-8, max = 1000;
-	double X0[N] = {0.0};
-	double X1[N] = {0.0};
-	double A[N][N] = {
-		{4.0, 3.0, 2.0, 1.0},
-		{2.0, 5.0, -3.0, -2.0},
-		{1.0, -4.0, 8.0, -1.0},
-		{-3.0, 2.0, -4.0, 5.0}
-		};
-	double B[N] = {20.0, -5.0, 13.0, 9.0};
-	for(k = 0; k < max; k++){
-		for(i = 0; i < N; i++) {
-            sum_i = 0.0;
-            for(j = 0; j < i; j++) sum_i += A[i][j] * X0[j];
-			sum_n = 0.0;
-            for(j = i + 1; j < N; j++) sum_n += A[i][j] * X0[j];
-            X1[i] = (B[i] - sum_i - sum_n) / A[i][i];
-        }
-		sum_x = 0.0;
-        for(i = 0; i < N; i++) sum_x += fabs(X1[i] - X0[i]);
-        if(sum_x < eps) break;
-        for(i = 0; i < N; i++) X0[i] = X1[i];
-	}
-	printf("Jacobi's method\n");
-	for(i = 0; i < N; i++) printf("X[%d] = %.10e\n",i, X0[i]);
-	printf("iterarion = %d\n", k);
-	return 0;
-}
-
+        #include<stdio.h>
+            #include<stdlib.h>
+            #include<math.h>
+            #define N 4
+            int main(){
+                int i, j, k;
+                double sum_i, sum_n, sum_x;
+                double eps = 1e-8, max = 1000;
+                double X0[N] = {0.0};
+                double X1[N] = {0.0};
+                double A[N][N] = {
+                    {4.0, 3.0, 2.0, 1.0},
+                    {2.0, 5.0, -3.0, -2.0},
+                    {1.0, -4.0, 8.0, -1.0},
+                    {-3.0, 2.0, -4.0, 5.0}
+                    };
+                double B[N] = {20.0, -5.0, 13.0, 9.0};
+                for(k = 0; k < max; k++){
+                    for(i = 0; i < N; i++) {
+                        sum_i = 0.0;
+                        for(j = 0; j < i; j++) sum_i += A[i][j] * X0[j];
+                        sum_n = 0.0;
+                        for(j = i + 1; j < N; j++) sum_n += A[i][j] * X0[j];
+                        X1[i] = (B[i] - sum_i - sum_n) / A[i][i];
+                    }
+                    sum_x = 0.0;
+                    for(i = 0; i < N; i++) sum_x += fabs(X1[i] - X0[i]);
+                    if(sum_x < eps) break;
+                    for(i = 0; i < N; i++) X0[i] = X1[i];
+                }
+                printf("Jacobi's method\n");
+                for(i = 0; i < N; i++) printf("X[%d] = %.10e\n",i, X0[i]);
+                printf("iterarion = %d\n", k);
+                return 0;
+            }
+            
     </code></pre>
     <footer>
         Copyright &copy 2024 Uma. All rights reserved.
     </footer>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFQ5Q2GM6Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFQ5Q2GM6Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-XFQ5Q2GM6Q');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XFQ5Q2GM6Q');
+    </script>
 </body>
 
 </html>
