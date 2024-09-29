@@ -53,7 +53,7 @@
             double eps = 1e-9, delta = 1e-9;
             for(i = 0; i &lt; N; i++){
                 x1 = x0 - f(x0) / df(x0);
-                if(fabs(x1 - x0) &lt; eps || fabs(f(x1)) &lt; delta){
+                if(i = N - 1 || fabs(x1 - x0) &lt; eps || fabs(f(x1)) &lt; delta){
                     x = x1;
                     break;
                 }
