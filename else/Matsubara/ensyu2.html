@@ -395,15 +395,10 @@
                     sum_x += fabs(X1[i] - X[i]); 
                 } 
                 
-                if(sum_x < eps){ 
-                    for(i = 0; i < N; i++){ 
-                        X[i] = X1[i]; 
-                    } 
-                    break; 
-                } 
                 for(i = 0; i < N; i++){ 
                     X[i] = X1[i]; 
                 } 
+                if(sum_x < eps)　break;
             } 
             
             printf("Jacobi's method\n"); 
