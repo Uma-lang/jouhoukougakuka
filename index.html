@@ -173,6 +173,20 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
         </div>
     </div>
+    <p>このブラウザでのページ閲覧回数: <span id="count">0</span></p>
+    <script>
+        // ローカルストレージに保存されたカウントを取得
+        let count = localStorage.getItem('page_view_count') || 0;
+
+        // カウントをインクリメント
+        count++;
+
+        // ローカルストレージにカウントを保存
+        localStorage.setItem('page_view_count', count);
+
+        // ページ上に表示
+        document.getElementById('count').textContent = count;
+    </script>
     <!--<a href="logout.php">ログアウト</a>-->
     <footer class="footer">
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
