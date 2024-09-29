@@ -89,6 +89,7 @@
         img {
             display: block;
             margin: 20px auto;
+            max-width: 100%;
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -132,7 +133,74 @@
             cursor: pointer;
             color: #007bff;
             text-decoration: underline;
-            font-size: 30px;
+            font-size: 18px;
+        }
+
+        /* フッターのスタイル */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* スマホ向けのスタイル調整 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .ques,
+            .ans {
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 0.95em;
+            }
+
+            .toggle-button {
+                font-size: 16px;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .ques,
+            .ans {
+                padding: 8px;
+                margin: 3px 0;
+                font-size: 0.9em;
+            }
+
+            .toggle-button {
+                font-size: 14px;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 0.8em;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -184,9 +252,11 @@
                 この式において、\( x \) の値が 0 に非常に近い場合、平方根の項
                 \( \sqrt{1 + x} \) と \( \sqrt{1 - x} \)の差が小さくなることで桁落ちが発生する。<br>
                 桁落ちを防ぐための変形式:<br>
-                \( \sqrt{1 + x} - \sqrt{1 - x} = \frac{(\sqrt{1 + x} - \sqrt{1 - x})(\sqrt{1 + x} + \sqrt{1 -
-                x})}{\sqrt{1 + x} + \sqrt{1 - x}} = \frac{(1 + x) - (1 - x)}{\sqrt{1 + x} + \sqrt{1 - x}}
-                =\frac{2x}{\sqrt{1 + x} + \sqrt{1 - x}} \)
+                \( \sqrt{1 + x} - \sqrt{1 - x} \)<br>
+                \( = \frac{(\sqrt{1 + x} - \sqrt{1 - x})(\sqrt{1 + x} + \sqrt{1 - x})}{\sqrt{1 + x} + \sqrt{1 - x}}
+                \)<br>
+                \( = \frac{(1 + x) - (1 - x)}{\sqrt{1 + x} + \sqrt{1 - x}} \)<br>
+                \( = \frac{2x}{\sqrt{1 + x} + \sqrt{1 - x}} \)
             </div>
             <li class="ques">
                 <h2>問題</h2>\( \sqrt{x+1} - \sqrt{x-1} \quad (\text{ただし}, x > 1) \)
@@ -194,10 +264,10 @@
             <div class="toggle-button">解答</div>
             <div class="ans collapsed">
                 <h2>解答</h2>
-                \( x が非常に大きくなる（無限大に近づく）とき、\sqrt{x + 1} と \sqrt{x - 1} の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。\)<br>
+                \( x \)が非常に大きくなる（無限大に近づく）とき、\( \sqrt{x + 1} \) と \( \sqrt{x - 1} \)の値がほぼ等しくなり、差が小さくなることで桁落ちが発生する。<br>
                 桁落ちを防ぐための変形式:<br>
-                \( \sqrt{x + 1} - \sqrt{x - 1} = \frac{(\sqrt{x + 1} - \sqrt{x - 1})(\sqrt{x + 1} + \sqrt{x -
-                1})}{\sqrt{x+ 1} + \sqrt{x - 1}}\)
+                \( \sqrt{x + 1} - \sqrt{x - 1} \)
+                \( = \frac{(\sqrt{x + 1} - \sqrt{x - 1})(\sqrt{x + 1} + \sqrt{x - 1})}{\sqrt{x+ 1} + \sqrt{x - 1}} \)
                 \( =\frac{2}{\sqrt{x + 1} + \sqrt{x - 1}}\)
             </div>
         </ol>
@@ -268,12 +338,14 @@
                     <li>解の候補の初期値を \( x_0 \) とする。</li>
                     <li>\( x = x_0 \) における接戦と \( x \)軸の交点 \( x_1, 0) \) を求めるので、<br>
                         \( x_0 \) から \( f(x_0) \), \( f'(x_0) \) を求め、接戦の公式より、\( 0 - f(x_0) = f'(x_0)(x_1 - x_0) \)<br>
-                        より、\( x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} \) とする。\( f'(x) \) は \( \frac{df(x)}{dx} \) のことである。ただし、\( f'(x) \neq 0　\)と仮定する。</li>
+                        より、\( x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} \) とする。\( f'(x) \) は \( \frac{df(x)}{dx} \)
+                        のことである。ただし、\( f'(x) \neq 0　\)と仮定する。</li>
                     <li>終了条件を、満足されていれば解 \( x = x_1 \) として終了。満足されていなければ、\( x_0=x_1 \) として2に戻る。</li>
                     終了条件には以下のものを用いる。
                     <ul>
                         <li> あらかじめ設定した繰り返し回数の上限を超えたら終了する。</li>
-                        <li> 十分小さい正の数 \( \epsilon \) に対して\( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）</li>
+                        <li> 十分小さい正の数 \( \epsilon \) に対して\( |x_1 - x_0| &lt; \epsilon \) であれば終了（\( x_1 \) は収束したので終了）
+                        </li>
                         <li> 十分小さい正の数 \( \delta \) に対して\( |f(x_1)| &lt; \delta \)であれば終了(\( f(x_1)=0 \) とみなして終了)</li>
                     </ul>
                 </ol>
@@ -305,7 +377,8 @@
                     \( \approx \sum_{i=0}^{n-1} \frac{h}{2} (f(x_i) + f(x_{i+1})) \)<br>
                     \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=0}^{n-1} f(x_{i+1}) \right)\)<br>
                     \( = \frac{h}{2} \left( \sum_{i=0}^{n-1} f(x_i) + \sum_{i=1}^{n} f(x_i) \right) \)<br>
-                    \( = \frac{h}{2} \left( f(x_0) + \sum_{i=1}^{n-1} f(x_i) + \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right) \)<br>
+                    \( = \frac{h}{2} \left( f(x_0) + \sum_{i=1}^{n-1} f(x_i) + \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right)
+                    \)<br>
                     \( = \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right) \)<br>
                 </p>
             </div>
@@ -321,7 +394,8 @@
                         <li>区間の分割:
                             区間 \( [a, b] \) を \( n \) 個の等間隔の部分区間に分割する。<br>
                             各区間の幅 \( h \) を次の式で計算する。\( h = \frac{b - a}{n} \) <br>
-                            分割点は次のように定義される。\( x_0 = a \), \( x_1 = a + h \), ..., \(x_i = a + ih \), ..., \( x_n = b \) \( (i = 0,1,...,n) \)
+                            分割点は次のように定義される。\( x_0 = a \), \( x_1 = a + h \), ..., \(x_i = a + ih \), ..., \( x_n = b \)
+                            \( (i = 0,1,...,n) \)
                         </li>
                         <li>端点の値の計算:
                             端点での関数値 \( f(x_0) \) と \( f(x_n) \) を計算する。\( f(x_0) = f(a) \), \( f(x_n) = f(b)
@@ -352,47 +426,43 @@
         </li>
         <div class="toggle-button">解答</div>
         <div class="ans collapsed">
-            <p>
-                <h2>解答</h2>
-                <ol>
-                    <li>
 
-                        時刻 \( t_{0} \)を設定する。<br>
-                        初期値 \( x(t_{0}) = x_{0} \)を設定する。<br>
-                        時間刻み幅\( h \)を設定する。<br>
-                        シミュレーションの終了時刻 \(t_{end}\) を設定する。<br>
+            <h2>解答</h2>
+            <ol>
+                <li>
 
-                    </li>
-                    <li>
+                    時刻 \( t_{0} \)を設定する。<br>
+                    初期値 \( x(t_{0}) = x_{0} \)を設定する。<br>
+                    時間刻み幅\( h \)を設定する。<br>
+                    シミュレーションの終了時刻 \(t_{end}\) を設定する。<br>
 
-                        現在の時刻 \(t = t_{n}\) とすると、\( t_{n} + h = t_{n + 1} \)なので、\(x(t_{n + 1}) \approx x( t_{n} ) + h f(t_{n}, x(t_{n})) \)<br>
-                        これより、\( x( t_{n}) \)の近似値 \( x_{n} \)を以下ように求めることができる。<br>
-                        次の時刻での状態を次式で求める：
-                        \( x_{n+1} = x_n + h f(t_n, x_n), \quad n = 0, 1, \dots, N \)<br>
-                        時刻を更新する：
-                        \(t_{n+1} = t_{n} + h\)<br>
-                        新しい \(x_{n+1} と t_{n+1}\) を次のステップの
-                        \(x_{n}\) および \(t_{n} \)として設定する。<br>
+                </li>
+                <li>
 
-                    </li>
-                    <li> 時刻\( t \)が\( t_{end} \)  に達するまでステップ2を繰り返す。</li>
-                    </li>
-                </ol>
+                    現在の時刻 \(t = t_{n}\) とすると、\( t_{n} + h = t_{n + 1} \)なので、\(x(t_{n + 1}) \approx x( t_{n} ) + h
+                    f(t_{n}, x(t_{n})) \)<br>
+                    これより、\( x( t_{n}) \)の近似値 \( x_{n} \)を以下ように求めることができる。<br>
+                    次の時刻での状態を次式で求める：
+                    \( x_{n+1} = x_n + h f(t_n, x_n), \quad n = 0, 1, \dots, N \)<br>
+                    時刻を更新する：
+                    \(t_{n+1} = t_{n} + h\)<br>
+                    新しい \(x_{n+1} と t_{n+1}\) を次のステップの
+                    \(x_{n}\) および \(t_{n} \)として設定する。<br>
 
-            </p>
+                </li>
+                <li> 時刻\( t \)が\( t_{end} \) に達するまでステップ2を繰り返す。</li>
+                </li>
+            </ol>
+
         </div>
-        <footer>
-            Copyright &copy 2024 Uma. All rights reserved.
-        </footer>
     </ol>
+    <footer>
+        Copyright &copy 2024 Uma. All rights reserved.
+    </footer>
     <script>
-        // 全てのトグルボタンを取得
         document.querySelectorAll('.toggle-button').forEach(button => {
-            // ボタンがクリックされた時の動作を設定
             button.addEventListener('click', () => {
-                // ボタンの次の要素（解答ボックス）を取得
                 const answerBox = button.nextElementSibling;
-                // 解答ボックスを表示／非表示に切り替え
                 if (answerBox.classList.contains('collapsed')) {
                     answerBox.classList.remove('collapsed');
                     button.textContent = '閉じる';
