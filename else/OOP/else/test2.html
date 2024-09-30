@@ -1,73 +1,107 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webアプリケーションの構成と概要</title>
     <style>
-         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #eef2f3;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 15px 0;
         }
 
         h1 {
-            text-align: center;
-            color: #333;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            margin: 0;
+            border-radius: 8px 8px 0 0;
         }
 
         h2 {
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
             color: #2c3e50;
         }
 
-        ol {
-            background-color: #fff;
-            padding: 50px;
-            list-style-position: inside;
-            border-radius: 80px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
-        ol li {
-            margin-bottom: 10px;
+        .section {
+            padding: 30px;
         }
 
-        ol li p {
-            margin: 5px 0;
+        .sub-section {
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
         }
 
         ul {
-            list-style-type: square;
-            margin-left: 5px;
+            padding-left: 20px;
         }
-        .section {
-            margin-bottom: 20px;
+
+        ul li {
+            line-height: 1.5em;
+            margin-bottom: 10px;
         }
-        .sub-section {
-            margin-left: 20px;
+
+        p,
+        li {
+            color: #7f8c8d;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.9em;
+            margin-top: 40px;
         }
     </style>
 </head>
+
 <body>
 
     <h1>OOP</h1>
 
     <div class="section">
         <h2>1～3 動的Webアプリケーションの構成とページ記述言語の概要</h2>
-        
+
         <div class="sub-section">
             <h3>Webサーバとクライアントの関係を説明</h3>
             <p>Webサーバは、ウェブ上でコンテンツを提供する役割を担うものを指し、クライアントはそのWebサーバに情報を要求し、受信するためのデバイスやソフトウェアのことを指す。</p>
-            
+
             <h3>Webページの構造とブラウザの役割を説明</h3>
             <p>構造：ウェブページの構造やコンテンツを記述するためのHTML、ウェブページのスタイルやデザインを定義するためのCSS、ウェブページに対する対話的な機能や動的な動作を追加するためのJavaScript</p>
             <p>ユーザがWebページを閲覧し、相互作用するためのソフトウェアアプリケーションがブラウザ。</p>
 
             <h3>クライアントサイド処理について説明</h3>
             <p>サーバではなくユーザのデバイス（通常はウェブブラウザ）上でウェブアプリケーションやウェブページが実行されるプロセス。</p>
-            
+
             <h3>サーバシステムの構成と各機能について説明</h3>
             <ul>
                 <li>ウェブサーバ：クライアント（通常はウェブブラウザ）からのリクエストに対して適切な応答を生成する役割。</li>
@@ -85,7 +119,7 @@
 
     <div class="section">
         <h2>4～6 サーバサイド処理(PHP入門)</h2>
-        
+
         <div class="sub-section">
             <h3>ページ記述言語とPHPプログラムの関係を説明</h3>
             <p>PHPは、HTMLの中に埋め込むことができ、動的なコンテンツを生成するために使用される。例えば、フォームからのデータの受け取り、データベースからの情報の取得、計算、条件分岐などがPHPで実行される。</p>
@@ -97,17 +131,20 @@
 
     <div class="section">
         <h2>7～10 オブジェクト指向プログラミング技法</h2>
-        
+
         <div class="sub-section">
             <h3>オブジェクト指向の概念</h3>
-            <p>オブジェクト指向プログラミング（OOP）は、コードを「オブジェクト」と呼ばれる部品に分割し、各オブジェクトがデータと操作を持つプログラミング方法です。これにより、ソフトウェアの設計と開発が効率的に行える。</p>
-            
+            <p>オブジェクト指向プログラミング（OOP）は、コードを「オブジェクト」と呼ばれる部品に分割し、各オブジェクトがデータと操作を持つプログラミング方法です。これにより、ソフトウェアの設計と開発が効率的に行える。
+            </p>
+
             <h3>クラスとオブジェクトの関係</h3>
-            <p>クラスは、オブジェクトの設計図またはテンプレート。クラスでオブジェクトの共通の属性（データや状態）と操作（メソッドや振る舞い）を定義する。オブジェクトは、クラスをもとに具体化された実体。オブジェクトはクラスの属性に対する具体的な値を持ち、クラスで定義されたメソッドを実行できる。</p>
+            <p>クラスは、オブジェクトの設計図またはテンプレート。クラスでオブジェクトの共通の属性（データや状態）と操作（メソッドや振る舞い）を定義する。オブジェクトは、クラスをもとに具体化された実体。オブジェクトはクラスの属性に対する具体的な値を持ち、クラスで定義されたメソッドを実行できる。
+            </p>
 
             <h3>カプセル化</h3>
             <p>クラス内のデータメンバー（変数）を非公開（private）または保護（protected）に設定し、外部からの直接アクセスを制限する方法。</p>
         </div>
     </div>
 </body>
+
 </html>
