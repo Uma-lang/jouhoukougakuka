@@ -58,7 +58,8 @@
             border-radius: 8px;
         }
 
-        .active, .collapsible:hover {
+        .active,
+        .collapsible:hover {
             background-color: #2980b9;
         }
 
@@ -71,8 +72,44 @@
             border-radius: 8px;
         }
 
-        .content p, .content ul {
+        .content p,
+        .content ul {
             margin: 15px;
+        }
+
+        .form-section {
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .form-section label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-section input,
+        .form-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-section input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-section input[type="submit"]:hover {
+            background-color: #2980b9;
         }
 
         @media (max-width: 768px) {
@@ -89,7 +126,8 @@
                 padding: 12px;
             }
 
-            .content p, .content ul {
+            .content p,
+            .content ul {
                 font-size: 14px;
             }
 
@@ -109,7 +147,8 @@
                 padding: 10px;
             }
 
-            .content p, .content ul {
+            .content p,
+            .content ul {
                 font-size: 12px;
             }
         }
@@ -121,91 +160,170 @@
 
     <ol>
         <li>
-            <button class="collapsible"><h2>Webサーバとクライアントの関係</h2></button>
-            <div class="content"><p>
-                クライアント（ユーザーのコンピュータやブラウザ）がWebサーバに対してリクエストを送り、Webサーバがそのリクエストに応じて必要なデータやWebページをレスポンスとして返す、という通信モデルである。クライアントとサーバはこのようにして情報をやり取りし、ユーザーがWebコンテンツを閲覧できるようになる。
-            </p></div>
+            <button class="collapsible">
+                <h2>Webサーバとクライアントの関係</h2>
+            </button>
+            <div class="content">
+                <p>
+                    クライアント（ユーザーのコンピュータやブラウザ）がWebサーバに対してリクエストを送り、Webサーバがそのリクエストに応じて必要なデータやWebページをレスポンスとして返す、という通信モデルである。クライアントとサーバはこのようにして情報をやり取りし、ユーザーがWebコンテンツを閲覧できるようになる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>Webページの構造とブラウザの役割を説明</h2></button>
-            <div class="content"><p>
-                Webページの構造は、主にHTML（HyperText MarkupLanguage）で記述される。HTMLは、ヘッダー、パラグラフ、リスト、リンク、画像などの要素を使って、ページの内容とその構造を定義する。見た目やデザインはCSS（Cascading Style Sheets）で指定し、動的な動作やインタラクションはJavaScriptで実現する。<br>
-                ブラウザの役割は、Webサーバーから取得したHTML、CSS、JavaScriptなどのファイルを解釈し、ユーザーが閲覧できる形で画面に表示することである。ブラウザはこれらのファイルを解析してWebページをレンダリング（描画）し、ユーザーの操作に応じてページを更新する。
-            </p></div>
+            <button class="collapsible">
+                <h2>Webページの構造とブラウザの役割を説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    Webページの構造は、主にHTML（HyperText
+                    MarkupLanguage）で記述される。HTMLは、ヘッダー、パラグラフ、リスト、リンク、画像などの要素を使って、ページの内容とその構造を定義する。見た目やデザインはCSS（Cascading
+                    Style Sheets）で指定し、動的な動作やインタラクションはJavaScriptで実現する。<br>
+                    ブラウザの役割は、Webサーバーから取得したHTML、CSS、JavaScriptなどのファイルを解釈し、ユーザーが閲覧できる形で画面に表示することである。ブラウザはこれらのファイルを解析してWebページをレンダリング（描画）し、ユーザーの操作に応じてページを更新する。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>クライアントサイド処理について説明</h2></button>
-            <div class="content"><p>
-                Webページにおいて<strong>ユーザーのブラウザ上で実行される処理</strong>のことである。JavaScriptなどのスクリプト言語を使用して、ユーザーとのインタラクション、入力データの検証、ページの動的な更新などを行う。これにより、サーバーに負荷をかけずにリアルタイムな応答性を実現できる。
-            </p></div>
+            <button class="collapsible">
+                <h2>クライアントサイド処理について説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    Webページにおいて<strong>ユーザーのブラウザ上で実行される処理</strong>のことである。JavaScriptなどのスクリプト言語を使用して、ユーザーとのインタラクション、入力データの検証、ページの動的な更新などを行う。これにより、サーバーに負荷をかけずにリアルタイムな応答性を実現できる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>サーバシステムの構成と各機能について説明</h2></button>
-            <div class="content"><p>
-                サーバシステムは、クライアントからのリクエストに応じてサービスやデータを提供するためのハードウェアとソフトウェアの集合である。主な構成要素として以下が挙げられる。
-            </p>
-            <ul>
-                <li><strong>ウェブサーバ</strong>：HTTPプロトコルを用いてウェブページやリソースを配信する。ApacheやNginxが代表的である。</li>
-                <li><strong>アプリケーションサーバ</strong>：ビジネスロジックを実行し、動的なコンテンツ生成やデータ処理を行う。TomcatやGlassFishなどがある。</li>
-                <li><strong>データベースサーバ</strong>：データの保存、管理、検索を担当する。MySQLやPostgreSQLが一般的である。</li>
-                <li><strong>ファイアウォール</strong>：ネットワークセキュリティを維持し、不正なアクセスや攻撃からシステムを保護する。</li>
-                <li><strong>ロードバランサ</strong>：複数のサーバ間でトラフィックを分散し、システム全体の性能と信頼性を向上させる。</li>
-            </ul>
-            <p>
-                各コンポーネントは連携して動作し、ユーザーに対して効率的かつ安全なサービス提供を実現する。
-            </p></div>
+            <button class="collapsible">
+                <h2>サーバシステムの構成と各機能について説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    サーバシステムは、クライアントからのリクエストに応じてサービスやデータを提供するためのハードウェアとソフトウェアの集合である。主な構成要素として以下が挙げられる。
+                </p>
+                <ul>
+                    <li><strong>ウェブサーバ</strong>：HTTPプロトコルを用いてウェブページやリソースを配信する。ApacheやNginxが代表的である。</li>
+                    <li><strong>アプリケーションサーバ</strong>：ビジネスロジックを実行し、動的なコンテンツ生成やデータ処理を行う。TomcatやGlassFishなどがある。</li>
+                    <li><strong>データベースサーバ</strong>：データの保存、管理、検索を担当する。MySQLやPostgreSQLが一般的である。</li>
+                    <li><strong>ファイアウォール</strong>：ネットワークセキュリティを維持し、不正なアクセスや攻撃からシステムを保護する。</li>
+                    <li><strong>ロードバランサ</strong>：複数のサーバ間でトラフィックを分散し、システム全体の性能と信頼性を向上させる。</li>
+                </ul>
+                <p>
+                    各コンポーネントは連携して動作し、ユーザーに対して効率的かつ安全なサービス提供を実現する。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>Common Gateway Interfaceについて説明</h2></button>
-            <div class="content"><p>
-                ウェブサーバと外部のアプリケーションプログラムを連携させるための標準的なインターフェースである。CGIを用いることで、ウェブサーバはユーザーからのリクエストに応じて外部プログラムを実行し、その結果を動的なウェブページとして生成・返送することができる。これにより、データベースとの連携やフォームの処理など、よりインタラクティブなウェブ機能を実現できる。
-            </p></div>
+            <button class="collapsible">
+                <h2>Common Gateway Interfaceについて説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    ウェブサーバと外部のアプリケーションプログラムを連携させるための標準的なインターフェースである。CGIを用いることで、ウェブサーバはユーザーからのリクエストに応じて外部プログラムを実行し、その結果を動的なウェブページとして生成・返送することができる。これにより、データベースとの連携やフォームの処理など、よりインタラクティブなウェブ機能を実現できる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>サーバサイド処理について説明</h2></button>
-            <div class="content"><p>
-                ウェブアプリケーションにおいて<strong>サーバ側で実行される処理</strong>のことである。ユーザーからのリクエストを受け取り、データベースのアクセス、ビジネスロジックの実行、動的なコンテンツの生成などを行う。これにより、ユーザーに対して適切な情報やサービスを提供することが可能となる。
-            </p></div>
+            <button class="collapsible">
+                <h2>サーバサイド処理について説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    ウェブアプリケーションにおいて<strong>サーバ側で実行される処理</strong>のことである。ユーザーからのリクエストを受け取り、データベースのアクセス、ビジネスロジックの実行、動的なコンテンツの生成などを行う。これにより、ユーザーに対して適切な情報やサービスを提供することが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>ページ記述言語とPHPプログラムの関係を説明</h2></button>
-            <div class="content"><p>
-                ページ記述言語（HTMLやCSSなど）は、ウェブページの構造やデザインを定義するために使われる。PHPはサーバサイドのスクリプト言語であり、動的にページ記述言語のコードを生成・操作するために利用される。PHPプログラムはサーバ上で実行され、その結果として生成されたHTMLやCSSがクライアントに送信される。つまり、PHPはページ記述言語を動的に生成・管理するための手段として機能し、動的なウェブコンテンツを提供する関係にある。
-            </p></div>
+            <button class="collapsible">
+                <h2>ページ記述言語とPHPプログラムの関係を説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    ページ記述言語（HTMLやCSSなど）は、ウェブページの構造やデザインを定義するために使われる。PHPはサーバサイドのスクリプト言語であり、動的にページ記述言語のコードを生成・操作するために利用される。PHPプログラムはサーバ上で実行され、その結果として生成されたHTMLやCSSがクライアントに送信される。つまり、PHPはページ記述言語を動的に生成・管理するための手段として機能し、動的なウェブコンテンツを提供する関係にある。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>変数のスコープについて説明</h2></button>
-            <div class="content"><p>
-                プログラム内で変数が有効で参照可能な範囲のことを指す。スコープには主に<strong>グローバルスコープ</strong>と<strong>ローカルスコープ</strong>があり、グローバルスコープの変数はプログラム全体からアクセス可能である。一方、ローカルスコープの変数は特定の関数やブロック内でのみ有効で、その外部からはアクセスできない。適切なスコープ管理により、変数の名前衝突や予期せぬ挙動を防ぐことができる。
-            </p></div>
+            <button class="collapsible">
+                <h2>変数のスコープについて説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    プログラム内で変数が有効で参照可能な範囲のことを指す。スコープには主に<strong>グローバルスコープ</strong>と<strong>ローカルスコープ</strong>があり、グローバルスコープの変数はプログラム全体からアクセス可能である。一方、ローカルスコープの変数は特定の関数やブロック内でのみ有効で、その外部からはアクセスできない。適切なスコープ管理により、変数の名前衝突や予期せぬ挙動を防ぐことができる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>オブジェクト指向の概念を説明</h2></button>
-            <div class="content"><p>
-                プログラムを<strong>オブジェクト</strong>と呼ばれる独立した部品の集合として設計・構築する考え方である。各オブジェクトはデータ（属性）と、それを操作する手続き（メソッド）を持つ。カプセル化、継承、ポリモーフィズムなどの特性を利用して、コードの再利用性や保守性を高めることが可能となる。
-            </p></div>
+            <button class="collapsible">
+                <h2>オブジェクト指向の概念を説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    プログラムを<strong>オブジェクト</strong>と呼ばれる独立した部品の集合として設計・構築する考え方である。各オブジェクトはデータ（属性）と、それを操作する手続き（メソッド）を持つ。カプセル化、継承、ポリモーフィズムなどの特性を利用して、コードの再利用性や保守性を高めることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>クラスとオブジェクトの関係を説明</h2></button>
-            <div class="content"><p>
-                クラスとは、オブジェクトを生成するための設計図やテンプレートである。クラスには属性（データ）とメソッド（操作）が定義されており、これを基にオブジェクト（インスタンス）が作られる。オブジェクトはクラスの具体的な実体であり、クラスで定義された属性やメソッドを持つ。つまり、クラスが設計図で、オブジェクトがその設計図から作られた建物のような関係にある。
-            </p></div>
+            <button class="collapsible">
+                <h2>クラスとオブジェクトの関係を説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    クラスとは、オブジェクトを生成するための設計図やテンプレートである。クラスには属性（データ）とメソッド（操作）が定義されており、これを基にオブジェクト（インスタンス）が作られる。オブジェクトはクラスの具体的な実体であり、クラスで定義された属性やメソッドを持つ。つまり、クラスが設計図で、オブジェクトがその設計図から作られた建物のような関係にある。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
 
         <li>
-            <button class="collapsible"><h2>カプセル化について説明</h2></button>
-            <div class="content"><p>
-                オブジェクト指向プログラミングにおいて、<strong>データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する</strong>概念である。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
-            </p></div>
+            <button class="collapsible">
+                <h2>カプセル化について説明</h2>
+            </button>
+            <div class="content">
+                <p>
+                    オブジェクト指向プログラミングにおいて、<strong>データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する</strong>概念である。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
         </li>
     </ol>
 
