@@ -118,7 +118,7 @@
             font-size: 18px;
         }
 
-        /* スマートフォン対応 */
+                /* スマートフォン対応 */
         @media (max-width: 768px) {
             /* タイトルのフォントサイズを調整 */
             h1 {
@@ -141,19 +141,15 @@
             /* notice-board を画面下部に移動 */
             aside.notice-board {
                 position: relative;
-                top: 0;
-                right: 0;
-                width: 90%;
-                max-width: 100%;
-                margin: 20px auto;
+                top: auto; /* 固定位置を解除 */
+                right: auto; /* 右寄せを解除 */
+                bottom: 0; /* 画面の下に配置 */
+                width: 100%; /* 横幅を画面幅いっぱいに */
+                max-width: 100%; /* 最大横幅を100%に */
+                margin: 20px auto; /* マージンを調整 */
                 max-height: none; /* スクロール高さを解除 */
                 box-shadow: none;
-            }
-
-            /* リスト内の項目のスタイルを調整 */
-            .notice-board h2 {
-                font-size: 1.2em;
-                padding: 5px 0;
+                border: 1px solid #ddd; /* 境界線を明示 */
             }
 
             /* スクロールリストの高さを調整 */
