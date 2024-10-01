@@ -87,6 +87,7 @@ ol li {
 }
 
 /* カッコ部分のスタイル */
+/*
 ol li::before {
     content: '（';
 }
@@ -94,7 +95,7 @@ ol li::before {
 ol li::after {
     content: '）';
 }
-
+*/
 /* ラベルのスタイル */
 strong {
     font-weight: bold;
