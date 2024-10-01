@@ -20,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"></script>
    
     <style>
-        /* ベーススタイル */
+               /* ベーススタイル */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -71,7 +71,6 @@ if (!isset($_SESSION['loggedin'])) {
         }
 
         .footer {
-
             color: #333;
             padding: 20px;
             position: relative;
@@ -82,14 +81,20 @@ if (!isset($_SESSION['loggedin'])) {
             text-align: left;
         }
 
-        .notice-board {
+        aside.notice-board {
+            position: absolute;
+            /* 画面に対して絶対配置 */
+            top: 200px;
+            /* 必要に応じて縦方向の位置を調整 */
+            right: 5px;
+            /* 画面の右端から5pxの位置に表示 */
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 300px;
+            /* 必要に応じて横幅を調整 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .notice-board h2 {
@@ -99,9 +104,12 @@ if (!isset($_SESSION['loggedin'])) {
         }
 
         .notice-list {
-            max-height: 200px; /* スクロール可能な高さ */
-            overflow-y: auto;  /* 縦方向のスクロールを許可 */
-            padding-right: 10px; /* スクロールバーの幅を考慮 */
+            max-height: 200px;
+            /* スクロール可能な高さ */
+            overflow-y: auto;
+            /* 縦方向のスクロールを許可 */
+            padding-right: 10px;
+            /* スクロールバーの幅を考慮 */
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
@@ -119,21 +127,18 @@ if (!isset($_SESSION['loggedin'])) {
             color: #888;
             font-size: 0.9em;
         }
+
         /* 右上の枠囲み文字 */
         .top-right-text {
-            /*position: fixed;*/      /* 画面右上に固定 */
+            position: absolute;
             float: right;
-            top: 20px;             /* 上からの位置 */
-            right: 20px;           /* 右からの位置 */
-            padding: 10px 20px;    /* 内側の余白を指定 */
-            /*border: 2px solid #4CAF50;*/  /* 枠線の色と太さ */
-            /*border-radius: 8px;    /* 枠の角を丸める */
-            /*background-color: #f9f9f9; /* 背景色 */
-            color: #333;           /* 文字色 */
-            font-size: 18px;       /* 文字サイズ */
-            /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/ /* 影を追加 */
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            color: #333;
+            font-size: 18px;
         }
-        
+
         /* スマートフォン対応 */
         @media (max-width: 768px) {
             h1 {
@@ -144,6 +149,7 @@ if (!isset($_SESSION['loggedin'])) {
                 padding: 10px 15px;
             }
         }
+    </style>
     </style>
 </head>
 
@@ -176,6 +182,7 @@ if (!isset($_SESSION['loggedin'])) {
             <h2><a href="else/compiler/index.html">コンパイラ(10/3(Thur))</a></h2>
         </li>
     </ul>
+    <aside>
     <div class="notice-board">
         <h2>ホームページ更新情報</h2>
         <div class="notice-list">
@@ -201,6 +208,7 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
         </div>
     </div>
+    </aside>
     
     <!--
     <div>現在の閲覧合計回数は：</div>
