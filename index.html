@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <title>令和６年度情報工学科前期試験対策</title>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"></script>
-
+   
     <style>
         /* ベーススタイル */
         body {
@@ -69,20 +68,19 @@
             text-align: left;
         }
 
+        /* notice-board 用のスタイルを aside に変更 */
         aside.notice-board {
-            position: absolute;
-            /* 画面に対して絶対配置 */
-            top: 200px;
-            /* 必要に応じて縦方向の位置を調整 */
-            right: 5px;
-            /* 画面の右端から5pxの位置に表示 */
+            position: absolute; /* 画面全体に対して固定配置 */
+            top: 200px; /* 必要に応じて縦方向の位置を調整 */
+            right: 5px; /* 画面の右端から5pxの位置に表示 */
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 20px;
-            max-width: 300px;
-            /* 必要に応じて横幅を調整 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 250px; /* 必要に応じて横幅を調整 */
+            max-height: 400px; /* 最大の高さを設定してスクロールを適用 */
+            overflow-y: auto; /* 縦方向のスクロールを有効化 */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .notice-board h2 {
@@ -92,12 +90,7 @@
         }
 
         .notice-list {
-            max-height: 200px;
-            /* スクロール可能な高さ */
-            overflow-y: auto;
-            /* 縦方向のスクロールを許可 */
-            padding-right: 10px;
-            /* スクロールバーの幅を考慮 */
+            padding-right: 10px; /* スクロールバーの幅を考慮 */
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
@@ -118,7 +111,6 @@
 
         /* 右上の枠囲み文字 */
         .top-right-text {
-            position: absolute;
             float: right;
             top: 20px;
             right: 20px;
@@ -126,7 +118,7 @@
             color: #333;
             font-size: 18px;
         }
-
+        
         /* スマートフォン対応 */
         @media (max-width: 768px) {
             h1 {
@@ -141,9 +133,7 @@
 </head>
 
 <body>
-    <div class="top-right-text"><a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a>
-    </div>
+    <div class="top-right-text"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a></div>
     <h1>令和６年度情報工学科前期試験対策</h1>
     <ul>
         <li>
@@ -172,7 +162,6 @@
         </li>
     </ul>
 
-    <!-- aside に変更 -->
     <aside class="notice-board">
         <h2>ホームページ更新情報</h2>
         <div class="notice-list">
@@ -203,5 +192,4 @@
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
