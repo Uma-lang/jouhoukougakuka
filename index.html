@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <title>令和６年度情報工学科前期試験対策</title>
@@ -68,24 +67,18 @@
             text-align: left;
         }
 
-        /* notice-board 用のスタイルを aside に変更 */
+        /* notice-board 用のスタイル */
         aside.notice-board {
-            position: absolute;
-            /* 画面全体に対して固定配置 */
-            top: 200px;
-            /* 必要に応じて縦方向の位置を調整 */
+            position: fixed;
+            top: 100px;
             right: 20px;
-            /* 画面の右端から5pxの位置に表示 */
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 20px;
             max-width: 250px;
-            /* 必要に応じて横幅を調整 */
             max-height: 500px;
-            /* 最大の高さを設定してスクロールを適用 */
             overflow-y: auto;
-            /* 縦方向のスクロールを有効化 */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -97,7 +90,6 @@
 
         .notice-list {
             padding-right: 10px;
-            /* スクロールバーの幅を考慮 */
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
@@ -109,23 +101,6 @@
 
         .notice-item:last-child {
             border-bottom: none;
-        }
-
-        aside.notice-board h2 {
-            position: sticky;
-            /* 親要素（aside.notice-board）内で相対的に固定 */
-            top: 0;
-            /* 上端からの固定位置を指定 */
-            background-color: #fff;
-            /* 背景色を指定して下の要素と重ならないようにする */
-            z-index: 10;
-            /* 他の要素の上に表示されるようにする */
-            border-bottom: 2px solid #4CAF50;
-            /* 下の境界線を強調 */
-            padding: 10px 0;
-            /* パディングを追加して見た目を調整 */
-            margin: 0;
-            /* デフォルトのマージンをリセット */
         }
 
         .date {
@@ -136,7 +111,6 @@
         /* 右上の枠囲み文字 */
         .top-right-text {
             position: absolute;
-            float: right;
             top: 20px;
             right: 20px;
             padding: 10px 20px;
@@ -146,109 +120,71 @@
 
         /* スマートフォン対応 */
         @media (max-width: 768px) {
+            /* タイトルのフォントサイズを調整 */
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
+                margin-top: 30px;
             }
 
+            /* リンクのパディングを調整 */
             a {
                 padding: 10px 15px;
+                font-size: 1em;
             }
-             /* 右上の枠囲み文字 */
-        .top-right-text {
-            /*position: fixed;*/      /* 画面右上に固定 */
-            float: right;
-            top: 20px;             /* 上からの位置 */
-            right: 20px;           /* 右からの位置 */
-            padding: 10px 20px;    /* 内側の余白を指定 */
-            /*border: 2px solid #4CAF50;*/  /* 枠線の色と太さ */
-            /*border-radius: 8px;    /* 枠の角を丸める */
-            /*background-color: #f9f9f9; /* 背景色 */
-            color: #333;           /* 文字色 */
-            font-size: 18px;       /* 文字サイズ */
-            /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/ /* 影を追加 */
-        }
-              aside.notice-board {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
 
-        aside.notice-board h2 {
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+            /* ウルリスト全体のマージンを調整 */
+            ul {
+                margin: 30px auto;
+                max-width: 90%;
+            }
 
-        .notice-list {
-            max-height: 200px; /* スクロール可能な高さ */
-            overflow-y: auto;  /* 縦方向のスクロールを許可 */
-            padding-right: 10px; /* スクロールバーの幅を考慮 */
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-        }
+            /* notice-board を画面下部に移動 */
+            aside.notice-board {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 90%;
+                max-width: 100%;
+                margin: 20px auto;
+                max-height: none; /* スクロール高さを解除 */
+                box-shadow: none;
+            }
 
-        .notice-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
+            /* リスト内の項目のスタイルを調整 */
+            .notice-board h2 {
+                font-size: 1.2em;
+                padding: 5px 0;
+            }
 
-        .notice-item:last-child {
-            border-bottom: none;
-        }
+            /* スクロールリストの高さを調整 */
+            .notice-list {
+                max-height: 300px;
+                padding-right: 5px;
+            }
 
-        .date {
-            color: #888;
-            font-size: 0.9em;
-        }
-              /* 右上の枠囲み文字 */
-        .top-right-text {
-            position: fixed;
-            float: right;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            color: #333;
-            font-size: 18px;
-        }
+            /* 右上の枠囲み文字の位置調整 */
+            .top-right-text {
+                top: 10px;
+                right: 10px;
+                font-size: 16px;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="top-right-text"><a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a>
-    </div>
+    <div class="top-right-text"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a></div>
     <h1>令和６年度情報工学科前期試験対策</h1>
     <ul>
-        
-        <li>
-            <h2><a href="else/R6_3F_zenki_training/index.html">航空訓練(9/27(Fri))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/Matsubara/suuchikeisan.html">数値計算(9/30(Mon))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/Matsubara/ensyu2.html">情報工学演習Ⅱ(9/30(Mon))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/ai/index.html">人工知能Ⅰ(10/1(Mon))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/kokusaiho/index.html">国際法(10/2(Wed))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/OOP/index.html">オブジェクト指向プログラミング(10/2(Wed))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/Kubo_Masao/index.html">久保　正男(9/27(Fri))(10/3(Thu))</a></h2>
-        </li>
-        <li>
-            <h2><a href="else/compiler/index.html">コンパイラ(10/3(Thu))</a></h2>
-        </li>
+        <li><h2><a href="else/R6_3F_zenki_training/index.html">航空訓練(9/27(Fri))</a></h2></li>
+        <li><h2><a href="else/Matsubara/suuchikeisan.html">数値計算(9/30(Mon))</a></h2></li>
+        <li><h2><a href="else/Matsubara/ensyu2.html">情報工学演習Ⅱ(9/30(Mon))</a></h2></li>
+        <li><h2><a href="else/ai/index.html">人工知能Ⅰ(10/1(Mon))</a></h2></li>
+        <li><h2><a href="else/kokusaiho/index.html">国際法(10/2(Wed))</a></h2></li>
+        <li><h2><a href="else/OOP/index.html">オブジェクト指向プログラミング(10/2(Wed))</a></h2></li>
+        <li><h2><a href="else/Kubo_Masao/index.html">久保　正男(9/27(Fri))(10/3(Thu))</a></h2></li>
+        <li><h2><a href="else/compiler/index.html">コンパイラ(10/3(Thu))</a></h2></li>
     </ul>
 
     <aside class="notice-board">
@@ -285,5 +221,4 @@
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
