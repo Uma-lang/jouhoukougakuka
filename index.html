@@ -1,26 +1,14 @@
-<?php
-session_start();
-
-// ログイン状態を確認
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
-    exit();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
     <title>令和６年度情報工学科前期試験対策</title>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"></script>
-   
+
     <style>
-               /* ベーススタイル */
+        /* ベーススタイル */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -150,11 +138,12 @@ if (!isset($_SESSION['loggedin'])) {
             }
         }
     </style>
-    </style>
 </head>
 
 <body>
-    <div class="top-right-text"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a></div>
+    <div class="top-right-text"><a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdIcal2IY2ISCcY-mhotTQ6_bRsYGhExlQ81KQghSw-pM4suw/viewform?usp=sf_link">訂正箇所があればここから</a>
+    </div>
     <h1>令和６年度情報工学科前期試験対策</h1>
     <ul>
         <li>
@@ -182,8 +171,9 @@ if (!isset($_SESSION['loggedin'])) {
             <h2><a href="else/compiler/index.html">コンパイラ(10/3(Thur))</a></h2>
         </li>
     </ul>
-    <aside>
-    <div class="notice-board">
+
+    <!-- aside に変更 -->
+    <aside class="notice-board">
         <h2>ホームページ更新情報</h2>
         <div class="notice-list">
             <div class="notice-item">
@@ -207,56 +197,11 @@ if (!isset($_SESSION['loggedin'])) {
                 <p><a href="https://uma-lang.github.io/jouhoukougakuka/index.html">ホームページを開設しました。</a></p>
             </div>
         </div>
-    </div>
     </aside>
-    
-    <!--
-    <div>現在の閲覧合計回数は：</div>
-    <div id="counter">0</div>
 
-    <script>
-        // Firebase の初期化設定
-        const firebaseConfig = {
-            apiKey: "あなたのAPIキーをここに",
-            authDomain: "あなたのプロジェクトID.firebaseapp.com",
-            databaseURL: "https://あなたのプロジェクトID.firebaseio.com",
-            projectId: "あなたのプロジェクトID",
-            storageBucket: "あなたのプロジェクトID.appspot.com",
-            messagingSenderId: "あなたのメッセージングID",
-            appId: "あなたのアプリID"
-        };
-
-        // Firebase の初期化
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        // 閲覧カウンタのリファレンスを取得
-        const counterRef = database.ref('page_views');
-
-        // 閲覧回数を1増やす
-        counterRef.transaction(function(currentValue) {
-            return (currentValue || 0) + 1;
-        });
-
-        // 閲覧回数をリアルタイムで取得して表示
-        counterRef.on('value', (snapshot) => {
-            document.getElementById('counter').textContent = snapshot.val();
-        });
-    </script>
-    -->
-    <!--<a href="logout.php">ログアウト</a>-->
     <footer class="footer">
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
     </footer>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V9YGQ1CE3K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-V9YGQ1CE3K');
-</script>
-
-    
 </body>
+
+</html>
