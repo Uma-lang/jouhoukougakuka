@@ -16,6 +16,7 @@
             justify-content: center;
             background: linear-gradient(45deg, #ffcc00, #ff3300);
             font-family: 'Arial', sans-serif;
+            position: relative;
         }
 
         /* 警告画面のコンテナ */
@@ -54,6 +55,20 @@
             text-shadow: 1px 1px 3px #000;
         }
 
+        /* カウントダウン表示 */
+        .countdown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px #000;
+            z-index: 100; /* 最前面に表示 */
+            animation: scale 1s infinite; /* 数字が拡大するアニメーション */
+        }
+
         /* 振動アニメーション */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -66,13 +81,59 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
+
+        /* カウントダウンの拡大アニメーション */
+        @keyframes scale {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* 真っ暗画面のスタイル */
+        .blackout {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+            z-index: 200; /* カウントダウンの上に表示 */
+        }
     </style>
 </head>
 <body>
+    <!-- カウントダウン表示 -->
+    <div class="countdown" id="countdown">10</div>
+
+    <!-- 警告コンテナ -->
     <div class="warning-container">
         <div class="warning-icon">⚠️</div>
         <h1 class="warning-title">WARNING: Not Allowed</h1>
         <p class="warning-message">You do not have permission to access this page.</p>
     </div>
+
+    <!-- 真っ暗画面 -->
+    <div class="blackout" id="blackout"></div>
+
+    <script>
+        // カウントダウン機能の実装
+        let countdownValue = 10; // カウントダウンの初期値
+        const countdownElement = document.getElementById('countdown'); // カウントダウン表示の要素
+        const blackoutElement = document.getElementById('blackout'); // 真っ暗画面の要素
+
+        // 1秒ごとにカウントダウンを更新
+        const countdownInterval = setInterval(() => {
+            countdownValue--; // カウントを減少
+            countdownElement.textContent = countdownValue; // カウントダウン表示を更新
+
+            // カウントが0になったら真っ暗画面を表示
+            if (countdownValue <= 0) {
+                clearInterval(countdownInterval); // インターバルを停止
+                blackoutElement.style.display = 'block'; // 真っ暗画面を表示
+                countdownElement.style.display = 'none'; // カウントダウンを非表示
+            }
+        }, 1000); // 1秒ごとに実行
+    </script>
 </body>
 </html>
