@@ -122,11 +122,11 @@
                 <label><input type="radio" name="q20" value="X">X</label>
             </div>
 
-            <button type="button" onclick="checkAnswersTest1()">採点する</button>
+            <button type="button" onclick="checkAnswersTest1()" href ="#result1">採点する</button>
         </form>
     </div>
 
-    <div id="results1"></div>
+    <div id="results1">
 
     <script>
         const correctAnswersTest1 = {
@@ -194,6 +194,7 @@
             document.getElementById('results1').innerHTML = resultsHTML;
         }
     </script>
+    </div>
     <footer>
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
     </footer>
