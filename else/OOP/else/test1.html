@@ -715,12 +715,6 @@
                             DumpArray(a);
                         &lt;/script&gt;
 
-                    &lt;head&gt;
-                        &lt;script src="./js_lib.js"&gt;&lt;/script&gt;
-                    &lt;/head&gt;
-                    &lt;body&gt;
-                        &lt;script src="./js_main.js"&gt;&lt;/script&gt;
-                    &lt;/body&gt;
                     </pre>
                 </p>
             </div>
@@ -734,7 +728,39 @@
             </button>
             <div class="content">
                 <p>
-                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                    <pre>
+                    &lt;head&gt;
+                        &lt;meta charset="utf-8"&gt;
+                        &lt;script&gt;
+                        function page(){
+                          obj = document.open.url; // 本文フォームのセレクタオブジェクト、DOM指定
+                          no  = obj.selecedIndex; // オブジェクトが持つ選択した値のインデックス
+                          if(no != 0){             // 有効な選択肢（0番以外）の場合、カッコ内を処理
+                            location.href = obj.options[no].value;  // ページ属性値（href）強制変更
+                          }
+                        }
+                        &lt;/script&gt;
+                        &lt;/head&gt;
+                        
+                        &lt;body&gt;
+                        &lt;!--
+                        オブジェクト名： open
+                        --&gt;
+                        &lt;form name="open"&gt;
+                          &lt;!--
+                          オブジェクト名： url
+                          ※document.open.url で指定可能
+                          --&gt;
+                          &lt;select name="url" onChange="page()"&gt;
+                            &lt;option value=""&gt;ページ選択&lt;/option&gt;
+                            &lt;option value="https://www.mod.go.jp/nda/"&gt;防衛大学校&lt;/option&gt;
+                            &lt;option value="http://www.nda.ac.jp/cs/"  &gt;情報工学科&lt;/option&gt;
+                          &lt;/select&gt;
+                        
+                        &lt;/form&gt;
+                        
+                        &lt;/body&gt;
+                        </pre>
                 </p>
             </div>
             <div class="form-section">
@@ -747,7 +773,14 @@
             </button>
             <div class="content">
                 <p>
-                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                    <pre>
+                    &lt;head&gt;
+                        &lt;script src="./js_lib.js"&gt;&lt;/script&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;script src="./js_main.js"&gt;&lt;/script&gt;
+                    &lt;/body&gt;
+                    </pre>
                 </p>
             </div>
             <div class="form-section">
