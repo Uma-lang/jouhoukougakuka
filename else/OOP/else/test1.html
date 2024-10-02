@@ -369,10 +369,13 @@
                     &gt;
                     出力:A
                     &lt;?php$i = 0;while($i &lt; 3){ 
-                        $i++; echo "i=".$i."&lt;br&gt;\n";
+                        $i++;
+                        echo "i=".$i."&lt;br&gt;\n";
                     }
                     ?&gt;
-                    出力:i=1i=2
+                    出力:
+                    i=1
+                    i=2
                     </code></pre>
                 </p>
             </div>
@@ -389,18 +392,20 @@
                 <p>
                     <pre><code>
                     &lt;?php
-                    $a[] = a1;
-                    $a[] = a2;
-                    $a[] = a3;
-                    $a[] = a4;
-                    $a[] = a5;
+                    <em class="red-text">
+                        $a[] = a1;
+                        $a[] = a2;
+                        $a[] = a3;
+                        $a[] = a4;
+                        $a[] = a5;
+                    </em>
                     //配列の内容を全て出力（forループ）
                     for($i=0; $i&lt;5; $i++){
                         print "$i: $a[$i]&lt;br&gt;" ;
                     }
                     ?&gt;
                     &lt;?php
-                    $a = array(1,3,5,2,4,6,999);
+                    <em class="red-text">$a = array(1,3,5,2,4,6,999);</em>
                     foreach($a as $i){
                         echo "i=".$i."&lt;br&gt;\n";
                     }
@@ -423,7 +428,7 @@
                     &lt;head&gt;
                     &lt;?php
                     // DumpArray関数を定義
-                    function DumpArray($a){
+                    <em class="red-text">function DumpArray($a){</em>
                         // 配列の内容表示
                         for($i=0; $i&lt;count($a); $i++){
                             print "$i: $a[$i]&lt;br&gt;";
@@ -434,7 +439,7 @@
                     &lt;body&gt;
                     &lt;?php
                     $a= array(a1,b2,a3,b4,a5);
-                    DumpArray($a); // 元のデータ列を表示
+                    <em class="red-text">DumpArray($a);</em> // 元のデータ列を表示
                     &lt;/body&gt;
                     </code></pre>
                 </p>
