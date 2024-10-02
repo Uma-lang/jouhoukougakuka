@@ -654,6 +654,7 @@
             <div class="content">
                 <p>
                     &lt;script&gt;<br>var i = 1;<br>var j = 2;<br>document.write(i + j);<br>
+                    出力:3
                 </p>
             </div>
             <div class="form-section">
@@ -666,7 +667,24 @@
             </button>
             <div class="content">
                 <p>
-                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                    <pre>
+                    &lt;script&gt;
+                        var a=[1,3,5,7,9,99];
+                        for(var i=0;i&lt;a.length;i++){
+                          document.write(a[i]);
+                          document.write("&lt;br&gt;");
+                        }
+                    &lt;/script&gt;
+                    &lt;script&gt;
+                        var a=[1,3,5,7,9,99];
+                        for(var i=0;i&lt;a.length;i++){
+                            if((a[i]%3)==0){
+                                document.write(a[i]);
+                                document.write("&lt;br&gt;");
+                            }
+                        }
+                    &lt;/script&gt;
+                            </pre>
                 </p>
             </div>
             <div class="form-section">
@@ -679,7 +697,31 @@
             </button>
             <div class="content">
                 <p>
-                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                    <pre>
+                    &lt;script&gt;
+                        function DumpArray(data){
+                            for(var i=0;i&lt;data.length;i++){
+                                if((data[i]%3)==0){
+                                    document.write(data[i]);
+                                    document.write("&lt;br&gt;");
+                                }
+                            }
+                        }
+                    &lt;/script&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;script&gt;
+                            var a=[1,3,5,7,9,99];
+                            DumpArray(a);
+                        &lt;/script&gt;
+
+                    &lt;head&gt;
+                        &lt;script src="./js_lib.js"&gt;&lt;/script&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;script src="./js_main.js"&gt;&lt;/script&gt;
+                    &lt;/body&gt;
+                    </pre>
                 </p>
             </div>
             <div class="form-section">
