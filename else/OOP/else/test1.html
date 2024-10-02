@@ -202,6 +202,30 @@
 
         <li>
             <button class="collapsible">
+                <h2>HTMLとCSSを用いたホームページを作成できる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;!DOCTYPE html&gt;<br>
+                    &lt;html lang="ja"&gt;<br>
+                    &lt;head&gt;<br>
+                    &lt;style&gt;<br>
+                    &lt;!--ここにcssを記述--&gt;<br>
+                    &lt;/style&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &lt;!--ここにコンテンツを記述--&gt;<br>
+                    &lt;/body&gt;<br>
+                    &lt;/html&gt;<br>
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
                 <h2>クライアントサイド処理について説明</h2>
             </button>
             <div class="content">
@@ -269,13 +293,112 @@
             </button>
             <div class="content">
                 <p>
-                    ページ記述言語は、ウェブページの構造やデザインを定義するために使われる。PHPはサーバサイドのスクリプト言語であり、動的にページ記述言語のコードを生成・操作するために利用される。つまり、PHPはページ記述言語を動的に生成・管理するための手段として機能し、動的なウェブコンテンツを提供する関係にある。
+                    ページ記述言語は、ウェブページの構造やデザインを定義するために使われる。PHPはサーバサイドのスクリプト言語であり、動的にページ記述言語のコードを生成・操作するために利用される。PHPプログラムはサーバ上で実行され、その結果として生成されたHTMLやCSSがクライアントに送信される。つまり、PHPはページ記述言語を動的に生成・管理するための手段として機能し、動的なウェブコンテンツを提供する関係にある。
                 </p>
             </div>
             <div class="form-section">
                 <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
             </div>
         </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>各種演算処理とその結果表示ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;php?<br>
+                    $a = "ABC";<br>
+                    $b = "DEF";<br>
+                    echo $a.$b<br>
+                    &gt;<br>
+                    出力:ABCDEF<br>
+                    &lt;php?<br>
+                    $a = 3;<br>
+                    $b = 7;<br>
+                    echo $a+$b,"&lt;br&gt;\n";<br>
+                    &gt;<br>
+                    出力:10
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>制御処理（条件分岐，繰り返し）ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;?php<br>
+                    $a = "A";<br>
+                    if($a == "A"){<br>
+                    echo "A\n";<br>
+                    };<br>
+                    else echo "?\n";<br>
+                    &gt;<br>
+                    出力:A<br>
+                    &lt;?php<br>$i = 0;<br>while($i &lt; 3){<bR> $i++; <br>echo "i="
+                    .$i."&lt;br&gt;\n";<br>}<br>?&gt;<br>
+                    出力:<br>i=1<br>i=2
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>配列処理ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;?php<br>$a[] = a1;<br>$a[] = a2;<br>$a[] = a3;<br>$a[] = a4;<br>$a[] = a5;<br>//
+                    配列の内容を全て出力（forループ）<br>
+                    for($i=0; $i&lt;5; $i++){<br> print "$i: $a[$i]&lt;br&gt;" ; <br>} <br>?&gt;<br><br>
+                    &lt;?php<br>$a = array(1,3,5,2,4,6,999);<br>foreach($a as $i){<br> echo
+                    "i=".$i."&lt;br&gt;\n";<br>}<br>?&gt;
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>関数の定義とその呼び出し処理ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;head&gt;<br>
+                    &lt;?php<br>
+                    // DumpArray関数を定義<br>
+                    function DumpArray($a)<br>
+                    {<br>
+                    // 配列の内容表示<br>
+                    for($i=0; $i&lt;count($a); $i++){<br>
+                    print "$i: $a[$i]&lt;br&gt;";<br>
+                    }<br>
+                    }<br>
+                    ?&gt;<br>
+                    &lt;/head&gt;<br>
+                    &lt;body&gt;<br>
+                    &lt;?php<br>
+                    $a= array(a1,b2,a3,b4,a5);<br>
+                    DumpArray($a); // 元のデータ列を表示<br>
+                    &lt;/body&gt;
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+
 
         <li>
             <button class="collapsible">
@@ -311,9 +434,60 @@
             </button>
             <div class="content">
                 <p>
-                    クラスとは、オブジェクトを生成するための設計図やテンプレート。クラスには属性（データ）とメソッド（操作）が定義されており、これを基にオブジェクト（インスタンス）が作られる。つまり、クラスが設計図で、オブジェクトがその設計図から作られた建物のような関係にある。
+                    クラスとは、オブジェクトを生成するための設計図やテンプレート。クラスには属性（データ）とメソッド（操作）が定義されており、これを基にオブジェクト（インスタンス）が作られる。オブジェクトはクラスの具体的な実体であり、クラスで定義された属性やメソッドを持つ。つまり、クラスが設計図で、オブジェクトがその設計図から作られた建物のような関係にある。
                 </p>
             </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>クラスライブラリを用いた処理ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    include("./sample_function_mylib2.php");
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>クラスを定義して使用できる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    <pre>
+                    &lt;head&gt;
+                    &lt;?php
+                    class DumpArray { // クラスの定義
+                        function __construct($data){ // オブジェクト生成時に実行（特別な関数）
+                            for($i=0; $i&lt;count($data); $i++){
+                                print "$i: $data[$i]&lt;br&gt;";
+                            }
+                        }
+                        function DumpArray($data){ // メソッド
+                            for($i=0; $i&lt;count($data); $i++){
+                                print "$i: $data[$i]&lt;br&gt;";
+                            }
+                        }
+                    }
+                    ?&gt;
+                    &lt;/head&gt;
+
+                    &lt;body&gt;
+                    &lt;?php
+                    $a = array('a1','b2','a3','b4','a5');
+                    $obj = new DumpArray($a); // クラスの定義からオブジェクトを生成
+                    ?&gt;
+                    &lt;/body&gt;
+                </p></div>
+        </div>
+            
             <div class="form-section">
                 <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
             </div>
@@ -332,6 +506,213 @@
                 <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
             </div>
         </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>スーパークラスの定義を継承できる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    <pre>
+                        &lt;head&gt;
+                        &lt;?php
+                        class MyArray {
+                          public $data = array();          // スーパークラス（親クラス）
+                          function MyArray($new_data)
+                          {
+                            $this-&gt;data = $new_data;
+                          }
+                          function DumpArray()
+                          {
+                            $data = $this-&gt;data;
+                            for($i=0; $i&lt;count($data); $i++){
+                              print "$i: $data[$i]&lt;br&gt;";
+                            }
+                          }
+                        }
+                        class ExArray extends MyArray {    // サブクラス（子クラス）
+                          function ExArray($new_data)
+                          {
+                            parent::MyArray($new_data);    // スーパークラスのコンストラクタ利用
+                          }                                // ※ "::"はネームスペース指定の記述
+                          function SortArray()             // サブクラスでメソッド（機能）を追加
+                          {
+                            sort($this-&gt;data);             // 配列の並べ替え
+                          }
+                        }
+                        ?&gt;
+                        &lt;/head&gt;
+                        
+                        &lt;body&gt;
+                        &lt;?php
+                        $a = array('a1','b2','a3','b4','a5');       // サブクラスを用いてオブジェクト生成
+                        $obj = new ExArray();
+                        $obj-&gt;DumpArray();                 // スーパークラスのメソッド実行
+                        $obj-&gt;SortArray();                 // サブクラスで追加したメソッド実行
+                        $obj-&gt;DumpArray();                 // スーパークラスのメソッド実行
+                        ?&gt;
+                        &lt;/body&gt;
+                        </pre>
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>抽象メソッドを用いた処理の多様化ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    <pre>
+                        &lt;head&gt;
+                        &lt;?php
+                        abstract class MyArray              // スーパークラス（親クラス）
+                        {
+                          public $data = array();
+                          function MyArray($new_data)
+                          {
+                            $this-&gt;data = $new_data;
+                          }
+                          function DumpArray()
+                          {
+                            $data = $this-&gt;data;
+                            for($i=0; $i&lt;count($data); $i++){
+                              print "$i: $data[$i]&lt;br&gt;";
+                            }
+                          }
+                          // 抽象メソッド（拡張クラスでの定義を強制 ※空の状態）
+                          abstract function SortArray();
+                        }
+                        class ExArrayA extends MyArray      // サブクラス（子クラス）
+                        {
+                          function ExArrayA($new_data)
+                          {
+                            parent::MyArray($new_data);
+                          }
+                          function SortArray()              // 抽象メソッド定義（必須）
+                          {
+                            sort($this-&gt;data);              // データ並べ替え（昇順）
+                          }
+                        }
+                        class ExArrayR extends MyArray      // サブクラス（子クラス）
+                        {
+                          function ExArrayR($new_data)
+                          {
+                            parent::MyArray($new_data);
+                          }
+                          function SortArray()              // 抽象メソッド定義（必須）
+                          {
+                            Shuffle($this-&gt;data);           // データ並べ替え（ランダム）
+                          }
+                        }
+                        ?&gt;
+                        &lt;/head&gt;
+                        
+                        &lt;body&gt;
+                        &lt;?php
+                        $a = array('a1','b2','a3','b4','a5');
+                        
+                        $objA = new ExArrayA($a);
+                        $objA-&gt;DumpArray();
+                        $objA-&gt;SortArray();                 // 拡張定義した抽象メソッド実行
+                        $objA-&gt;DumpArray();
+                        
+                        $objR = new ExArrayR($a);
+                        $objR-&gt;DumpArray();
+                        $objR-&gt;SortArray();                 // 拡張定義した抽象メソッド実行
+                        $objR-&gt;DumpArray();
+                        ?&gt;
+                        &lt;/body&gt;
+                        </pre>
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
+        <li>
+            <button class="collapsible">
+                <h2>WebページにJavaScriptを埋め込むことができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;script&gt;ここにjavascriptを記述&lt;/script&gt;
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>変数を使用した演算処理ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    &lt;script&gt;<br>var i = 1;<br>var j = 2;<br>document.write(i + j);<br>
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>制御処理（条件分岐，繰り返し）ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>関数定義と呼び出し実行ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>簡単なイベント処理ができる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+        <li>
+            <button class="collapsible">
+                <h2>外部ライブラリを利用できる</h2>
+            </button>
+            <div class="content">
+                <p>
+                    オブジェクト指向プログラミングにおいて、データ（属性）とそれを操作するメソッド（手続き）を一つのオブジェクト内にまとめ、外部からの直接的なアクセスを制限する概念。これにより、内部実装を隠蔽し、オブジェクト間の相互作用を明確に定義できる。結果として、コードの保守性や再利用性が向上し、バグの発生を減少させることが可能となる。
+                </p>
+            </div>
+            <div class="form-section">
+                <textarea id="answer1" name="answer1" rows="3" placeholder="メモ"></textarea>
+            </div>
+        </li>
+
     </ol>
     <footer class="footer">
         <p>Copyright &copy 2024 Uma. All rights reserved.</p>
